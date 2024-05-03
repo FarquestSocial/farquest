@@ -1,5 +1,8 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
+import { init, fetchQuery } from "@airstack/node";
+
+init(Bun.env.AIRSTACK_API_KEY);
 
 const app = new Elysia()
 	.use(swagger())
