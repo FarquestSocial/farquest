@@ -1,0 +1,62 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Orginization {
+  id              String   @id @default(cuid())
+  name            String
+  authRedirectUrl String
+  callbackUrl     String
+  apiKeyPrefix    String   @unique // usermame
+  apikey          String   @unique //hashed key
+  users           User[]
+  Quests          Quests[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  fid            Int
+  corilatedId    String //id passed from client
+  orginizationId String
+  orginization   Orginization @relation(fields: [orginizationId], references: [id])
+
+  @@unique([fid, orginizationId])
+  @@index([orginizationId])
+}
+
+//
+model QuestType {
+  id          String   @id @default(cuid())
+  name        String
+  description String //short description
+  type        String // type of quest determin the handler
+  //relation to quests
+  Quests      Quests[]
+}
+
+model Quests {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  image       String
+
+  customMetadata         Json // for display
+  customCallbackMetadata Json // for callback
+  validationCriteria     Json // specific to the quest type
+  orginization           Orginization @relation(fields: [orginizationId], references: [id])
+  orginizationId         String
+  questType              QuestType    @relation(fields: [questTypeId], references: [id])
+  questTypeId            String
+  createdAt              DateTime     @default(now())
+  updatedAt              DateTime     @updatedAt
+
+  @@index([orginizationId])
+  @@index([questTypeId])
+}
