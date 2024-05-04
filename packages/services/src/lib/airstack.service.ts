@@ -1,6 +1,8 @@
 import { fetchQuery, init } from "@airstack/node";
+import Logger from "../common/logger";
 
 export class AirStackService {
+  private readonly logger = Logger(AirStackService.name);
 	constructor() {
 		//initialize the airStack skd
 		init(Bun.env.AIRSTACK_API_KEY, "dev");
@@ -22,7 +24,7 @@ export class AirStackService {
     }`;
 		const { data, error } = await fetchQuery(query);
 		if (error) {
-			console.log(error);
+			this.logger.error(`Failed to get profile picture for user ${fid}`, error);
 			return error.toString();
 		}
 		/* sample response:
@@ -71,12 +73,14 @@ export class AirStackService {
     }`;
 		const { data, error } = await fetchQuery(query);
 		if (error) {
-			console.log(error);
+			this.logger.error(`Failed to check if user ${fid} has commented on cast ${castUrl}`, error);  
 			return error.toString();
 		}
 		if (data.FarcasterReactions.Reaction) {
+      this.logger.debug(`User ${fid} has commented on cast ${castUrl}`);
 			return true;
 		}
+    this.logger.info(`User ${fid} has not commented on cast ${castUrl}`);
 		return false;
 		// return data.Reply.length > 0;
 	}
@@ -95,12 +99,14 @@ export class AirStackService {
     }`;
 		const { data, error } = await fetchQuery(query);
 		if (error) {
-			console.log(error);
+			this.logger.error(`Failed to check if user ${fid} has liked cast ${castUrl}`, error);
 			return error.toString();
 		}
 		if (data.FarcasterReactions.Reaction) {
+      this.logger.debug(`User ${fid} has liked cast ${castUrl}`);
 			return true;
 		}
+    this.logger.info(`User ${fid} has not liked cast ${castUrl}`);
 		return false;
 	}
 	async hasUserReCastedCast(fid: number, castUrl: string): Promise<boolean> {
@@ -118,12 +124,14 @@ export class AirStackService {
     }`;
 		const { data, error } = await fetchQuery(query);
 		if (error) {
-			console.log(error);
+			this.logger.error(`Failed to check if user ${fid} has reCasted cast ${castUrl}`, error);
 			return error.toString();
 		}
 		if (data.FarcasterReactions.Reaction) {
+      this.logger.debug(`User ${fid} has reCasted cast ${castUrl}`);
 			return true;
 		}
+    this.logger.info(`User ${fid} has not reCasted cast ${castUrl}`);
 		return false;
 	}
 	async hasUserFollowedUser(

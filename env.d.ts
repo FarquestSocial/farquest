@@ -8,6 +8,8 @@ declare module "bun" {
 		DATABASE_PASSWORD: string;
 		DATABASE_URL: string;
 		PRIVY_APP_ID: string;
+		BASE_URL: string;
+
 		// should be the same as PRIVY_APP_ID
 		VITE_PRIVY_APP_ID: string;
 		PRIVY_APP_SECRET: string;
