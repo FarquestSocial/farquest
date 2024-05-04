@@ -25,9 +25,11 @@ model User {
   fid            Int
   corelationId    String //id passed from client
   organizationId String
+  ethAddress     String
   organization   Organization @relation(fields: [organizationId], references: [id])
   quests         UserQuestCompletion[]
   @@unique([fid, organizationId])
+  @@unique([corelationId, organizationId])
   @@index([organizationId])
 }
 

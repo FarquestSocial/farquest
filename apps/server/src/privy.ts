@@ -8,8 +8,8 @@ export const privy = new PrivyClient(
 if (Bun.env.NODE_ENV === "development") {
 	const privyUsers = await privy.getUsers();
 	for (const user of privyUsers) {
-        const id = user.id.replace("did:privy:", "");
-        // TODO: grab associated user from database
+		const id = user.id.replace("did:privy:", "");
+		// TODO: grab associated user from database
 		// const privyUser = await db.fetch<User>(`user:${id}`);
 		// if (!privyUser) {
 		// 	await db.create<User>("user", {

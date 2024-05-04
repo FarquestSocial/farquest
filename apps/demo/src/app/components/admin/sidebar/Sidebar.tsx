@@ -27,7 +27,7 @@ export const Sidebar = () => {
 				{sideBarItems.map((item, idx) => {
 					return (
 						<SidebarItem
-							key={idx}
+							key={`${item.title}-${idx}`}
 							title={item.title}
 							icon={item.icon}
 							active={pathname.startsWith(item.pathname)}
@@ -40,7 +40,7 @@ export const Sidebar = () => {
 			</section>
 			<section>
 				<div className="flex gap-x-2 items-center justify-between">
-					<div className="rounded-full w-8 h-8 bg-blue-500"></div>
+					<div className="rounded-full w-8 h-8 bg-blue-500" />
 					<div className="text-text font-bold text-xs">typeofant</div>
 					<SignOut className="text-text/70" />
 				</div>

@@ -1,14 +1,24 @@
 {
-  "name": "repository",
+  "name": "services",
   "module": "index.ts",
+  "types": "index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "dependencies": {
-    "database": "*"
+    "@upstash/redis": "^1.30.0",
+    "class-transformer": "^0.5.1",
+    "database": "*",
+    "image-comparison-vgg": "^1.0.2",
+    "img-diff-js": "^0.5.4",
+    "sharp": "^0.33.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "trustedDependencies": [
+    "core-js-pure",
+    "es5-ext"
+  ]
 }
