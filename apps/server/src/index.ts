@@ -347,8 +347,8 @@ const app = new Elysia()
 							}),
 							questTypeId: t.String(),
 							validationCriteria: t.Any(),
-							customMetadata: t.Any(),
-							customCallbackMetadata: t.Any(),
+							customMetadata: t.Optional(t.Any()),
+							customCallbackMetadata: t.Optional(t.Any()),
 						}),
 						detail: {
 							tags: ["quest"],
