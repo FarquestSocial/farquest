@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { init, fetchQuery } from "@airstack/node";
+import { Redis } from "@upstash/redis"
 import { privy } from "./privy";
 
 init(Bun.env.AIRSTACK_API_KEY);
