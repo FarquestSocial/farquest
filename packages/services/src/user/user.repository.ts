@@ -1,20 +1,31 @@
 import type { Prisma, PrismaClient } from "database";
 
-export class UserRepostory {
+export class UserRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
+  getUserQuestCompletion(userId: string, questId:string) {
+    return this.prisma.user.findFirst({
+      where: {
+       
+      },
+      select: {
+        questCompletion: true,
+      },
+    });
+  }
   createUser(data: Prisma.UserCreateInput) {
     return this.prisma.user.create({
       data: data,
     });
   }
+
   getUserCorelationId(userId: string) {
     return this.prisma.user.findFirst({
       where: {
         id: userId,
       },
       select: {
-        corilatedId: true,
+        corelationId: true,
       },
     });
   }
