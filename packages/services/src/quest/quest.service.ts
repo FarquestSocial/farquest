@@ -109,7 +109,7 @@ export class QuestService {
 					isRequired: true,
 				},
 			];
-		} else if ($ === QuestTypes.OwensNftsQuest) {
+		} else if ($ === QuestTypes.OwnsNftsQuest) {
 			return [
 				{
 					value: "contractAddress",
@@ -124,7 +124,7 @@ export class QuestService {
 					isRequired: true,
 				},
 			];
-		} else if ($ === QuestTypes.OwensERC20Quest) {
+		} else if ($ === QuestTypes.OwnsERC20Quest) {
 			return [
 				{
 					value: "contractAddress",

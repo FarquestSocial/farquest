@@ -5,8 +5,8 @@ export enum QuestTypes {
 	FollowQuest = "Follow",
 	BioKeywordQuest = "BioKeyword",
 	ProfilePictureQuest = "ProfilePicture",
-	OwensNftsQuest = "OwensNfts",
-	OwensERC20Quest = "OwensERC20",
+	OwnsNftsQuest = "OwnsNfts",
+	OwnsERC20Quest = "OwnsERC20",
 }
 
 export class LikeQuestValidationCriteria {
@@ -39,12 +39,12 @@ export class ProfilePictureValidationCriteria {
 	targetImageUrl: string;
 }
 
-export class OwensNftsValidationCriteria {
+export class OwnsNftsValidationCriteria {
 	//@ts-ignore
 	contractAddress: string;
 }
 
-export class OwensERC20ValidationCriteria {
+export class OwnsERC20ValidationCriteria {
 	//@ts-ignore
 	contractAddress: string;
 }

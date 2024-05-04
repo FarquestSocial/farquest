@@ -1,6 +1,6 @@
 import { QuestTypes } from "../common/types/quest.type";
 import type { AirStackService } from "../lib/airstack.service";
-import type { WebhookService } from "../webhook/wenhook.service";
+import type { WebhookService } from "../webhook/webhook.service";
 import type { CompletionRepository } from "./completion.repository";
 import { BioKeywordQuestHandler } from "./handler/biokeyword.handler";
 import { CommentQuestHandler } from "./handler/comment.handler";
