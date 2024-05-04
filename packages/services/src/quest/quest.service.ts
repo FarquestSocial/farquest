@@ -25,7 +25,7 @@ export class QuestService {
 
   async getQuestById(questId: string, userId?: string) {
     const quest = await this.questRepository.getQuestById(questId);
-    let canComplete = true;
+    let canComplete = false;
     if (userId) {
       canComplete = await this.completionRepository.canUserCompleteQuest(
         userId,
