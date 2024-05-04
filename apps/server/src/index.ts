@@ -1,11 +1,13 @@
 import { swagger } from "@elysiajs/swagger";
 import type { AuthTokenClaims } from "@privy-io/server-auth";
-import { Elysia, error, t } from "elysia";
+import { Elysia, error, redirect, t } from "elysia";
 import { Logestic } from "logestic";
 import { customAlphabet, urlAlphabet } from "nanoid";
 import { services } from "services";
 import type { Session } from "services/src/common/types/session.type";
 import { privy } from "./privy";
+
+const nanoId = customAlphabet(urlAlphabet, 20);
 
 async function doAuth(headers: Record<string, string | undefined>) {
 	if (!headers.authorization?.startsWith("Bearer ")) {
@@ -30,93 +32,136 @@ const app = new Elysia()
 	.use(swagger())
 	.use(Logestic.preset("common"))
 	.get("/", () => "Hello Elysia")
-	// TODO: make work
-	.post("/organizations/create", async ({ headers }) => {
-		const organizationId =
-			await services.organizationService.createOrganization(
-				"Farquest",
-				"https://localhost:5173/auth",
-				"https://localhost:5173/auth/callback",
-			);
-		return {
-			id: organizationId,
-		};
-	})
-	.guard({
-		beforeHandle({ set, headers, cookie }) {
-			if (!cookie.session.value.orgId) {
-				const apiKey = headers.farquestapikey;
-				if (!apiKey) {
-					console.log("no api key");
-					return (set.status = "Unauthorized");
-				}
-				const userOrgId =
-					services.organizationService.getOrganizationIdByApiKey(apiKey);
-				if (!userOrgId) {
-					console.log("no org id");
-					return (set.status = "Unauthorized");
-				}
-				cookie.session.value.orgId = userOrgId;
-			}
-
-			return true;
-		},
-	})
 	.post(
-		"/session/:correlatedId",
-		async ({ headers, params }) => {
-			const auth = await doAuth(headers);
-			if (auth.status !== 200) {
-				return error(auth.status);
-			}
-			let verifiedClaims: AuthTokenClaims;
-			try {
-				if (!headers.authorization) return error(401);
-				const bearer = headers.authorization.replace("Bearer ", "");
-				verifiedClaims = await privy.verifyAuthToken(bearer);
-			} catch (e) {
-				console.error(`Token verification failed with error ${e}.`);
-				return error(401);
-			}
-			const user = await privy.getUser(verifiedClaims.userId);
-			if (!user.farcaster) {
-				return error(401);
-			}
-			const apiKeyHeader = headers.farquestapikey;
-			if (!apiKeyHeader) {
-				return error(401);
-			}
+		"/organizations/create",
+		async ({ body }) => {
 			const organizationId =
-				await services.organizationService.getOrganizationIdByApiKey(
-					apiKeyHeader,
+				await services.organizationService.createOrganization(
+					body.name,
+					body.authRedirectUrl,
+					body.callbackUrl,
 				);
-			if (!organizationId) {
-				return error(401);
-			}
-			await services.userService.createUser(
-				verifiedClaims.userId,
-				organizationId,
-				user.farcaster.fid,
-				user.farcaster.ownerAddress,
-			);
-			const sessionToken = customAlphabet(urlAlphabet, 20);
-			services.redisService.client.set(
-				sessionToken,
-				JSON.stringify({
-					userId: verifiedClaims.userId,
-					organizationId: organizationId,
-				} as Session),
-			);
 			return {
-				redirectUrl: `https://localhost:5173/auth?state=${sessionToken}`,
+				id: organizationId,
 			};
 		},
 		{
-			headers: t.Object({
-				authorization: t.String(),
-				farquestapikey: t.String(),
+			body: t.Object({
+				name: t.String(),
+				authRedirectUrl: t.String(),
+				callbackUrl: t.String(),
 			}),
 		},
+	)
+	.guard(
+		{
+			beforeHandle({ set, headers, cookie }) {
+				if (!cookie.session.value.orgId) {
+					const apiKey = headers.farquestapikey;
+					if (!apiKey) {
+						console.log("no api key");
+						return (set.status = "Unauthorized");
+					}
+					const userOrgId =
+						services.organizationService.getOrganizationIdByApiKey(apiKey);
+					if (!userOrgId) {
+						console.log("no org id");
+						return (set.status = "Unauthorized");
+					}
+					cookie.session.value.orgId = userOrgId;
+				}
+			},
+		},
+		(app) =>
+			app
+				.post(
+					"/session/:correlatedId",
+					async ({ body, cookie }) => {
+						const sessionToken = nanoId();
+						services.redisService.client.set(
+							sessionToken,
+							JSON.stringify({
+								userId: body.correlatedId,
+								organizationId: cookie.session.value.orgId,
+							} as Session),
+						);
+						return {
+							redirectUrl: `https://localhost:5173/?state=${sessionToken}`,
+						};
+					},
+					{
+						headers: t.Object({
+							authorization: t.String(),
+							farquestapikey: t.String(),
+						}),
+						body: t.Object({
+							correlatedId: t.String(),
+						}),
+					},
+				)
+				.get("/auth/:state", async ({ params }) => {
+					const sessionRaw = (await services.redisService.client.get(
+						params.state,
+					)) as string;
+					const session = JSON.parse(sessionRaw);
+					if (!session) {
+						return error(401);
+					}
+					return {
+						userId: session.userId,
+						organizationId: session.organizationId,
+					};
+				})
+				.post(
+					"/auth/callback",
+					async ({ body, headers }) => {
+						const auth = await doAuth(headers);
+						if (auth.status !== 200) {
+							return error(auth.status);
+						}
+						let verifiedClaims: AuthTokenClaims;
+						try {
+							if (!headers.authorization) return error(401);
+							const bearer = headers.authorization.replace("Bearer ", "");
+							verifiedClaims = await privy.verifyAuthToken(bearer);
+						} catch (e) {
+							console.error(`Token verification failed with error ${e}.`);
+							return error(401);
+						}
+						const privyUser = await privy.getUser(verifiedClaims.userId);
+						if (!privyUser.farcaster) {
+							return error(401);
+						}
+						const sessionRaw = (await services.redisService.client.get(
+							body.state,
+						)) as string;
+						const session = JSON.parse(sessionRaw);
+						if (!session) {
+							return error(401);
+						}
+						if (!session.organizationId) {
+							return error(401);
+						}
+						await services.userService.createUser(
+							verifiedClaims.userId,
+							session.organizationId,
+							privyUser.farcaster.fid,
+							privyUser.farcaster.ownerAddress,
+						);
+						const returnUrl = await services.userService.createUser(
+							session.userId,
+							session.organizationId,
+							privyUser.farcaster.fid,
+							privyUser.farcaster.ownerAddress,
+						);
+						return redirect(returnUrl);
+					},
+					{
+						body: t.Object({
+							state: t.String(),
+						}),
+					},
+				),
 	)
 	.listen(3000);
 

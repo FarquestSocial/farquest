@@ -30,6 +30,20 @@ export class UserRepository {
     });
   }
 
+  async getAuthRedirectUrlForOrganizationId(OrganizationId: string) {
+    const $ = await this.prisma.organization.findFirst({
+      where: {
+        id: OrganizationId,
+      },
+      select: {
+        authRedirectUrl: true,
+      },
+    });
+    if (!$) {
+      throw new Error("Organization not found");
+    }
+    return $.authRedirectUrl;
+  }
   async getUserIdFromCorAndOrgIf(organizationId: string, corelationId: string) {
     return this.prisma.user.findUnique({
       where: {

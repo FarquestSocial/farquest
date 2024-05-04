@@ -8,28 +8,27 @@ export class QuestRepository {
     organizationId: string,
     page: number,
     limit: number,
-    filter: 'ACTIVE' | 'COMPLETE' | 'ALL' | 'NOT_STARTED' = 'ALL'
+    filter: "ACTIVE" | "COMPLETE" | "ALL" | "NOT_STARTED" = "ALL"
   ) {
     const now = new Date();
     const conditions: Prisma.QuestsWhereInput[] = [];
 
-    if (filter !== 'ALL') {
-      if (filter === 'ACTIVE') {
+    if (filter !== "ALL") {
+      if (filter === "ACTIVE") {
         conditions.push({
           startsAt: { lte: now },
           endsAt: { gte: now },
         });
       }
-      if (filter === 'COMPLETE') {
+      if (filter === "COMPLETE") {
         conditions.push({
-          userCompletions: {
-            some: {}, // At least one completion
-          }
+          startsAt: { lte: now },
+          endsAt: { lte: now },
         });
       }
-      if (filter === 'NOT_STARTED') {
+      if (filter === "NOT_STARTED") {
         conditions.push({
-          startsAt: { gt: now } // Has not started yet
+          startsAt: { gt: now }, // Has not started yet
         });
       }
     }
@@ -42,8 +41,7 @@ export class QuestRepository {
       skip: (page - 1) * limit,
       take: limit,
       include: {
-        questType: true, // Assuming you might want details about the quest type
-        userCompletions: filter === 'COMPLETE' // Include completions if requested
+        questType: true,
       },
     });
   }
