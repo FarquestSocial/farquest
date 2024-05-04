@@ -26,7 +26,7 @@ export class AlchemyService {
 	checkIfUserOwnsNFT = async (
 		address: string,
 		contractAddress: string,
-	): Promise<Boolean> => {
+	): Promise<boolean> => {
 		const ownedNfts = await this.alchemy.nft.getNftsForOwner(address, {
 			contractAddresses: [contractAddress],
 		});
