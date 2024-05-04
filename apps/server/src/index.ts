@@ -1,6 +1,6 @@
 import { swagger } from "@elysiajs/swagger";
 import type { AuthTokenClaims } from "@privy-io/server-auth";
-import { Elysia, error, t } from "elysia";
+import { Elysia, error, redirect, t } from "elysia";
 import { Logestic } from "logestic";
 import { customAlphabet, urlAlphabet } from "nanoid";
 import { services } from "services";
@@ -73,62 +73,95 @@ const app = new Elysia()
 			},
 		},
 		(app) =>
-			app.post(
-				"/session/:correlatedId",
-				async ({ headers, params }) => {
-					const auth = await doAuth(headers);
-					if (auth.status !== 200) {
-						return error(auth.status);
-					}
-					let verifiedClaims: AuthTokenClaims;
-					try {
-						if (!headers.authorization) return error(401);
-						const bearer = headers.authorization.replace("Bearer ", "");
-						verifiedClaims = await privy.verifyAuthToken(bearer);
-					} catch (e) {
-						console.error(`Token verification failed with error ${e}.`);
-						return error(401);
-					}
-					const user = await privy.getUser(verifiedClaims.userId);
-					if (!user.farcaster) {
-						return error(401);
-					}
-					const apiKeyHeader = headers.farquestapikey;
-					if (!apiKeyHeader) {
-						return error(401);
-					}
-					const organizationId =
-						await services.organizationService.getOrganizationIdByApiKey(
-							apiKeyHeader,
+			app
+				.post(
+					"/session/:correlatedId",
+					async ({ body, cookie }) => {
+						const sessionToken = nanoId();
+						services.redisService.client.set(
+							sessionToken,
+							JSON.stringify({
+								userId: body.correlatedId,
+								organizationId: cookie.session.value.orgId,
+							} as Session),
 						);
-					if (!organizationId) {
+						return {
+							redirectUrl: `https://localhost:5173/?state=${sessionToken}`,
+						};
+					},
+					{
+						headers: t.Object({
+							authorization: t.String(),
+							farquestapikey: t.String(),
+						}),
+						body: t.Object({
+							correlatedId: t.String(),
+						}),
+					},
+				)
+				.get("/auth/:state", async ({ params }) => {
+					const sessionRaw = (await services.redisService.client.get(
+						params.state,
+					)) as string;
+					const session = JSON.parse(sessionRaw);
+					if (!session) {
 						return error(401);
 					}
-					await services.userService.createUser(
-						verifiedClaims.userId,
-						organizationId,
-						user.farcaster.fid,
-						user.farcaster.ownerAddress,
-					);
-					const sessionToken = nanoId();
-					services.redisService.client.set(
-						sessionToken,
-						JSON.stringify({
-							userId: verifiedClaims.userId,
-							organizationId: organizationId,
-						} as Session),
-					);
 					return {
-						redirectUrl: `https://localhost:5173/auth?state=${sessionToken}`,
+						userId: session.userId,
+						organizationId: session.organizationId,
 					};
-				},
-				{
-					headers: t.Object({
-						authorization: t.String(),
-						farquestapikey: t.String(),
-					}),
-				},
-			),
+				})
+				.post(
+					"/auth/callback",
+					async ({ body, headers }) => {
+						const auth = await doAuth(headers);
+						if (auth.status !== 200) {
+							return error(auth.status);
+						}
+						let verifiedClaims: AuthTokenClaims;
+						try {
+							if (!headers.authorization) return error(401);
+							const bearer = headers.authorization.replace("Bearer ", "");
+							verifiedClaims = await privy.verifyAuthToken(bearer);
+						} catch (e) {
+							console.error(`Token verification failed with error ${e}.`);
+							return error(401);
+						}
+						const privyUser = await privy.getUser(verifiedClaims.userId);
+						if (!privyUser.farcaster) {
+							return error(401);
+						}
+						const sessionRaw = (await services.redisService.client.get(
+							body.state,
+						)) as string;
+						const session = JSON.parse(sessionRaw);
+						if (!session) {
+							return error(401);
+						}
+						if (!session.organizationId) {
+							return error(401);
+						}
+						await services.userService.createUser(
+							verifiedClaims.userId,
+							session.organizationId,
+							privyUser.farcaster.fid,
+							privyUser.farcaster.ownerAddress,
+						);
+						const returnUrl = await services.userService.createUser(
+							session.userId,
+							session.organizationId,
+							privyUser.farcaster.fid,
+							privyUser.farcaster.ownerAddress,
+						);
+						return redirect(returnUrl);
+					},
+					{
+						body: t.Object({
+							state: t.String(),
+						}),
+					},
+				),
 	)
 	.listen(3000);
 
