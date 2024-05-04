@@ -42,8 +42,6 @@ export class ProfilePictureValidationCriteria {
 export class OwensNftsValidationCriteria {
   //@ts-ignore
   contractAddress: string;
-   //@ts-ignore
-  nftIds: string[];
 }
 
 export class OwensERC20ValidationCriteria {
