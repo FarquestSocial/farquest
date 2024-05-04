@@ -26,7 +26,7 @@ function App() {
           </button>
         )}
 
-        {farcasterAccount.signerPublicKey && (
+        {farcasterAccount?.signerPublicKey && (
           <p>
             You should be automatically redirected. Your signer pubkey is
             <code> {farcasterAccount.signerPublicKey}</code>
