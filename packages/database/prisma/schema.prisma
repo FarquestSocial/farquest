@@ -26,9 +26,21 @@ model User {
   corilatedId    String //id passed from client
   organizationId String
   organization   Organization @relation(fields: [organizationId], references: [id])
-
+  quests         UserQuestCompletion[]
   @@unique([fid, organizationId])
   @@index([organizationId])
+}
+
+model UserQuestCompletion {
+  id          String   @id @default(cuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  quest       Quests   @relation(fields: [questId], references: [id])
+  questId     String
+  completedAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([questId])
 }
 
 //
@@ -56,6 +68,7 @@ model Quests {
   questTypeId            String
   createdAt              DateTime     @default(now())
   updatedAt              DateTime     @updatedAt
+  userCompletions       UserQuestCompletion[]
 
   @@index([organizationId])
   @@index([questTypeId])

@@ -1,16 +1,29 @@
-import type { PrismaClient } from "database";
+import type { Prisma, PrismaClient } from "database";
 
+export class UserRepostory {
+  constructor(private readonly prisma: PrismaClient) {}
 
+  createUser(data: Prisma.UserCreateInput) {
+    return this.prisma.user.create({
+      data: data,
+    });
+  }
+  getUserCoralationId(userId: string) {
+    return this.prisma.user.findFirst({
+      where: {
+        id: userId,
+      },
+      select: {
+        corilatedId: true,
+      },
+    });
+  }
 
-export class  UserRepostory {
-    constructor(private readonly prisma: PrismaClient) {}
-
-
-    getUserById(userId: string) {
-        return this.prisma.user.findUnique({
-            where: {
-                id: userId,
-            },
-        });
-    }
+  getUserById(userId: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+  }
 }
