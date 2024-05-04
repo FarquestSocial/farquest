@@ -29,9 +29,11 @@ export class LikeQuestHandler {
 				return false;
 			}
 
+			const userFid = await this.completionRepository.getUserFid(userId);
+
 			// Check if the user has liked the specified cast
 			const hasLiked = await this.airStackService.hasUserLikedCast(
-				userId,
+				userFid,
 				validationCriteria.castId,
 			);
 			if (!hasLiked) {

@@ -27,9 +27,11 @@ export class FollowQuestHandler {
 				return false;
 			}
 
+			const userFid = await this.completionRepository.getUserFid(userId);
+
 			// Check if the user has followed the specified farCastId
 			const hasFollowed = await this.airStackService.hasUserFollowedUser(
-				userId,
+				userFid,
 				validationCriteria.farCastId,
 			);
 			if (!hasFollowed) {
