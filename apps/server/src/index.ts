@@ -70,11 +70,17 @@ const app = new Elysia()
 				return error(401);
 			}
 			const user = await privy.getUser(verifiedClaims.userId);
+			if (!user.farcaster) {
+				return error(401);
+			}
 			const orginizationId =
-				services.organizationService.getOrganizationIdByApiKey();
+				await services.organizationService.getOrganizationIdByApiKey(headers["FARQUEST-API-KEY"]);
+			if (!orginizationId) {
+				return error(401);
+			}
 			await services.userService.createUser(
 				verifiedClaims.userId,
-				user.orginizationId,
+				orginizationId,
 				user.farcaster?.fid,
 			);
 			const sessionToken = customAlphabet(urlAlphabet, 20);
