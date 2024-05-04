@@ -8,5 +8,4 @@ export class AlchemyService {
       network: Network.BASE_MAINNET,
     });
   }
-  
 }

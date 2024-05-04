@@ -8,6 +8,7 @@ import { QuestRepository } from "./src/quest/quest.repository";
 import { WebhookService } from "./src/webhook/wenhook.service";
 import { CompletionService } from "./src/completion/completion.service";
 import { CompletionRepository } from "./src/completion/completion.repository";
+import { RedisService } from "./src/lib/redis.service";
 
 const prisma = new PrismaClient({
   datasourceUrl: Bun.env.DATABASE_URL,
@@ -20,5 +21,6 @@ export const services = {
   userService: new UserService(new UserRepository(prisma)),
   questService: new QuestService(new QuestRepository(prisma)),
   webhookService: new WebhookService(),
+  redisService: new RedisService(),
   //completionService: new CompletionService(new CompletionRepository(prisma)),
 };
