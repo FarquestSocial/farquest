@@ -5,5 +5,5 @@ export class WebhookService {
 
     //send webhook to a url with a payload
     //should preform a backoff strategy if the webhook fails
-      
+    //use fetch to send the webhook
 }
