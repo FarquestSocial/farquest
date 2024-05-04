@@ -1,7 +1,7 @@
+import { logger } from "@bogeychan/elysia-logger";
 import { swagger } from "@elysiajs/swagger";
 import type { AuthTokenClaims } from "@privy-io/server-auth";
 import { Elysia, error, redirect, t } from "elysia";
-import { Logestic } from "logestic";
 import { customAlphabet, urlAlphabet } from "nanoid";
 import { services } from "services";
 import type { Session } from "services/src/common/types/session.type";
@@ -61,7 +61,11 @@ const app = new Elysia()
 			},
 		}),
 	)
-	.use(Logestic.preset("common"))
+	.use(
+		logger({
+			level: "info",
+		}),
+	)
 	.post(
 		"/organizations/create",
 		async ({ body }) => {

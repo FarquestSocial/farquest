@@ -7,10 +7,10 @@
 	},
 	"dependencies": {
 		"@airstack/node": "^0.0.7",
+		"@bogeychan/elysia-logger": "^0.0.21",
 		"@elysiajs/swagger": "^1.0.5",
 		"@privy-io/server-auth": "^1.7.3",
 		"elysia": "latest",
-		"logestic": "^1.1.1",
 		"nanoid": "^5.0.7",
 		"services": "*"
 	},
