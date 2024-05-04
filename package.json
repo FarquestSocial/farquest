@@ -25,9 +25,11 @@
   ],
   "dependencies": {
     "@airstack/node": "^0.0.7",
+    "@headlessui/react": "^1.7.19",
     "@privy-io/react-auth": "^1.63.0",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "react-toastify": "^10.0.5",
     "alchemy-sdk": "^3.3.0",
-    "install": "^0.13.0",
     "opencv4nodejs": "^5.6.0",
     "sharp": "^0.33.3"
   },
