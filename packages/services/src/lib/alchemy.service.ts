@@ -20,7 +20,7 @@ export class AlchemyService {
 		if (!balance) {
 			return false;
 		}
-		return parseInt(balance) > 0;
+		return Number.parseInt(balance) > 0;
 	};
 
 	checkIfUserOwnsNFT = async (

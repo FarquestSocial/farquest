@@ -14,6 +14,22 @@ export class CompletionRepository {
 			return false;
 		}
 	}
+
+  getUserWalletAddress = async (userId: string) => {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        ethAddress: true,
+      },
+    });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    return user.ethAddress;
+  }
+
 	getQuestValidationCriteria = async <T>(
 		questId: string,
 		type: new () => T,

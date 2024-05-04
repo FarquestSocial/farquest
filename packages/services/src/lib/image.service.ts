@@ -1,11 +1,20 @@
 import sharp from "sharp";
-import * as fs from "fs";
+import * as fs from "node:fs";
 import { imgDiff } from "img-diff-js";
-import { tmpdir } from "os";
-import { join } from "path";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 //class to compare images and provide a similarity score
 export class ImageService {
+  async doesImageMatch(
+    url1: string,
+    url2: string,
+    threshold = 0.9
+  ): Promise<boolean> {
+    const similarity = await this.compareImages(url1, url2);
+    return similarity >= threshold;
+  }
+
   async compareImages(url1: string, url2: string): Promise<number> {
     const img1Path = join(tmpdir(), "img1.png");
     const img2Path = join(tmpdir(), "img2.png");
@@ -38,7 +47,7 @@ export class ImageService {
     url: string,
     outputPath: string
   ): Promise<void> {
-    let response;
+    let response: Response;
     try {
       response = await fetch(url);
       if (!response.ok) {

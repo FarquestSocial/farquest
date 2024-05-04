@@ -25,8 +25,8 @@ export class UserService {
     organizationId: string,
     fid: number,
     ethAddress: string
-  ) {
-    return this.userRepository.createUser({
+  ): Promise<string> {
+    await this.userRepository.createUser({
       corelationId: corelationId,
       fid: fid,
       ethAddress: ethAddress,
@@ -36,6 +36,7 @@ export class UserService {
         },
       },
     });
+    return this.userRepository.getAuthRedirectUrlForOrganizationId(organizationId);
   }
 
   async getUserIdFromCorAndOrgIf(organizationId: string, corelationId: string) {
