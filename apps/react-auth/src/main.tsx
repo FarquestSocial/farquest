@@ -1,6 +1,6 @@
+import { PrivyProvider } from "@privy-io/react-auth";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { PrivyProvider } from "@privy-io/react-auth";
 import App from "./App.tsx";
 import "./index.css";
 
