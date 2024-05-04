@@ -12,6 +12,18 @@ export class QuestRepository {
       },
     });
   }
+  async getQuestTypeFromId(questTypeId: string) {
+    const $ = await this.prisma.questType.findUnique({
+      where: {
+        id: questTypeId,
+      },
+      select: {
+        type: true,
+      },
+    });
+    return $?.type;
+  }
+
   async createQuest(data: Prisma.QuestsCreateInput) {
     return this.prisma.quests.create({
       data: data,
