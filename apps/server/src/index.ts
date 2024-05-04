@@ -29,9 +29,39 @@ async function doAuth(headers: Record<string, string | undefined>) {
 }
 
 const app = new Elysia()
-	.use(swagger())
+	.use(
+		swagger({
+			documentation: {
+				info: {
+					title: "Farquest API",
+					version: "1.0",
+				},
+				tags: [
+					{
+						name: "quest",
+						description: "Quest related endpoints",
+					},
+					{
+						name: "user",
+						description: "User related endpoints",
+					},
+					{
+						name: "organization",
+						description: "Organization related endpoints",
+					},
+					{
+						name: "session",
+						description: "Session related endpoints",
+					},
+					{
+						name: "auth",
+						description: "Auth related endpoints",
+					},
+				],
+			},
+		}),
+	)
 	.use(Logestic.preset("common"))
-	.get("/", () => "Hello Elysia")
 	.post(
 		"/organizations/create",
 		async ({ body }) => {
@@ -51,6 +81,10 @@ const app = new Elysia()
 				authRedirectUrl: t.String(),
 				callbackUrl: t.String(),
 			}),
+			detail: {
+				tags: ["organization"],
+				description: "Create a new organization",
+			},
 		},
 	)
 	.guard(
@@ -97,18 +131,31 @@ const app = new Elysia()
 						body: t.Object({
 							correlatedId: t.String(),
 						}),
+						detail: {
+							tags: ["session"],
+							description: "Create a new session with a correlated ID",
+						},
 					},
 				)
-				.get("/auth/:state", async ({ params }) => {
-					const sessionRaw = (await services.redisService.client.get(
-						params.state,
-					)) as string;
-					const session = JSON.parse(sessionRaw);
-					if (!session) {
-						return error(401);
-					}
-					return redirect(`https://localhost:5173/?state=${params.state}`);
-				})
+				.get(
+					"/auth/:state",
+					async ({ params }) => {
+						const sessionRaw = (await services.redisService.client.get(
+							params.state,
+						)) as string;
+						const session = JSON.parse(sessionRaw);
+						if (!session) {
+							return error(401);
+						}
+						return redirect(`https://localhost:5173/?state=${params.state}`);
+					},
+					{
+						detail: {
+							tags: ["auth"],
+							description: "Get the redirect URL to start a session",
+						},
+					},
+				)
 				.post(
 					"/auth/callback",
 					async ({ body, headers }) => {
@@ -157,31 +204,92 @@ const app = new Elysia()
 						body: t.Object({
 							state: t.String(),
 						}),
+						detail: {
+							tags: ["auth"],
+							description:
+								"Callback to session with Privy Auth, returns URL to redirect back to your app",
+						},
 					},
 				)
-				.get("/quest/types", async ({ params }) => {
-					const questTypes = await services.questService.getAllQuestTypes();
-					return questTypes;
-				})
-				.get("/quest/completions/:id", async ({ params }) => {
-					const questCompletions =
-						await services.questService.getNumberOfQuestCompletions(params.id);
-					return questCompletions;
-				})
-				.get("/quest/validation/:id", async ({ params }) => {
-					const questValidationCriteria =
-						await services.questService.getQuestTypeRequiredFields(params.id);
-					return questValidationCriteria;
-				})
 				.get(
-					"/quests/filtered/:filter",
+					"/quest/types",
+					async ({ params }) => {
+						const questTypes = await services.questService.getAllQuestTypes();
+						return questTypes;
+					},
+					{
+						detail: {
+							tags: ["quest"],
+							description: "Get all quest types",
+						},
+					},
+				)
+				.get(
+					"/quest/completions/count/:id",
+					async ({ params }) => {
+						const questCompletions =
+							await services.questService.getNumberOfQuestCompletions(
+								params.id,
+							);
+						return questCompletions;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get the number of quest completions for a quest",
+						},
+					},
+				)
+				.get(
+					"/quest/validation/:id",
+					async ({ params }) => {
+						const questValidationCriteria =
+							await services.questService.getQuestTypeRequiredFields(params.id);
+						return questValidationCriteria;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get the validation criteria for a quest",
+						},
+					},
+				)
+				.get(
+					"/quest/:id",
+					async ({ params }) => {
+						const quest = await services.questService.getQuestById(
+							params.id,
+							params.userId,
+						);
+						return quest;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+							userId: t.Optional(t.String()),
+						}),
+						detail: {
+							tags: ["quest"],
+							description:
+								"Get a quest by ID, optionally for a specific user by their ID",
+						},
+					},
+				)
+				.get(
+					"/quest/list/:filter",
 					async ({ params, cookie }) => {
 						const quests =
 							await services.questService.getQuestsForOrganizationWithFilter(
 								cookie.session.value.orgId,
 								params.page,
 								params.take,
-								params.filter,
+								params.filter ?? "ALL",
 							);
 						return quests;
 					},
@@ -189,17 +297,23 @@ const app = new Elysia()
 						params: t.Object({
 							page: t.Number(),
 							take: t.Number(),
-							filter: t.Union([
-								t.Literal("ACTIVE"),
-								t.Literal("COMPLETE"),
-								t.Literal("ALL"),
-								t.Literal("NOT_STARTED"),
-							]),
+							filter: t.Optional(
+								t.Union([
+									t.Literal("ACTIVE"),
+									t.Literal("COMPLETE"),
+									t.Literal("ALL"),
+									t.Literal("NOT_STARTED"),
+								]),
+							),
 						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get quests paginated, optionally with a filter",
+						},
 					},
 				)
 				.post(
-					"/quests/create",
+					"/quest/create",
 					async ({ body, cookie }) => {
 						const quest = await services.questService.createQuest(
 							cookie.session.value.orgId,
@@ -232,12 +346,42 @@ const app = new Elysia()
 							customMetadata: t.Any(),
 							customCallbackMetadata: t.Any(),
 						}),
+						detail: {
+							tags: ["quest"],
+							description: "Create a new quest",
+						},
+					},
+				)
+				.post(
+					"/quest/complete",
+					async ({ body, cookie }) => {
+						const userId =
+							await services.userService.getUserIdFromOrganizationIdAndCorelationId(
+								cookie.session.value.orgId,
+								body.corelationId,
+							);
+						const questStatus = await services.completionService.completeQuest(
+							userId,
+							body.questId,
+						);
+						if (!questStatus) {
+							return error(401);
+						}
+						return {
+							status: 200,
+						};
+					},
+					{
+						body: t.Object({
+							questId: t.String(),
+							corelationId: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Complete a quest",
+						},
 					},
 				),
-		// .post("/quests/complete", async ({ body, cookie }) => {
-		// 	const questId = body.questId;
-
-		// }),
 	)
 	.listen(3000);
 
