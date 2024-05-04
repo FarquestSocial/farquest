@@ -8,9 +8,19 @@ const schema = z.object({
 export const POST = async (req: NextRequest, res: NextResponse) => {
   //validate request body
   const { questId } = schema.parse(req.body);
-//   await api.session({
-//     correlatedId: req.locals.correlationId,
-//   }).post()
+  const correlationId = "REPLACEME";
+  const farquestApiKey = "REPLACEME";
+  const authheader = "REPLACEME";
+  await api.session({
+    correlatedId: correlationId
+  }).post({
+    correlatedId: correlationId,
+  }, {
+    headers: {
+      farquestapikey: farquestApiKey,
+      authorization: `Bearer ${authheader}`,
+    },
+  });
 
   //call completion service
   const response = await fetch(
