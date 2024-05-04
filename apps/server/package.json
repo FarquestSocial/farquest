@@ -12,7 +12,8 @@
     "@upstash/redis": "^1.30.0",
     "elysia": "latest",
     "logestic": "^1.1.1",
-    "nanoid": "^5.0.7"
+    "nanoid": "^5.0.7",
+    "services": "*"
   },
   "devDependencies": {
     "bun-types": "latest"
