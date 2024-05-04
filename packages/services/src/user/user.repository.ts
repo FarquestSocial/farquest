@@ -3,7 +3,17 @@ import type { Prisma, PrismaClient } from "database";
 export class UserRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
-  getUserQuestCompletion(userId: string, questId: string) {
+  async getUserFid(userId: string) {
+    return this.prisma.user.findFirst({
+      where: {
+        id: userId,
+      },
+      select: {
+        fid: true,
+      },
+    });
+  }
+  async getUserQuestCompletion(userId: string, questId: string) {
     return this.prisma.userQuestCompletion.findUnique({
       where: {
         userId_questId: {
@@ -14,22 +24,14 @@ export class UserRepository {
     });
   }
 
-  completeQuest(userId: string, questId: string) {
-    return this.prisma.userQuestCompletion.create({
-      data: {
-        userId: userId,
-        questId: questId,
-      },
-    });
-  }
-  
-  createUser(data: Prisma.UserCreateInput) {
+
+  async createUser(data: Prisma.UserCreateInput) {
     return this.prisma.user.create({
       data: data,
     });
   }
 
-  getUserCorelationId(userId: string) {
+  async getUserCorelationId(userId: string) {
     return this.prisma.user.findFirst({
       where: {
         id: userId,
@@ -40,7 +42,18 @@ export class UserRepository {
     });
   }
 
-  getUserById(userId: string) {
+  async getUserFidFromUserID(userId: string) {
+    return this.prisma.user.findFirst({
+      where: {
+        id: userId,
+      },
+      select: {
+        fid: true,
+      },
+    });
+  }
+
+  async getUserById(userId: string) {
     return this.prisma.user.findUnique({
       where: {
         id: userId,

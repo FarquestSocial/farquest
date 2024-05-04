@@ -12,7 +12,7 @@ export class OrganizationService {
     if (!$) {
       return null;
     }
-    //user bytecrypt to compare the api key
+    //user bytecrypt to compare the api key without prefix
     return $.id;
   }
 
