@@ -9,7 +9,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Orginization {
+model Organization {
   id              String   @id @default(cuid())
   name            String
   authRedirectUrl String
@@ -23,12 +23,25 @@ model Orginization {
 model User {
   id             String       @id @default(cuid())
   fid            Int
-  corilatedId    String //id passed from client
-  orginizationId String
-  orginization   Orginization @relation(fields: [orginizationId], references: [id])
+  corelationId    String //id passed from client
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  quests         UserQuestCompletion[]
+  @@unique([fid, organizationId])
+  @@index([organizationId])
+}
 
-  @@unique([fid, orginizationId])
-  @@index([orginizationId])
+model UserQuestCompletion {
+  id          String   @id @default(cuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  quest       Quests   @relation(fields: [questId], references: [id])
+  questId     String
+  completedAt DateTime @default(now())
+
+  @@unique([userId, questId])
+  @@index([userId])
+  @@index([questId])
 }
 
 //
@@ -50,13 +63,14 @@ model Quests {
   customMetadata         Json // for display
   customCallbackMetadata Json // for callback
   validationCriteria     Json // specific to the quest type
-  orginization           Orginization @relation(fields: [orginizationId], references: [id])
-  orginizationId         String
+  organization           Organization @relation(fields: [organizationId], references: [id])
+  organizationId         String
   questType              QuestType    @relation(fields: [questTypeId], references: [id])
   questTypeId            String
   createdAt              DateTime     @default(now())
   updatedAt              DateTime     @updatedAt
+  userCompletions       UserQuestCompletion[]
 
-  @@index([orginizationId])
+  @@index([organizationId])
   @@index([questTypeId])
 }

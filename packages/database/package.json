@@ -1,6 +1,7 @@
 {
   "name": "database",
   "module": "index.ts",
+  "types": "index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",

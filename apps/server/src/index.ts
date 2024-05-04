@@ -1,7 +1,17 @@
 import { Elysia } from "elysia";
+import { swagger } from "@elysiajs/swagger";
+import { init, fetchQuery } from "@airstack/node";
+import { privy } from "./privy";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+init(Bun.env.AIRSTACK_API_KEY);
+
+const app = new Elysia()
+	.use(swagger())
+	.get("/", () => "Hello Elysia")
+	.listen(3000);
 
 console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
 );
+
+export type App = typeof app;
