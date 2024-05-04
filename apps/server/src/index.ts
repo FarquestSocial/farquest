@@ -7,6 +7,8 @@ import { services } from "services";
 import type { Session } from "services/src/common/types/session.type";
 import { privy } from "./privy";
 
+const nanoId = customAlphabet(urlAlphabet, 20);
+
 async function doAuth(headers: Record<string, string | undefined>) {
 	if (!headers.authorization?.startsWith("Bearer ")) {
 		return {
@@ -99,7 +101,7 @@ const app = new Elysia()
 				user.farcaster.fid,
 				user.farcaster.ownerAddress,
 			);
-			const sessionToken = customAlphabet(urlAlphabet, 20);
+			const sessionToken = nanoId();
 			services.redisService.client.set(
 				sessionToken,
 				JSON.stringify({
