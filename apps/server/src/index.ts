@@ -32,11 +32,12 @@ const app = new Elysia()
 	.get("/", () => "Hello Elysia")
 	// TODO: make work
 	.post("/organizations/create", async ({ headers }) => {
-		const organizationId = await services.organizationService.createOrganization(
-			"Farquest",
-			"https://localhost:5173/auth",
-			"https://localhost:5173/auth/callback",
-		);
+		const organizationId =
+			await services.organizationService.createOrganization(
+				"Farquest",
+				"https://localhost:5173/auth",
+				"https://localhost:5173/auth/callback",
+			);
 		return {
 			id: organizationId,
 		};
@@ -47,18 +48,17 @@ const app = new Elysia()
 				const apiKey = headers.farquestapikey;
 				if (!apiKey) {
 					console.log("no api key");
-					return (set.status = 'Unauthorized');
+					return (set.status = "Unauthorized");
 				}
-				const userOrgId = services.organizationService.getOrganizationIdByApiKey(
-					apiKey,
-				);
+				const userOrgId =
+					services.organizationService.getOrganizationIdByApiKey(apiKey);
 				if (!userOrgId) {
 					console.log("no org id");
-					return (set.status = 'Unauthorized');
+					return (set.status = "Unauthorized");
 				}
 				cookie.session.value.orgId = userOrgId;
 			}
-			
+
 			return true;
 		},
 	})
@@ -87,7 +87,9 @@ const app = new Elysia()
 				return error(401);
 			}
 			const organizationId =
-				await services.organizationService.getOrganizationIdByApiKey(apiKeyHeader);
+				await services.organizationService.getOrganizationIdByApiKey(
+					apiKeyHeader,
+				);
 			if (!organizationId) {
 				return error(401);
 			}
@@ -95,10 +97,16 @@ const app = new Elysia()
 				verifiedClaims.userId,
 				organizationId,
 				user.farcaster.fid,
-				user.farcaster.ownerAddress
+				user.farcaster.ownerAddress,
 			);
 			const sessionToken = customAlphabet(urlAlphabet, 20);
-			services.redisService.client.set(sessionToken, JSON.stringify({ userId: verifiedClaims.userId, organizationId: organizationId } as Session));   
+			services.redisService.client.set(
+				sessionToken,
+				JSON.stringify({
+					userId: verifiedClaims.userId,
+					organizationId: organizationId,
+				} as Session),
+			);
 			return {
 				redirectUrl: `https://localhost:5173/auth?state=${sessionToken}`,
 			};
