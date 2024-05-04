@@ -68,7 +68,7 @@ export class AirStackService {
 	}
 	async hasUserLikedCast(fid: number, castUrl: string): Promise<boolean> {
 		//check if the user has liked a cast
-		const query = `query ProfilePicture {
+		const query = `query HasLiked {
       FarcasterReactions(
         input: {filter: {castUrl: {_eq: "${castUrl}"}, criteria: liked, reactedBy: {_eq: "fc_fid:${fid}"}}, blockchain: ALL} input: 
       ) {
