@@ -8,6 +8,9 @@ const schema = z.object({
 export const POST = async (req: NextRequest, res: NextResponse) => {
   //validate request body
   const { questId } = schema.parse(req.body);
+//   await api.session({
+//     correlatedId: req.locals.correlationId,
+//   }).post()
 
   //call completion service
   const response = await fetch(
