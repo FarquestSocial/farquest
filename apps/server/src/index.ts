@@ -93,7 +93,8 @@ const app = new Elysia()
 			await services.userService.createUser(
 				verifiedClaims.userId,
 				orginizationId,
-				user.farcaster?.fid,
+				user.farcaster.fid,
+				user.farcaster.ownerAddress
 			);
 			const sessionToken = customAlphabet(urlAlphabet, 20);
 			// TODO: store session token in redis
