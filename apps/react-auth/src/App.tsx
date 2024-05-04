@@ -12,25 +12,23 @@ function App() {
     (account) => account.type === "farcaster"
   );
   const enableFarcasterSign = ready && authenticated && farcasterAccount;
-
   return (
     <>
       <h1>Farquest Auth</h1>
       <div className="card">
         {ready && !authenticated && (
-          <button disabled={disableLogin} onClick={login}>
+          <button type="button" disabled={disableLogin} onClick={login}>
             Log in with Privy
           </button>
         )}
 
         {ready && authenticated && (
           <button
+            type="button"
             onClick={() => requestFarcasterSigner()}
             // Prevent requesting a Farcaster signer if a user has not already linked a Farcaster account
             // or if they have already requested a signer
-            disabled={
-              !enableFarcasterSign /* || farcasterAccount.signerPublicKey */
-            }
+            disabled={!enableFarcasterSign || farcasterAccount.signerPublicKey}
           >
             Authorize my Farcaster signer
           </button>
