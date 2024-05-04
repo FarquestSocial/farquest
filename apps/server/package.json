@@ -9,7 +9,6 @@
     "@airstack/node": "^0.0.7",
     "@elysiajs/swagger": "^1.0.5",
     "@privy-io/server-auth": "^1.7.3",
-    "@upstash/redis": "^1.30.0",
     "elysia": "latest",
     "logestic": "^1.1.1",
     "nanoid": "^5.0.7",

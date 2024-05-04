@@ -26,5 +26,14 @@
     "@privy-io/react-auth": "^1.63.0",
     "alchemy-sdk": "^3.3.0",
     "install": "^0.13.0"
-  }
+  },
+  "trustedDependencies": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bufferutil",
+    "esbuild",
+    "keccak",
+    "prisma",
+    "utf-8-validate"
+  ]
 }
