@@ -39,6 +39,7 @@ model UserQuestCompletion {
   questId     String
   completedAt DateTime @default(now())
 
+  @@unique([userId, questId])
   @@index([userId])
   @@index([questId])
 }
