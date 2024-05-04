@@ -31,7 +31,8 @@ export class QuestService {
       await this.getQuestTypeRequiredFields(questType);
     //@TODO:validate the validation criteria passed
 
-    const data: Prisma.QuestsCreateInput = {
+    //validate the validation criteria passed
+    return this.questRepository.createQuest({
       organization: {
         connect: {
           id: organizationId,
@@ -48,9 +49,7 @@ export class QuestService {
       },
       customMetadata,
       customCallbackMetadata,
-    };
-    //validate the validation criteria passed
-    return this.questRepository.createQuest(data);
+    });
   }
 
   //get number of quest completions for quest id
