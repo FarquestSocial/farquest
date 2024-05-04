@@ -41,15 +41,23 @@ const app = new Elysia()
 		};
 	})
 	.guard({
-		beforeHandle({ set, headers }) {
-			const header = headers["FARQUEST-API-KEY"];
-			if (!header) {
-				return (set.status = 'Unauthorized');
+		beforeHandle({ set, headers, cookie }) {
+			if (!cookie.session.value.orgId) {
+				const apiKey = headers.farquestapikey;
+				if (!apiKey) {
+					console.log("no api key");
+					return (set.status = 'Unauthorized');
+				}
+				const userOrgId = services.organizationService.getOrganizationIdByApiKey(
+					apiKey,
+				);
+				if (!userOrgId) {
+					console.log("no org id");
+					return (set.status = 'Unauthorized');
+				}
+				cookie.session.value.orgId = userOrgId;
 			}
-			const userApiKey = services.organizationService.getOrganizationIdByApiKey(
-				// biome-ignore lint/style/noNonNullAssertion: <explanation>
-				headers["FARQUEST-API-KEY"]!,
-			);
+			
 			return true;
 		},
 	})
@@ -73,7 +81,7 @@ const app = new Elysia()
 			if (!user.farcaster) {
 				return error(401);
 			}
-			const apiKeyHeader = headers["FARQUEST-API-KEY"];
+			const apiKeyHeader = headers.farquestapikey;
 			if (!apiKeyHeader) {
 				return error(401);
 			}
@@ -96,6 +104,7 @@ const app = new Elysia()
 		{
 			headers: t.Object({
 				authorization: t.String(),
+				farquestapikey: t.String(),
 			}),
 		},
 	)
