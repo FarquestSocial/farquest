@@ -8,7 +8,7 @@ import { QuestRepository } from "./src/quest/quest.repository";
 import { QuestService } from "./src/quest/quest.service";
 import { UserRepository } from "./src/user/user.repository";
 import { UserService } from "./src/user/user.service";
-import { WebhookService } from "./src/webhook/wenhook.service";
+import { WebhookService } from "./src/webhook/webhook.service";
 
 const prisma = new PrismaClient({
 	datasourceUrl: Bun.env.DATABASE_URL,
