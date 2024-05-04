@@ -1,16 +1,16 @@
 "use client";
 
+import { DeleteModal } from "@/app/components/admin/modal/delete-modal";
+import { QuestModal } from "@/app/components/admin/modal/quests-modal";
+import { QuestsTable } from "@/app/components/admin/tables/quests-table";
+import { RenderIfReady } from "@/app/components/shared/general/RenderIfReady";
 import { routes } from "@/constants/admin-routes";
+import { useAdminContext } from "@/contexts/admin-context";
 import { useQuests } from "@/hooks/admin/useQuests";
 import type { IAdminQuest } from "@/utils/types";
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import { RenderIfReady } from "@/app/components/shared/general/RenderIfReady";
-import { QuestsTable } from "@/app/components/admin/tables/quests-table";
-import { QuestModal } from "@/app/components/admin/modal/quests-modal";
-import { DeleteModal } from "@/app/components/admin/modal/delete-modal";
-import { useAdminContext } from "@/contexts/admin-context";
 
 export default function QuestPage() {
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);

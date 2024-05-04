@@ -1,18 +1,17 @@
+import { useEffect, useState } from "react";
 import {
-	ModalWrapper,
-	ModalHeader,
 	ModalBody,
 	ModalFooter,
+	ModalHeader,
+	ModalWrapper,
 } from "./modal-wrapper";
-import { useEffect, useState } from "react";
 
-import { toast } from "react-toastify";
-import { useQuestsTypes } from "@/hooks/admin/useQuestTypes";
 import { useQuestTypeById } from "@/hooks/admin/useQuestTypeById";
-import { useForm, type SubmitHandler } from "react-hook-form";
+import { useQuestsTypes } from "@/hooks/admin/useQuestTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
-import type { IAdminQuest, IRewardType } from "@/utils/types";
 import { routes } from "@/constants/admin-routes";
 import { type QuestSchema, questSchema } from "@/schemas/quest-schema";
 import {
@@ -20,15 +19,16 @@ import {
 	formatDateTime,
 	setHoursOnDate,
 } from "@/utils/formatter";
+import type { IAdminQuest, IRewardType } from "@/utils/types";
+import { uploadImage } from "@/utils/upload-image";
+import axios from "axios";
 import { X } from "phosphor-react";
-import { Select } from "../input/Select";
+import { GeneralButton } from "../buttons/GeneralButton";
 import { Input } from "../input/Input";
-import { Toggle } from "../input/Toggle";
 import { MediaInput } from "../input/MediaInput";
 import { MultiInput } from "../input/MultiInput";
-import { GeneralButton } from "../buttons/GeneralButton";
-import axios from "axios";
-import { uploadImage } from "@/utils/upload-image";
+import { Select } from "../input/Select";
+import { Toggle } from "../input/Toggle";
 
 interface QuestModalProps {
 	isOpen: boolean;

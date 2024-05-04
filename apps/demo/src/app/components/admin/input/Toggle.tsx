@@ -1,4 +1,8 @@
-export const Toggle = ({ isEnabled, toggle, id }: { isEnabled: boolean; toggle: () => void; id: string }) => {
+export const Toggle = ({
+	isEnabled,
+	toggle,
+	id,
+}: { isEnabled: boolean; toggle: () => void; id: string }) => {
 	return (
 		<label
 			onKeyDown={(e) => {
@@ -9,7 +13,8 @@ export const Toggle = ({ isEnabled, toggle, id }: { isEnabled: boolean; toggle: 
 			htmlFor={id}
 			className={` relative m-0 block h-[26px] w-10 rounded-[50px] bg-white transition-colors ${
 				isEnabled ? "" : " bg-opacity-[45%]"
-			} shadow-[inset_0px_0px_1px_rgba(0,0,0,0.4)]`}>
+			} shadow-[inset_0px_0px_1px_rgba(0,0,0,0.4)]`}
+		>
 			<input
 				id={id}
 				type="checkbox"

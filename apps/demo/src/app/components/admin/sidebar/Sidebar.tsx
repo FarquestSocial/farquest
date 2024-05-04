@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import { SidebarItem } from "./SidebarItem";
-import { MapTrifold, SignOut, TagChevron } from "phosphor-react";
 import { usePathname, useRouter } from "next/navigation";
+import { MapTrifold, SignOut, TagChevron } from "phosphor-react";
+import { SidebarItem } from "./SidebarItem";
 
 export const Sidebar = () => {
 	const router = useRouter();

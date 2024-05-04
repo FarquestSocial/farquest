@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { AdminWrapper } from "@/contexts/admin-context";
-import { Sidebar } from "../components/admin/sidebar/Sidebar";
+import type { Metadata } from "next";
 import { FilterBar } from "../components/admin/filters/FilterBar";
+import { Sidebar } from "../components/admin/sidebar/Sidebar";
 
 export const metadata: Metadata = {
 	title: "Create Next App",

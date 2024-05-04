@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
 import { useIsSSR } from "@/hooks/client/useIsSSR";
+import type { ReactNode } from "react";
 
 interface RenderProps<T> {
 	data: T | undefined;

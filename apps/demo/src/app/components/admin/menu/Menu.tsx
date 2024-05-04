@@ -1,8 +1,8 @@
 "use client";
 
 import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment, type SVGProps } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import React, { Fragment, type SVGProps } from "react";
 
 interface DropdownMenuProps {
 	options: string[];

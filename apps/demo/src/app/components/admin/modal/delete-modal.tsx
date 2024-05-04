@@ -1,10 +1,10 @@
 import { X } from "phosphor-react";
 import { GeneralButton } from "../buttons/GeneralButton";
 import {
-	ModalWrapper,
-	ModalHeader,
 	ModalBody,
 	ModalFooter,
+	ModalHeader,
+	ModalWrapper,
 } from "./modal-wrapper";
 
 interface DeleteModalProps {

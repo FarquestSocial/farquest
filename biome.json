@@ -16,5 +16,8 @@
 				"noNonNullAssertion": "warn"
 			}
 		}
+	},
+	"files": {
+		"ignore": ["apps/demo/*"]
 	}
 }

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface TableProps {
 	columnNames?: string[];
@@ -28,7 +28,11 @@ const TableHead = ({ columnNames }: TableHeadProps) => {
 					const isLastColumn = idx === columnNames.length - 1;
 
 					return (
-						<th scope="col" className={`py-3 ${isLastColumn ? "text-right" : ""}`} key={columnName}>
+						<th
+							scope="col"
+							className={`py-3 ${isLastColumn ? "text-right" : ""}`}
+							key={columnName}
+						>
 							{columnName}
 						</th>
 					);
@@ -63,14 +67,17 @@ const TableRow = ({ rowItems }: TableRowProps) => {
 				const isLastColumn = idx === rowItems.length - 1;
 				const isFirstColumn = idx === 0;
 				const rowItemIsString = typeof rowItem === "string";
-				const key = rowItemIsString ? `row-item-${rowItem}` : `row-item-${idx}-node-element`;
+				const key = rowItemIsString
+					? `row-item-${rowItem}`
+					: `row-item-${idx}-node-element`;
 
 				return (
 					<td
 						className={`py-3 ${isLastColumn ? "pl-2 text-right" : ""} ${
 							isFirstColumn ? "whitespace-nowrap pr-2" : ""
 						}`}
-						key={key}>
+						key={key}
+					>
 						{rowItem}
 					</td>
 				);
