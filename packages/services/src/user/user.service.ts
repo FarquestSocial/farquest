@@ -39,11 +39,15 @@ export class UserService {
     return this.userRepository.getAuthRedirectUrlForOrganizationId(organizationId);
   }
 
-  async getUserIdFromCorAndOrgIf(organizationId: string, corelationId: string) {
-    return this.userRepository.getUserIdFromCorAndOrgIf(
+  async getUserIdFromOrganizationIdAndCorelationId(organizationId: string, corelationId: string) {
+    const $ =  await this.userRepository.getUserIdFromCorAndOrgIf(
       organizationId,
       corelationId
     );
+    if (!$) {
+      throw new Error("User not found");
+    }
+    return $.id;
   }
 
   async getUserCorelationId(userId: string) {
