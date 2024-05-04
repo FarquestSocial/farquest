@@ -13,5 +13,12 @@ declare module "bun" {
 		PRIVY_APP_SECRET: string;
 		PRIVY_JWKS_ENDPOINT: string;
 		PRIVY_JWT_KEY: string;
+
+		DEMO_PRIVY_APP_ID: string;
+		// should be the same as DEMO_PRIVY_APP_ID
+		VITE_DEMO_PRIVY_APP_ID: string;
+		DEMO_PRIVY_APP_SECRET: string;
+		DEMO_PRIVY_JWKS_ENDPOINT: string;
+		DEMO_PRIVY_JWT_KEY: string;
 	}
 }
