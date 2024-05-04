@@ -1,44 +1,46 @@
 {
-	"name": "farquest",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"check": "biome check apps/**/src --apply && biome check packages/**/src --apply",
-		"lint": "turbo lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\""
-	},
-	"devDependencies": {
-		"@repo/eslint-config": "*",
-		"@repo/typescript-config": "*",
-		"lefthook": "^1.6.10",
-		"prettier": "^3.2.5",
-		"turbo": "latest"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "bun@1.1.7",
-	"workspaces": ["apps/*", "packages/*"],
-	"dependencies": {
-		"@airstack/node": "^0.0.7",
-		"@headlessui/react": "^1.7.19",
-		"@privy-io/react-auth": "^1.63.0",
-		"@radix-ui/react-aspect-ratio": "^1.0.3",
-		"alchemy-sdk": "^3.3.0",
-		"react-toastify": "^10.0.5",
-		"sharp": "^0.33.3"
-	},
-	"trustedDependencies": [
-		"@prisma/client",
-		"@prisma/engines",
-		"bufferutil",
-		"canvas",
-		"esbuild",
-		"keccak",
-		"lefthook",
-		"prisma",
-		"sharp",
-		"utf-8-validate"
-	]
+  "name": "farquest",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "check": "bunx biome check apps/**/src --apply && bunx biome check packages/**/src --apply",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "lefthook": "^1.6.10",
+    "prettier": "^3.2.5",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.7",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@airstack/node": "^0.0.7",
+    "@headlessui/react": "^1.7.19",
+    "@privy-io/react-auth": "^1.63.0",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "alchemy-sdk": "^3.3.0",
+    "opencv4nodejs": "^5.6.0",
+    "react-toastify": "^10.0.5",
+    "sharp": "^0.33.3"
+  },
+  "trustedDependencies": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bufferutil",
+    "esbuild",
+    "keccak",
+    "lefthook",
+    "prisma",
+    "utf-8-validate"
+  ]
 }

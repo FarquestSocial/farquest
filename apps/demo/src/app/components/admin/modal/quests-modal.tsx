@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import type { IAdminQuest, IRewardType } from "@/utils/types";
 import { routes } from "@/constants/admin-routes";
-import type { QuestSchema, questSchema } from "@/schemas/quest-schema";
+import { type QuestSchema, questSchema } from "@/schemas/quest-schema";
 import {
 	addAtSymbolToUsernames,
 	formatDateTime,
@@ -98,10 +98,12 @@ export const QuestModal = ({
 		closeModal();
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		setValue("questTypeId", selectedQuestType?.id);
 	}, [selectedQuestType]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (isEditMode && questToEdit) {
 			setValue("title", questToEdit.title);
@@ -142,7 +144,7 @@ export const QuestModal = ({
 			}
 		}
 
-		let _questData = { ...data.questData };
+		const _questData = { ...data.questData };
 		let _rewardXp = data.rewardXp;
 
 		if (selectedQuestType?.questType === "TWITTER_ENGAGEMENT") {
@@ -151,9 +153,9 @@ export const QuestModal = ({
 			const xpForRetweet = _questData.xpForRetweet;
 
 			const totalXp = (
-				parseInt(xpForComment) +
-				parseInt(xpForLike) +
-				parseInt(xpForRetweet)
+				Number.parseInt(xpForComment) +
+				Number.parseInt(xpForLike) +
+				Number.parseInt(xpForRetweet)
 			).toFixed(0);
 
 			_rewardXp = Number(totalXp);
@@ -237,7 +239,7 @@ export const QuestModal = ({
 						? ` - ${selectedQuestType?.questType?.replaceAll("_", " ")}`
 						: ""}
 				</h2>
-				<button onClick={handleModalClose}>
+				<button type="button" onClick={handleModalClose}>
 					<X />
 				</button>
 			</ModalHeader>
@@ -317,7 +319,7 @@ export const QuestModal = ({
 									<div>Answers - Toggle To Mark As Correct</div>
 									{options?.map((i, idx) => {
 										return (
-											<div key={idx} className="flex gap-2 items-center">
+											<div key={i.text} className="flex gap-2 items-center">
 												<Input
 													label={`Option ${idx + 1}`}
 													id={`option${idx}`}
