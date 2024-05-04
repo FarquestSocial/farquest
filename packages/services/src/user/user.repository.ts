@@ -3,6 +3,19 @@ import type { Prisma, PrismaClient } from "database";
 export class UserRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
+  async getUserIdFromCorAndOrgIf(organizationId:string, corelationId: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        corelationId_organizationId:{
+          corelationId,
+          organizationId
+        }
+      },
+      select: {
+        id: true,
+      },
+    });
+  }
   async getUserFid(userId: string) {
     return this.prisma.user.findFirst({
       where: {
