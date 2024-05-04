@@ -1,49 +1,52 @@
 import { OwnsNftsValidationCriteria } from "../../common/types/quest.type";
 import type { AlchemyService } from "../../lib/alchemy.service";
 import type { CompletionRepository } from "../completion.repository";
+import Logger from "../../common/logger"; 
 
 export class OwnsNFTQuestHandler {
+  private readonly logger = Logger(OwnsNFTQuestHandler.name);
+
   constructor(
     private readonly completionRepository: CompletionRepository,
     private readonly alchemyService: AlchemyService
   ) {}
 
   async completeQuest(userId: string, questId: string): Promise<boolean> {
-    console.log(
-      `OwnsNFTQuestHandler: Starting quest completion for user ${userId} and quest ${questId}`
+    this.logger.info(
+      `Starting quest completion for user ${userId} and quest ${questId}`
     );
 
     try {
-      // Get the validation criteria which includes the castId to be liked
+      // Get the validation criteria which includes the NFT contract address
       const validationCriteria: OwnsNftsValidationCriteria =
         await this.completionRepository.getQuestValidationCriteria(
           questId,
           OwnsNftsValidationCriteria
         );
       if (!validationCriteria || !validationCriteria.contractAddress) {
-        console.error(
+        this.logger.error(
           `No or invalid validation criteria found for quest ${questId}`
         );
         return false;
       }
       const walletAddress = await this.completionRepository.getUserWalletAddress(userId);
 
-      // Check if the user has any of the specified ERC20 tokens
-      const ownsERC20Token = await this.alchemyService.checkIfUserOwnsNFT(
+      // Check if the user owns any NFTs from the specified contract
+      const ownsNFT = await this.alchemyService.checkIfUserOwnsNFT(
         walletAddress,
         validationCriteria.contractAddress
       );
-      if (!ownsERC20Token) {
-        console.log(
-          `User ${userId}:${walletAddress} has does not have a ballance of contract address: ${validationCriteria.contractAddress} for quest ${questId}`
+      if (!ownsNFT) {
+        this.logger.info(
+          `User ${userId} (${walletAddress}) does not own any NFTs from contract address: ${validationCriteria.contractAddress} for quest ${questId}`
         );
         return false;
       }
 
-      console.log(`Quest ${questId} completed successfully for user ${userId}`);
+      this.logger.info(`Quest ${questId} completed successfully for user ${userId}`);
       return true;
     } catch (error) {
-      console.error(
+      this.logger.error(
         `Error completing quest for user ${userId} on quest ${questId}: ${error}`
       );
       throw error;

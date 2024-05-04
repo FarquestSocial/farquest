@@ -3,16 +3,24 @@ import * as fs from "node:fs";
 import { imgDiff } from "img-diff-js";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import Logger from "../common/logger";
 
 //class to compare images and provide a similarity score
 export class ImageService {
+  private readonly logger = Logger(ImageService.name);
+
   async doesImageMatch(
     url1: string,
     url2: string,
     threshold = 0.9
   ): Promise<boolean> {
-    const similarity = await this.compareImages(url1, url2);
-    return similarity >= threshold;
+    try {
+      const similarity = await this.compareImages(url1, url2);
+      return similarity >= threshold;
+    } catch (error) {
+      this.logger.error(`Error determining if images match: ${error}`);
+      throw new Error("Failed to determine image match");
+    }
   }
 
   async compareImages(url1: string, url2: string): Promise<number> {
@@ -35,11 +43,11 @@ export class ImageService {
       fs.unlinkSync(img2Path);
       fs.unlinkSync(diffPath);
 
-      // Return the number of differing pixels as an inverted score for simplicity
+      this.logger.info(`Images compared successfully, similarity: ${1 - result.diffCount / (result.width * result.height)}`);
       return 1 - result.diffCount / (result.width * result.height);
     } catch (error) {
-      console.error("Failed to compare images:", error);
-      throw error;
+      this.logger.error(`Failed to compare images: ${error}`, { url1, url2 });
+      throw new Error("Failed to compare images");
     }
   }
 
@@ -47,24 +55,23 @@ export class ImageService {
     url: string,
     outputPath: string
   ): Promise<void> {
-    let response: Response;
     try {
-      response = await fetch(url);
+      const response = await fetch(url);
       if (!response.ok) {
+        this.logger.error(`Failed to fetch image from ${url}`);
         throw new Error(`Failed to fetch image: ${response.statusText}`);
       }
-    } catch (error) {
-      console.error(`Error fetching image from ${url}: ${error}`);
-      throw new Error(
-        `Failed to fetch image: ${error instanceof Error ? error.message : error}`
-      );
-    }
 
-    const buffer = await response.arrayBuffer();
-    const imageBuffer = Buffer.from(buffer);
-    await sharp(imageBuffer)
-      .resize(256, 256) // Normalize image size
-      .toFormat("png")
-      .toFile(outputPath);
+      const buffer = await response.arrayBuffer();
+      const imageBuffer = Buffer.from(buffer);
+      await sharp(imageBuffer)
+        .resize(256, 256) // Normalize image size
+        .toFormat("png")
+        .toFile(outputPath);
+      this.logger.info(`Image downloaded and prepared: ${outputPath}`);
+    } catch (error) {
+      this.logger.error(`Error preparing image from ${url}: ${error}`);
+      throw new Error(`Failed to prepare image from URL: ${error}`);
+    }
   }
 }

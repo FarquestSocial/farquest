@@ -1,4 +1,8 @@
 import { QuestTypes } from "../common/types/quest.type";
+import {
+  QuestEventTypes,
+  QuestWebhook,
+} from "../common/webhooks/quest.webhook";
 import type { AirStackService } from "../lib/airstack.service";
 import { AlchemyService } from "../lib/alchemy.service";
 import { ImageService } from "../lib/image.service";
@@ -20,75 +24,121 @@ export class CompletionService {
     private readonly webhookService: WebhookService
   ) {}
 
-  async completeQuest(userId: string, questId: string) {
-    const canComplete = await this.completionRepository.canUserCompleteQuest(
-      userId,
-      questId
-    );
-    if (!canComplete) {
-      throw new Error("User cannot complete quest");
-    }
-    const questType = await this.completionRepository.getQuestType(questId);
+  async completeQuest(userId: string, questId: string): Promise<boolean> {
+    try {
+      console.log(`Checking if user ${userId} can complete quest ${questId}`);
+      const canComplete = await this.completionRepository.canUserCompleteQuest(
+        userId,
+        questId
+      );
+      if (!canComplete) {
+        console.log(`User ${userId} cannot complete quest ${questId}`);
+        throw new Error("User cannot complete quest");
+      }
 
-    //@TODO: cast quest type to the enum type
+      const questType = await this.completionRepository.getQuestType(questId);
+      const completed = await this.callHandler(questType, userId, questId);
 
-    const completed = await this.callHandler(questType, userId, questId);
-    if (!completed) {
-      throw new Error("Quest not completed");
+      const corelationId =
+        await this.completionRepository.getCorelationIdFromUserId(userId);
+      const { callback, metadata } =
+        await this.completionRepository.getCallBackUrlAndCallBackMetadataForQuest(
+          questId
+        );
+
+      if (!completed) {
+        console.log(
+          `Quest completion failed for user ${userId} on quest ${questId}`
+        );
+        await this.webhookService.sendWebhook(
+          callback,
+          new QuestWebhook(
+            QuestEventTypes.QUEST_FAILED,
+            new Date(),
+            "User failed to complete quest",
+            questId,
+            corelationId,
+            metadata
+          )
+        );
+        return false;
+      }
+
+      console.log(`Quest ${questId} completed successfully by user ${userId}`);
+      await this.webhookService.sendWebhook(
+        callback,
+        new QuestWebhook(
+          QuestEventTypes.QUEST_COMPLETED,
+          new Date(),
+          "User completed quest",
+          questId,
+          corelationId,
+          metadata
+        )
+      );
+
+      return true;
+    } catch (error) {
+      console.log(
+        `Error in completing quest for user ${userId} on quest ${questId}: ${error}`
+      );
+      throw error; // Optionally rethrow the error if you want the error to propagate
     }
-    //@TODO send webhook
-    await this.webhookService.sendWebhook(questId, userId);
-    return true;
   }
   private async callHandler(
     questType: string,
     userId: string,
     questId: string
   ) {
-    switch (questType) {
-      case QuestTypes.LikeQuest:
-        return new LikeQuestHandler(
-          this.completionRepository,
-          this.airStackService
-        ).completeQuest(userId, questId);
-      case QuestTypes.CommentQuest:
-        return new CommentQuestHandler(
-          this.completionRepository,
-          this.airStackService
-        ).completeQuest(userId, questId);
-      case QuestTypes.FollowQuest:
-        return new FollowQuestHandler(
-          this.completionRepository,
-          this.airStackService
-        ).completeQuest(userId, questId);
-      case QuestTypes.ReCastQuest:
-        return new ReCastQuestHandler(
-          this.completionRepository,
-          this.airStackService
-        ).completeQuest(userId, questId);
-      case QuestTypes.BioKeywordQuest:
-        return new BioKeywordQuestHandler(
-          this.completionRepository,
-          this.airStackService
-        ).completeQuest(userId, questId);
-      case QuestTypes.ProfilePictureQuest:
-        return new ProfilePictureQuestHandler(
-          this.completionRepository,
-          this.airStackService,
-          new ImageService()
-        ).completeQuest(userId, questId);
-      case QuestTypes.OwnsNftsQuest:
-        return new OwnsNFTQuestHandler(
-          this.completionRepository,
-          new AlchemyService()
-        ).completeQuest(userId, questId);
-      case QuestTypes.OwnsERC20Quest:
-        return new OwnsERC20QuestHandler(
-          this.completionRepository,
-          new AlchemyService()
-        ).completeQuest(userId, questId);
-      default:
-        return new Error("Quest type not found");
+    try {
+      switch (questType) {
+        case QuestTypes.LikeQuest:
+          return new LikeQuestHandler(
+            this.completionRepository,
+            this.airStackService
+          ).completeQuest(userId, questId);
+        case QuestTypes.CommentQuest:
+          return new CommentQuestHandler(
+            this.completionRepository,
+            this.airStackService
+          ).completeQuest(userId, questId);
+        case QuestTypes.FollowQuest:
+          return new FollowQuestHandler(
+            this.completionRepository,
+            this.airStackService
+          ).completeQuest(userId, questId);
+        case QuestTypes.ReCastQuest:
+          return new ReCastQuestHandler(
+            this.completionRepository,
+            this.airStackService
+          ).completeQuest(userId, questId);
+        case QuestTypes.BioKeywordQuest:
+          return new BioKeywordQuestHandler(
+            this.completionRepository,
+            this.airStackService
+          ).completeQuest(userId, questId);
+        case QuestTypes.ProfilePictureQuest:
+          return new ProfilePictureQuestHandler(
+            this.completionRepository,
+            this.airStackService,
+            new ImageService()
+          ).completeQuest(userId, questId);
+        case QuestTypes.OwnsNftsQuest:
+          return new OwnsNFTQuestHandler(
+            this.completionRepository,
+            new AlchemyService()
+          ).completeQuest(userId, questId);
+        case QuestTypes.OwnsERC20Quest:
+          return new OwnsERC20QuestHandler(
+            this.completionRepository,
+            new AlchemyService()
+          ).completeQuest(userId, questId);
+        default:
+          return new Error("Quest type not found");
+      }
+    } catch (error) {
+      console.error(`Error in calling handler for quest ${questId}: ${error}`);
+      throw error;
     }
   }
 }

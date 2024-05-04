@@ -1,20 +1,22 @@
 
-export enum WebhookType {
+export enum AuthEventTypes {
+    //authentication
+    AUTH_COMPLETE = "auth.complete",
+    AUTH_FAILED = "auth.failed",
 }
 
-export class Webhook {
-  private readonly event_type: string;
-  private readonly metadata: any;
+
+
+export class AuthWebhook {
+  private readonly event_type: AuthEventTypes;
   private readonly timestamp: Date;
   private readonly message: string;
   constructor(
-    event_type: string,
-    metadata: any,
+    event_type: AuthEventTypes,
     timestamp: Date,
-    message: string
+    message: string,
   ) {
     this.event_type = event_type;
-    this.metadata = metadata;
     this.timestamp = timestamp;
     this.message = message;
   }

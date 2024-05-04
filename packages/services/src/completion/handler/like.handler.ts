@@ -3,53 +3,58 @@
 import { LikeQuestValidationCriteria } from "../../common/types/quest.type";
 import type { AirStackService } from "../../lib/airstack.service";
 import type { CompletionRepository } from "../completion.repository";
+import Logger from "../../common/logger";
 
 export class LikeQuestHandler {
-	constructor(
-		private readonly completionRepository: CompletionRepository,
-		private readonly airStackService: AirStackService,
-	) {}
+  private readonly logger = Logger(LikeQuestHandler.name);
 
-	async completeQuest(userId: string, questId: string): Promise<boolean> {
-		console.log(
-			`LikeQuestHandler: Starting quest completion for user ${userId} and quest ${questId}`,
-		);
+  constructor(
+    private readonly completionRepository: CompletionRepository,
+    private readonly airStackService: AirStackService
+  ) {}
 
-		try {
-			// Get the validation criteria which includes the castId to be liked
-			const validationCriteria: LikeQuestValidationCriteria =
-				await this.completionRepository.getQuestValidationCriteria(
-					questId,
-					LikeQuestValidationCriteria,
-				);
-			if (!validationCriteria || !validationCriteria.castId) {
-				console.error(
-					`No or invalid validation criteria found for quest ${questId}`,
-				);
-				return false;
-			}
+  async completeQuest(userId: string, questId: string): Promise<boolean> {
+    this.logger.info(
+      `Starting quest completion for user ${userId} and quest ${questId}`
+    );
 
-			const userFid = await this.completionRepository.getUserFid(userId);
+    try {
+      // Get the validation criteria which includes the castId to be liked
+      const validationCriteria: LikeQuestValidationCriteria =
+        await this.completionRepository.getQuestValidationCriteria(
+          questId,
+          LikeQuestValidationCriteria
+        );
+      if (!validationCriteria || !validationCriteria.warpCastUrl) {
+        this.logger.error(
+          `No or invalid validation criteria found for quest ${questId}`
+        );
+        return false;
+      }
 
-			// Check if the user has liked the specified cast
-			const hasLiked = await this.airStackService.hasUserLikedCast(
-				userFid,
-				validationCriteria.castId,
-			);
-			if (!hasLiked) {
-				console.log(
-					`User ${userId} has not liked the required cast ${validationCriteria.castId} for quest ${questId}`,
-				);
-				return false;
-			}
+      const userFid = await this.completionRepository.getUserFid(userId);
 
-			console.log(`Quest ${questId} completed successfully for user ${userId}`);
-			return true;
-		} catch (error) {
-			console.error(
-				`Error completing quest for user ${userId} on quest ${questId}: ${error}`,
-			);
-			throw error; // Rethrow the error to be handled by an upper layer or error management system
-		}
-	}
+      // Check if the user has liked the specified cast
+      const hasLiked = await this.airStackService.hasUserLikedCast(
+        userFid,
+        validationCriteria.warpCastUrl
+      );
+      if (!hasLiked) {
+        this.logger.info(
+          `User ${userId} has not liked the required cast ${validationCriteria.warpCastUrl} for quest ${questId}`
+        );
+        return false;
+      }
+
+      this.logger.info(
+        `Quest ${questId} completed successfully for user ${userId}`
+      );
+      return true;
+    } catch (error) {
+      this.logger.error(
+        `Error completing quest for user ${userId} on quest ${questId}: ${error}`
+      );
+      throw error; // Rethrow the error to be handled by an upper layer or error management system
+    }
+  }
 }
