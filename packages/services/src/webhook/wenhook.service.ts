@@ -3,7 +3,7 @@ export class WebhookService {
 
   // Method to send webhook
   async sendWebhook(url: string, payload: any): Promise<void> {
-    const maxAttempts = 5;
+    const maxAttempts = 3;
     let attempt = 0;
     let delay = 1000; // Start with 1 second delay
 

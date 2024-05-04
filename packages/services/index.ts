@@ -20,5 +20,5 @@ export const services = {
   userService: new UserService(new UserRepository(prisma)),
   questService: new QuestService(new QuestRepository(prisma)),
   webhookService: new WebhookService(),
-  completionService: new CompletionService(new CompletionRepository(prisma)),
+  //completionService: new CompletionService(new CompletionRepository(prisma)),
 };

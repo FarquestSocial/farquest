@@ -1,5 +1,5 @@
 {
-  "name": "repository",
+  "name": "services",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -10,5 +10,9 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "trustedDependencies": [
+    "core-js-pure",
+    "es5-ext"
+  ]
 }
