@@ -11,7 +11,7 @@ datasource db {
 }
 
 // 
-model Orginization {
+model Organization {
   id              String   @id @default(cuid())
   name            String
   authRedirectUrl String
@@ -26,10 +26,10 @@ model User {
   id             String       @id @default(cuid())
   fid            Int
   corilatedId    String //id passed from client
-  orginizationId String
-  orginization   Orginization @relation(fields: [orginizationId], references: [id])
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
 
-  @@unique([fid, orginizationId])
+  @@unique([fid, organizationId])
 }
 
 //
@@ -51,8 +51,8 @@ model Quests {
   customMetadata         Json // for display
   customCallbackMetadata Json // for callback
   validationCriteria Json // specific to the quest type
-  orginization   Orginization @relation(fields: [orginizationId], references: [id])
-  orginizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
   questType      QuestType    @relation(fields: [questTypeId], references: [id])
   questTypeId    String
   createdAt      DateTime     @default(now())
