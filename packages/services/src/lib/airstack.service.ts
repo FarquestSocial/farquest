@@ -22,7 +22,7 @@ export class AirStackService {
         }
       }
     }`;
-		const data = await fetchQuery(query);
+		const { data, error } = await fetchQuery(query);
 		return data.user.profilePictureUrl;
 	}
 
