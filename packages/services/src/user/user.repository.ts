@@ -8,7 +8,7 @@ export class UserRepostory {
       data: data,
     });
   }
-  getUserCoralationId(userId: string) {
+  getUserCorelationId(userId: string) {
     return this.prisma.user.findFirst({
       where: {
         id: userId,
