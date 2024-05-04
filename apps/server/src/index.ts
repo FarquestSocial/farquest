@@ -73,8 +73,12 @@ const app = new Elysia()
 			if (!user.farcaster) {
 				return error(401);
 			}
+			const apiKeyHeader = headers["FARQUEST-API-KEY"];
+			if (!apiKeyHeader) {
+				return error(401);
+			}
 			const orginizationId =
-				await services.organizationService.getOrganizationIdByApiKey(headers["FARQUEST-API-KEY"]);
+				await services.organizationService.getOrganizationIdByApiKey(apiKeyHeader);
 			if (!orginizationId) {
 				return error(401);
 			}
