@@ -6,14 +6,12 @@ interface GeneralButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const GeneralButton = ({
   children,
-  className,
+  className = "",
   ...rest
 }: GeneralButtonProps) => {
   return (
     <button
-      className={`border font-bold border-white bg-primary-bg px-4 py-2 uppercase active:scale-[99%] ${
-        className ?? ""
-      }`}
+      className={`font-bold rounded-lg  text-text px-4 py-2 uppercase active:scale-[99%] ${className}`}
       {...rest}
     >
       {children}

@@ -23,7 +23,10 @@
   ],
   "dependencies": {
     "@airstack/node": "^0.0.7",
+    "@headlessui/react": "^1.7.19",
     "@privy-io/react-auth": "^1.63.0",
-    "install": "^0.13.0"
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "install": "^0.13.0",
+    "react-toastify": "^10.0.5"
   }
 }

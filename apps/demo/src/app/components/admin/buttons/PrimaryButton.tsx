@@ -14,7 +14,7 @@ export const PrimaryButton = ({
 }: PrimaryButtonProps) => {
   return (
     <button
-      className={`active:scale-[99%] bg-[#00000052] disabled:cursor-not-allowed text-primary font-bold border-0 py-1 px-6 focus:outline-none w-full flex items-center justify-center ease-in-out duration-75 relative ${wrapperClassName}`}
+      className={`active:scale-[99%] w-fit bg-primary disabled:cursor-not-allowed rounded-lg p-3 text-text font-bold border-0 py-1 px-6 focus:outline-none flex items-center justify-center ease-in-out duration-75 relative ${wrapperClassName}`}
       {...rest}
     >
       {children}

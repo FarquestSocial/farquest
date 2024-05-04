@@ -18,7 +18,7 @@
 
 body {
   height: 100vh;
-  background: radial-gradient(at bottom, #8a63d1 0%, #1e1e1e 75%) 75% 100%;
+  background: radial-gradient(ellipse at bottom, #34274c 0%, #1e1e1e 100%);
 }
 
 @layer utilities {
