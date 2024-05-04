@@ -1,16 +1,19 @@
 import { ReCastQuestValidationCriteria } from "../../common/types/quest.type";
 import type { AirStackService } from "../../lib/airstack.service";
 import type { CompletionRepository } from "../completion.repository";
+import Logger from "../../common/logger"; // Ensure the import path is correct
 
 export class ReCastQuestHandler {
+  private readonly logger = Logger(ReCastQuestHandler.name);
+
   constructor(
     private readonly completionRepository: CompletionRepository,
     private readonly airStackService: AirStackService
   ) {}
 
   async completeQuest(userId: string, questId: string): Promise<boolean> {
-    console.log(
-      `ReCastQuestHandler: Starting quest completion for user ${userId} and quest ${questId}`
+    this.logger.info(
+      `Starting quest completion for user ${userId} and quest ${questId}`
     );
 
     try {
@@ -20,8 +23,8 @@ export class ReCastQuestHandler {
           questId,
           ReCastQuestValidationCriteria
         );
-      if (!validationCriteria || !validationCriteria.castId) {
-        console.error(
+      if (!validationCriteria || !validationCriteria.warpCastUrl) {
+        this.logger.error(
           `No or invalid validation criteria found for quest ${questId}`
         );
         return false;
@@ -32,19 +35,21 @@ export class ReCastQuestHandler {
       // Check if the user has recasted the specified cast
       const hasReCasted = await this.airStackService.hasUserReCastedCast(
         userFid,
-        validationCriteria.castId
+        validationCriteria.warpCastUrl
       );
       if (!hasReCasted) {
-        console.log(
-          `User ${userId} has not recasted the required cast ${validationCriteria.castId} for quest ${questId}`
+        this.logger.info(
+          `User ${userId} has not recasted the required cast ${validationCriteria.warpCastUrl} for quest ${questId}`
         );
         return false;
       }
 
-      console.log(`Quest ${questId} completed successfully for user ${userId}`);
+      this.logger.info(
+        `Quest ${questId} completed successfully for user ${userId}`
+      );
       return true;
     } catch (error) {
-      console.error(
+      this.logger.error(
         `Error completing quest for user ${userId} on quest ${questId}: ${error}`
       );
       throw error; // Rethrow the error to be handled by an upper layer or error management system

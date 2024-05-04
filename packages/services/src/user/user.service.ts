@@ -1,23 +1,40 @@
+import Logger from "../common/logger";
 import type { UserRepository } from "./user.repository";
 
 export class UserService {
+  private readonly logger = Logger(UserService.name);
+
   constructor(private readonly userRepository: UserRepository) {}
 
   async getUsersForOrganizationWithFilter(
     organizationId: string,
     page: number,
     limit: number,
-    filter?: string //eth address or corelation id
+    filter?: string // eth address or correlation id
   ) {
-    return this.userRepository.getUsersForOrganizationWithFilter(
-      organizationId,
-      page,
-      limit,
-      filter
-    );
+    try {
+      return await this.userRepository.getUsersForOrganizationWithFilter(
+        organizationId,
+        page,
+        limit,
+        filter
+      );
+    } catch (error) {
+      this.logger.error(
+        `Failed to get users with filter for organization: ${organizationId}`,
+        error
+      );
+      throw error;
+    }
   }
+
   async getUserFidFromUserID(userId: string) {
-    return await this.userRepository.getUserFidFromUserID(userId);
+    try {
+      return await this.userRepository.getUserFidFromUserID(userId);
+    } catch (error) {
+      this.logger.error(`Failed to get FID for user: ${userId}`, error);
+      throw error;
+    }
   }
 
   async createUser(
@@ -26,39 +43,77 @@ export class UserService {
     fid: number,
     ethAddress: string
   ): Promise<string> {
-    await this.userRepository.createUser({
-      corelationId: corelationId,
-      fid: fid,
-      ethAddress: ethAddress,
-      organization: {
-        connect: {
-          id: organizationId,
+    try {
+      await this.userRepository.createUser({
+        corelationId,
+        fid,
+        ethAddress,
+        organization: {
+          connect: {
+            id: organizationId,
+          },
         },
-      },
-    });
-    return this.userRepository.getAuthRedirectUrlForOrganizationId(organizationId);
+      });
+      return await this.userRepository.getAuthRedirectUrlForOrganizationId(
+        organizationId
+      );
+    } catch (error) {
+      this.logger.error(
+        `Failed to create user and get auth redirect URL for organization: ${organizationId}`,
+        error
+      );
+      throw error;
+    }
   }
 
-  async getUserIdFromOrganizationIdAndCorelationId(organizationId: string, corelationId: string) {
-    const $ =  await this.userRepository.getUserIdFromCorAndOrgIf(
-      organizationId,
-      corelationId
-    );
-    if (!$) {
-      throw new Error("User not found");
+  async getUserIdFromOrganizationIdAndCorelationId(
+    organizationId: string,
+    corelationId: string
+  ) {
+    try {
+      return this.userRepository.getUserIdFromCorAndOrgIf(
+        organizationId,
+        corelationId
+      );
+    } catch (error) {
+      this.logger.error(
+        `Failed to get user ID from correlation ID: ${corelationId} and organization ID: ${organizationId}`,
+        error
+      );
+      throw error;
     }
-    return $.id;
   }
 
   async getUserCorelationId(userId: string) {
-    return this.userRepository.getUserCorelationId(userId);
+    try {
+      return this.userRepository.getUserCorelationId(userId);
+    } catch (error) {
+      this.logger.error(
+        `Failed to get correlation ID for user: ${userId}`,
+        error
+      );
+      throw error;
+    }
   }
 
   async getUserQuestCompletion(userId: string, questId: string) {
-    return this.userRepository.getUserQuestCompletion(userId, questId);
+    try {
+      return this.userRepository.getUserQuestCompletion(userId, questId);
+    } catch (error) {
+      this.logger.error(
+        `Failed to get quest completion for user: ${userId} and quest: ${questId}`,
+        error
+      );
+      throw error;
+    }
   }
 
   async getUserById(userId: string) {
-    return this.userRepository.getUserById(userId);
+    try {
+      return this.userRepository.getUserById(userId);
+    } catch (error) {
+      this.logger.error(`Failed to get user by ID: ${userId}`, error);
+      throw error;
+    }
   }
 }

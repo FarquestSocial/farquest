@@ -11,10 +11,15 @@ import { UserService } from "./src/user/user.service";
 import { WebhookService } from "./src/webhook/webhook.service";
 import { AirStackService } from "./src/lib/airstack.service";
 
+// Shared instances
 const prisma = new PrismaClient({
   datasourceUrl: Bun.env.DATABASE_URL,
 });
+const completionRepository = new CompletionRepository(prisma);
+const webhookService = new WebhookService();
+const airStackService = new AirStackService();
 
+// Services with dependencies
 export const services = {
   organizationService: new OrganizationService(
     new OrganizationRepository(prisma)
@@ -22,13 +27,13 @@ export const services = {
   userService: new UserService(new UserRepository(prisma)),
   questService: new QuestService(
     new QuestRepository(prisma),
-    new CompletionRepository(prisma)
+    completionRepository
   ),
-  webhookService: new WebhookService(),
+  webhookService,
   redisService: new RedisService(),
   completionService: new CompletionService(
-    new CompletionRepository(prisma),
-    new AirStackService(),
-    new WebhookService()
+    completionRepository,
+    airStackService,
+    webhookService
   ),
 };

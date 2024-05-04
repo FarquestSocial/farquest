@@ -11,17 +11,17 @@ export enum QuestTypes {
 
 export class LikeQuestValidationCriteria {
 	//@ts-ignore
-	castId: string;
+	warpCastUrl: string;
 }
 
 export class ReCastQuestValidationCriteria {
 	//@ts-ignore
-	castId: string;
+	warpCastUrl: string;
 }
 
 export class CommentQuestValidationCriteria {
 	//@ts-ignore
-	castId: string;
+	warpCastUrl: string;
 }
 
 export class FollowQuestValidationCriteria {
