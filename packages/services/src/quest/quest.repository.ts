@@ -46,6 +46,14 @@ export class QuestRepository {
     });
   }
 
+  async getQuestById(questId: string) {
+    this.prisma.quests.findUnique({
+      where: {
+        id: questId,
+      },
+    });
+  }
+
   async getAllQuestTypes() {
     return this.prisma.questType.findMany({
       select: {

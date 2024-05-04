@@ -13,6 +13,7 @@ export class CompletionRepository {
 		if (hasCompleted) {
 			return false;
 		}
+		return true;
 	}
 
   getUserWalletAddress = async (userId: string) => {
