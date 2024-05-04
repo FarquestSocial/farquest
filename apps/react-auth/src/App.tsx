@@ -12,6 +12,10 @@ function App() {
     (account) => account.type === "farcaster"
   );
   const enableFarcasterSign = ready && authenticated && farcasterAccount;
+  // if (farcasterAccount?.signerPublicKey) {
+  //   window.location.replace("http://localhost:3000");
+  // }
+
   return (
     <>
       <h1>Farquest Auth</h1>
@@ -20,6 +24,13 @@ function App() {
           <button type="button" disabled={disableLogin} onClick={login}>
             Log in with Privy
           </button>
+        )}
+
+        {farcasterAccount.signerPublicKey && (
+          <p>
+            You should be automatically redirected. Your signer pubkey is
+            <code> {farcasterAccount.signerPublicKey}</code>
+          </p>
         )}
 
         {ready && authenticated && (
