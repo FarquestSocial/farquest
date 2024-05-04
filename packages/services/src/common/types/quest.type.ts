@@ -6,22 +6,27 @@ export enum QuestTypes {
   BioKeywordQuest = "BioKeyword",
 }
 
-export interface LikeQuestValidationCriteria {
+export class LikeQuestValidationCriteria {
+  //@ts-ignore
   castId: string;
 }
 
-export interface ReCastQuestValidationCriteria {
+export class ReCastQuestValidationCriteria {
+  //@ts-ignore
   castId: string;
 }
 
-export interface CommentQuestValidationCriteria {
+export class CommentQuestValidationCriteria {
+  //@ts-ignore
   castId: string;
 }
 
-export interface FollowQuestValidationCriteria {
+export class FollowQuestValidationCriteria {
+  //@ts-ignore
   farCastId: string;
 }
 
-export interface BioKeywordQuestValidationCriteria {
+export class BioKeywordQuestValidationCriteria {
+  //@ts-ignore
   keywords: string[];
 }

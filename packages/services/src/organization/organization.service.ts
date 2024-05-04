@@ -1,5 +1,6 @@
 import type { OrganizationRepository } from "./organization.repository";
 import crypto from "node:crypto";
+
 export class OrganizationService {
   constructor(
     private readonly organizationRepository: OrganizationRepository
@@ -44,7 +45,7 @@ export class OrganizationService {
 
     const hashedApiKey = await Bun.password.hash(apiKey);
 
-    const organization = await this.organizationRepository.createOrganization({
+    await this.organizationRepository.createOrganization({
       name,
       authRedirectUrl,
       callbackUrl,
