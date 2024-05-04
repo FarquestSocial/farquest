@@ -1,7 +1,5 @@
-import { isArray } from "class-validator";
 import { QuestTypes } from "../common/types/quest.type";
 import type { QuestRepository } from "./quest.repository";
-import type { Prisma } from "database";
 
 export class QuestService {
   constructor(private readonly questRepository: QuestRepository) {}

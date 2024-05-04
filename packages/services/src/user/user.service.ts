@@ -18,10 +18,11 @@ export class UserService {
       },
     });
   }
-  
+
   async getUserCorelationId(userId: string) {
     return this.userRepository.getUserCorelationId(userId);
   }
+  
   async getUserQuestCompletion(userId: string, questId: string) {
     return this.userRepository.getUserQuestCompletion(userId, questId);
   }
