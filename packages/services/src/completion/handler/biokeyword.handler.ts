@@ -31,8 +31,10 @@ export class BioKeywordQuestHandler {
 				return false;
 			}
 
+			const userFid = await this.completionRepository.getUserFid(userId);
+
 			// Retrieve user bio from AirStack service
-			const userBio = await this.airStackService.getUerBio(userId);
+			const userBio = await this.airStackService.getUerBio(userFid);
 			if (!userBio) {
 				console.error(`No bio found for user ${userId}`);
 				return false;

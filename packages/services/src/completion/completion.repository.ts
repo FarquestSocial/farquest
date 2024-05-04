@@ -53,7 +53,7 @@ export class CompletionRepository {
 	};
 	//bad dont do this
 	async getUserFid(userId: string) {
-		return this.prisma.user.findFirst({
+		const $ = await this.prisma.user.findFirst({
 			where: {
 				id: userId,
 			},
@@ -61,6 +61,10 @@ export class CompletionRepository {
 				fid: true,
 			},
 		});
+		if (!$) {
+			throw new Error("User not found");
+		}
+		return $.fid;
 	}
 	async getQuestType(questId: string) {
 		const data = await this.prisma.quests.findUnique({

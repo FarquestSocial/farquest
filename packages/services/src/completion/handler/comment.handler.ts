@@ -26,10 +26,11 @@ export class CommentQuestHandler {
 				);
 				return false;
 			}
+			const userFid = await this.completionRepository.getUserFid(userId);
 
 			// Check if the user has commented on the specified cast
 			const hasCommented = await this.airStackService.hasUserCommentedOnCast(
-				userId,
+				userFid,
 				validationCriteria.castId,
 			);
 			if (!hasCommented) {
