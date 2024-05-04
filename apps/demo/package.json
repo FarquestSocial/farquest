@@ -1,37 +1,37 @@
 {
-  "name": "demo",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@airstack/airstack-react": "^0.6.3",
-    "@elysiajs/eden": "^1.0.12",
-    "@hookform/resolvers": "^3.3.4",
-    "@vercel/blob": "^0.23.2",
-    "axios": "^1.6.8",
-    "classnames": "^2.5.1",
-    "elysia": "^1.0.16",
-    "next": "14.2.3",
-    "phosphor-react": "^1.4.1",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-hook-form": "^7.51.3",
-    "swr": "^2.2.5",
-    "zod": "^3.23.6"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3"
-  }
+	"name": "demo",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@airstack/airstack-react": "^0.6.3",
+		"@elysiajs/eden": "^1.0.12",
+		"@hookform/resolvers": "^3.3.4",
+		"@vercel/blob": "^0.23.2",
+		"axios": "^1.6.8",
+		"classnames": "^2.5.1",
+		"elysia": "^1.0.16",
+		"next": "14.2.3",
+		"phosphor-react": "^1.4.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-hook-form": "^7.51.4",
+		"swr": "^2.2.5",
+		"zod": "^3.23.6"
+	},
+	"devDependencies": {
+		"@types/node": "^20.12.8",
+		"@types/react": "^18.3.1",
+		"@types/react-dom": "^18.3.0",
+		"eslint": "^8.57.0",
+		"eslint-config-next": "14.2.3",
+		"postcss": "^8.4.38",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.4.5"
+	}
 }
