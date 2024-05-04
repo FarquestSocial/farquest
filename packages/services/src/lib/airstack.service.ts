@@ -12,7 +12,6 @@ export class AirStackService {
         input: {filter: {userId: {_eq: "${fid.toString()}"}, dappName: {_eq: farcaster}}, blockchain: ethereum}
       ) {
         Social {
-          profileImage
           profileImageContentValue {
             image {
               original
@@ -48,14 +47,25 @@ export class AirStackService {
 
 	async hasUserCommentedOnCast(fid: number, castUrl: string): Promise<boolean> {
 		//check if the user has commented on a cast
-		const query = `query HasCommented {
-      FarcasterReplies(
-        input: {filter: {repliedBy: {_eq: "fc_fid:${fid}"}, parentUrl: {_eq: "${castUrl}"}}, blockchain: ALL} input
+		// const query = `query HasCommented {
+		//   FarcasterReplies(
+		//     input: {filter: {repliedBy: {_eq: "fc_fid:${fid}"}, parentUrl: {_eq: "${castUrl}"}}, blockchain: ALL} input
+		//   ) {
+		//     Reply {
+		//       rawText
+		//       parentHash
+		//       parentUrl
+		//     }
+		//   }
+		// }`;
+		const query = `query HasLiked {
+      FarcasterReactions(
+        input: {filter: {castUrl: {_eq: "${castUrl}"}, criteria: replied, reactedBy: {_eq: "fc_fid:${fid}"}}, blockchain: ALL} input: 
       ) {
-        Reply {
-          rawText
-          parentHash
-          parentUrl
+        Reaction {
+          reactedBy {
+            userId
+          }
         }
       }
     }`;
@@ -64,7 +74,11 @@ export class AirStackService {
 			console.log(error);
 			return error.toString();
 		}
-		return data.Reply.length > 0;
+		if (data.FarcasterReactions.Reaction) {
+			return true;
+		}
+		return false;
+		// return data.Reply.length > 0;
 	}
 	async hasUserLikedCast(fid: number, castUrl: string): Promise<boolean> {
 		//check if the user has liked a cast
@@ -89,19 +103,110 @@ export class AirStackService {
 		}
 		return false;
 	}
+	async hasUserReCastedCast(fid: number, castUrl: string): Promise<boolean> {
+		//check if the user has reCasted a cast
+		const query = `query HasLiked {
+      FarcasterReactions(
+        input: {filter: {castUrl: {_eq: "${castUrl}"}, criteria: recasted, reactedBy: {_eq: "fc_fid:${fid}"}}, blockchain: ALL} input: 
+      ) {
+        Reaction {
+          reactedBy {
+            userId
+          }
+        }
+      }
+    }`;
+		const { data, error } = await fetchQuery(query);
+		if (error) {
+			console.log(error);
+			return error.toString();
+		}
+		if (data.FarcasterReactions.Reaction) {
+			return true;
+		}
+		return false;
+	}
 	async hasUserFollowedUser(
 		userFid: number,
 		targetFid: string,
 	): Promise<boolean> {
 		//check if the user has followed another user
-		return true;
+		const query = `query HasFollowed {
+      SocialFollowings(
+        input: {filter: {identity: {_eq: "fc_fid:${userFid}"}, dappName: {_eq: farcaster}}, blockchain: ALL}
+      ) {
+        Following {
+          followingAddress {
+            socials {
+              userId
+            }
+          }
+        }
+      }
+    }`;
+		/* sample response:
+    {
+      "data": {
+        "SocialFollowings": {
+          "Following": [
+            {
+              "followingAddress": {
+                "socials": [
+                  {
+                    "userId": "188926"
+                  }
+                ]
+              }
+            },
+            {
+              "followingAddress": {
+                "socials": [
+                  {
+                    "userId": "2602"
+                  },
+                  {
+                    "userId": "0xb59aa5bb9270d44be3fa9b6d67520a2d28cf80ab"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+    */
+		const { data, error } = await fetchQuery(query);
+		if (error) {
+			console.log(error);
+			return error.toString();
+		}
+		for (const following of data.data.SocialFollowings.Following) {
+			if (
+				following.followingAddress.socials.some(
+					(i: { userId: string }) => i.userId === targetFid.toString(),
+				)
+			) {
+				return true;
+			}
+		}
+		return false;
 	}
-	async getUerBio(fid: number): Promise<string> {
+	async getUserBio(fid: number): Promise<string> {
 		//return users bio
-		return "User Bio";
-	}
-	async hasUserReCastedCast(fid: number, castId: string): Promise<boolean> {
-		//check if the user has reCasted a cast
-		return true;
+		const query = `query ProfileBio {
+      Socials(
+        input: {filter: {userId: {_eq: "${fid.toString()}"}, dappName: {_eq: farcaster}}, blockchain: ethereum}
+      ) {
+        Social {
+        	profileBio 
+        }
+      }
+    }`;
+		const { data, error } = await fetchQuery(query);
+		if (error) {
+			console.log(error);
+			return error.toString();
+		}
+		return data.data.Socials.Social[0].profileBio;
 	}
 }
