@@ -7,10 +7,16 @@ export class UserService {
     return await this.userRepository.getUserFidFromUserID(userId);
   }
 
-  async createUser(corelationId: string, organizationId: string, fid: number) {
+  async createUser(
+    corelationId: string,
+    organizationId: string,
+    fid: number,
+    ethAddress: string,
+  ) {
     return this.userRepository.createUser({
       corelationId: corelationId,
       fid: fid,
+      ethAddress: ethAddress,
       organization: {
         connect: {
           id: organizationId,
@@ -19,10 +25,17 @@ export class UserService {
     });
   }
 
+  async getUserIdFromCorAndOrgIf(organizationId: string, corelationId: string) {
+    return this.userRepository.getUserIdFromCorAndOrgIf(
+      organizationId,
+      corelationId
+    );
+  }
+
   async getUserCorelationId(userId: string) {
     return this.userRepository.getUserCorelationId(userId);
   }
-  
+
   async getUserQuestCompletion(userId: string, questId: string) {
     return this.userRepository.getUserQuestCompletion(userId, questId);
   }
