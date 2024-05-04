@@ -3,7 +3,10 @@ import type { QuestRepository } from "./quest.repository";
 
 export class QuestService {
 	constructor(private readonly questRepository: QuestRepository) {}
-	//get all quest types
+	
+  //get all quests for an organization with filter and pagination
+  
+  //get all quest types
 	//called first
 	async getAllQuestTypes() {
 		return this.questRepository.getAllQuestTypes();
@@ -16,10 +19,10 @@ export class QuestService {
 		name: string,
 		description: string,
 		image: string, //url
-		validationCriteria: any,
+		validationCriteria: unknown,
 		questTypeId: string,
-		customMetadata?: any,
-		customCallbackMetadata?: any,
+		customMetadata?: unknown,
+		customCallbackMetadata?: unknown,
 	) {
 		const questType =
 			await this.questRepository.getQuestTypeFromId(questTypeId);
