@@ -20,7 +20,10 @@ export const services = {
     new OrganizationRepository(prisma)
   ),
   userService: new UserService(new UserRepository(prisma)),
-  questService: new QuestService(new QuestRepository(prisma)),
+  questService: new QuestService(
+    new QuestRepository(prisma),
+    new CompletionRepository(prisma)
+  ),
   webhookService: new WebhookService(),
   redisService: new RedisService(),
   completionService: new CompletionService(
