@@ -1,4 +1,4 @@
 export interface Session {
-    userId: string;
-    organizationId: string;
+	userId: string;
+	organizationId: string;
 }

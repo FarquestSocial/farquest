@@ -1,52 +1,52 @@
 export enum QuestTypes {
-  CommentQuest = "Comment",
-  LikeQuest = "Like",
-  ReCastQuest = "ReCast",
-  FollowQuest = "Follow",
-  BioKeywordQuest = "BioKeyword",
-  ProfilePictureQuest = "ProfilePicture",
-  OwensNftsQuest = "OwensNfts",
-  OwensERC20Quest = "OwensERC20",
+	CommentQuest = "Comment",
+	LikeQuest = "Like",
+	ReCastQuest = "ReCast",
+	FollowQuest = "Follow",
+	BioKeywordQuest = "BioKeyword",
+	ProfilePictureQuest = "ProfilePicture",
+	OwensNftsQuest = "OwensNfts",
+	OwensERC20Quest = "OwensERC20",
 }
 
 export class LikeQuestValidationCriteria {
-  //@ts-ignore
-  castId: string;
+	//@ts-ignore
+	castId: string;
 }
 
 export class ReCastQuestValidationCriteria {
-  //@ts-ignore
-  castId: string;
+	//@ts-ignore
+	castId: string;
 }
 
 export class CommentQuestValidationCriteria {
-  //@ts-ignore
-  castId: string;
+	//@ts-ignore
+	castId: string;
 }
 
 export class FollowQuestValidationCriteria {
-  //@ts-ignore
-  farCastId: string;
+	//@ts-ignore
+	farCastId: string;
 }
 
 export class BioKeywordQuestValidationCriteria {
-  //@ts-ignore
-  keywords: string[];
+	//@ts-ignore
+	keywords: string[];
 }
 
 export class ProfilePictureValidationCriteria {
-  //@ts-ignore
-  targetImageUrl: string;
+	//@ts-ignore
+	targetImageUrl: string;
 }
 
 export class OwensNftsValidationCriteria {
-  //@ts-ignore
-  contractAddress: string;
-   //@ts-ignore
-  nftIds: string[];
+	//@ts-ignore
+	contractAddress: string;
+	//@ts-ignore
+	nftIds: string[];
 }
 
 export class OwensERC20ValidationCriteria {
-  //@ts-ignore
-  contractAddress: string;
+	//@ts-ignore
+	contractAddress: string;
 }

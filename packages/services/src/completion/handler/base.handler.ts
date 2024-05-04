@@ -1,5 +1,1 @@
-
-
-export class BaseHandler {
-    
-}
+export class BaseHandler {}

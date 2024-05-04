@@ -1,11 +1,11 @@
-import { Elysia, error, t } from "elysia";
 import { swagger } from "@elysiajs/swagger";
-import { Logestic } from "logestic";
-import { privy } from "./privy";
-import { customAlphabet, urlAlphabet } from "nanoid";
 import type { AuthTokenClaims } from "@privy-io/server-auth";
+import { Elysia, error, t } from "elysia";
+import { Logestic } from "logestic";
+import { customAlphabet, urlAlphabet } from "nanoid";
 import { services } from "services";
 import type { Session } from "services/src/common/types/session.type";
+import { privy } from "./privy";
 
 async function doAuth(headers: Record<string, string | undefined>) {
 	if (!headers.authorization?.startsWith("Bearer ")) {

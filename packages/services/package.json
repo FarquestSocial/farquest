@@ -1,21 +1,18 @@
 {
-  "name": "services",
-  "module": "index.ts",
-  "types": "index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "dependencies": {
-    "@upstash/redis": "^1.30.0",
-    "class-transformer": "^0.5.1",
-    "database": "*"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "trustedDependencies": [
-    "core-js-pure",
-    "es5-ext"
-  ]
+	"name": "services",
+	"module": "index.ts",
+	"types": "index.ts",
+	"type": "module",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"dependencies": {
+		"@upstash/redis": "^1.30.0",
+		"class-transformer": "^0.5.1",
+		"database": "*"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"trustedDependencies": ["core-js-pure", "es5-ext"]
 }

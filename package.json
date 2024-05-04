@@ -4,12 +4,14 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "check": "biome check apps/**/src --apply && biome check packages/**/src --apply",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "lefthook": "^1.6.10",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
@@ -33,6 +35,7 @@
     "bufferutil",
     "esbuild",
     "keccak",
+    "lefthook",
     "prisma",
     "utf-8-validate"
   ]
