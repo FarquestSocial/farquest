@@ -360,9 +360,9 @@ const app = new Elysia()
 					"/quest/complete",
 					async ({ body, cookie }) => {
 						const userId =
-							await services.userService.getUserIdFromOrganizationIdAndCorelationId(
+							await services.userService.getUserIdFromOrganizationIdAndCorrelationId(
 								cookie.session.value.orgId,
-								body.corelationId,
+								body.correlationId,
 							);
 						const questStatus = await services.completionService.completeQuest(
 							userId,
@@ -378,7 +378,7 @@ const app = new Elysia()
 					{
 						body: t.Object({
 							questId: t.String(),
-							corelationId: t.String(),
+							correlationId: t.String(),
 						}),
 						detail: {
 							tags: ["quest"],

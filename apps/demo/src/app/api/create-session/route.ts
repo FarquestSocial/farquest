@@ -1,19 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import api from "../../../../lib/api";
-//zod schema
-const schema = z.object({
-  questId: z.string(),
-});
+
 export const POST = async (req: NextRequest, res: NextResponse) => {
   //validate request body
-  const { questId } = schema.parse(req.body);
   const correlationId = "REPLACEME";
   const farquestApiKey = "REPLACEME";
   const authheader = "REPLACEME";
-  const resp = await api.quest.complete.post({
-    questId: questId,
-    correlationId: correlationId,
+  const resp = await api.session({
+    correlatedId: correlationId
+  }).post({
+    correlatedId: correlationId,
   }, {
     headers: {
       farquestapikey: farquestApiKey,
