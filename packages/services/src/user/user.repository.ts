@@ -6,7 +6,7 @@ export class UserRepository {
   getUserQuestCompletion(userId: string, questId:string) {
     return this.prisma.user.findFirst({
       where: {
-        id: userId,
+       
       },
       select: {
         questCompletion: true,
