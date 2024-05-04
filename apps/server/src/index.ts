@@ -107,10 +107,7 @@ const app = new Elysia()
 					if (!session) {
 						return error(401);
 					}
-					return {
-						userId: session.userId,
-						organizationId: session.organizationId,
-					};
+					return redirect(`https://localhost:5173/?state=${params.state}`);
 				})
 				.post(
 					"/auth/callback",
@@ -161,7 +158,86 @@ const app = new Elysia()
 							state: t.String(),
 						}),
 					},
+				)
+				.get("/quest/types", async ({ params }) => {
+					const questTypes = await services.questService.getAllQuestTypes();
+					return questTypes;
+				})
+				.get("/quest/completions/:id", async ({ params }) => {
+					const questCompletions =
+						await services.questService.getNumberOfQuestCompletions(params.id);
+					return questCompletions;
+				})
+				.get("/quest/validation/:id", async ({ params }) => {
+					const questValidationCriteria =
+						await services.questService.getQuestTypeRequiredFields(params.id);
+					return questValidationCriteria;
+				})
+				.get(
+					"/quests/filtered/:filter",
+					async ({ params, cookie }) => {
+						const quests =
+							await services.questService.getQuestsForOrganizationWithFilter(
+								cookie.session.value.orgId,
+								params.page,
+								params.take,
+								params.filter,
+							);
+						return quests;
+					},
+					{
+						params: t.Object({
+							page: t.Number(),
+							take: t.Number(),
+							filter: t.Union([
+								t.Literal("ACTIVE"),
+								t.Literal("COMPLETE"),
+								t.Literal("ALL"),
+								t.Literal("NOT_STARTED"),
+							]),
+						}),
+					},
+				)
+				.post(
+					"/quests/create",
+					async ({ body, cookie }) => {
+						const quest = await services.questService.createQuest(
+							cookie.session.value.orgId,
+							body.name,
+							body.description,
+							body.image,
+							new Date(body.startsAt),
+							new Date(body.endsAt),
+							body.questTypeId,
+							body.validationCriteria,
+							body.customMetadata,
+							body.customCallbackMetadata,
+						);
+						return quest;
+					},
+					{
+						body: t.Object({
+							organizationId: t.String(),
+							name: t.String(),
+							description: t.String(),
+							image: t.String(),
+							startsAt: t.String({
+								format: "date-time",
+							}),
+							endsAt: t.String({
+								format: "date-time",
+							}),
+							questTypeId: t.String(),
+							validationCriteria: t.Any(),
+							customMetadata: t.Any(),
+							customCallbackMetadata: t.Any(),
+						}),
+					},
 				),
+		// .post("/quests/complete", async ({ body, cookie }) => {
+		// 	const questId = body.questId;
+
+		// }),
 	)
 	.listen(3000);
 
