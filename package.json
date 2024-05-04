@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "check": "biome check apps/**/src --apply && biome check packages/**/src --apply",
+    "check": "bunx biome check apps/**/src --apply && bunx biome check packages/**/src --apply",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
@@ -28,9 +28,9 @@
     "@headlessui/react": "^1.7.19",
     "@privy-io/react-auth": "^1.63.0",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
-    "react-toastify": "^10.0.5",
     "alchemy-sdk": "^3.3.0",
     "opencv4nodejs": "^5.6.0",
+    "react-toastify": "^10.0.5",
     "sharp": "^0.33.3"
   },
   "trustedDependencies": [
