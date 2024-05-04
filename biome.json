@@ -12,7 +12,8 @@
 				"noExplicitAny": "warn"
 			},
 			"style": {
-				"noUselessElse": "warn"
+				"noUselessElse": "warn",
+				"noNonNullAssertion": "warn"
 			}
 		}
 	}
