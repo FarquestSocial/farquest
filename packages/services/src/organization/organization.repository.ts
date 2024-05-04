@@ -44,6 +44,7 @@ export class OrganizationRepository {
       },
     });
   }
+  
   async getOrganizationRedirectUrl(organizationId: string) {
     return this.prisma.organization.findUnique({
       where: {
