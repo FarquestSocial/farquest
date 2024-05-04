@@ -3,16 +3,26 @@ import type { Prisma, PrismaClient } from "database";
 export class UserRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
-  getUserQuestCompletion(userId: string, questId:string) {
-    return this.prisma.user.findFirst({
+  getUserQuestCompletion(userId: string, questId: string) {
+    return this.prisma.userQuestCompletion.findUnique({
       where: {
-       
-      },
-      select: {
-        questCompletion: true,
+        userId_questId: {
+          userId: userId,
+          questId: questId,
+        },
       },
     });
   }
+
+  completeQuest(userId: string, questId: string) {
+    return this.prisma.userQuestCompletion.create({
+      data: {
+        userId: userId,
+        questId: questId,
+      },
+    });
+  }
+  
   createUser(data: Prisma.UserCreateInput) {
     return this.prisma.user.create({
       data: data,
