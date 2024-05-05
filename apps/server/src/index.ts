@@ -144,7 +144,36 @@ const app = new Elysia()
 			},
 		},
 	)
-
+	.get(
+		"/quest/types",
+		async ({ params }) => {
+			const questTypes = await services.questService.getAllQuestTypes();
+			return questTypes;
+		},
+		{
+			detail: {
+				tags: ["quest"],
+				description: "Get all quest types",
+			},
+		},
+	)
+	.get(
+		"/quest/requiredFields/:id",
+		async ({ params }) => {
+			const quest =
+				await services.questService.getQuestTypeRequiredFields(params.id);
+			return quest;
+		},
+		{
+			params: t.Object({
+				id: t.String(),
+			}),
+			detail: {
+				tags: ["quest"],
+				description: "Get the required fields for a quest",
+			},
+		},
+	)
 	.guard(
 		{
 			beforeHandle({ set, headers, cookie }) {
@@ -273,36 +302,6 @@ const app = new Elysia()
 					},
 				)
 				.get(
-					"/quest/types",
-					async ({ params }) => {
-						const questTypes = await services.questService.getAllQuestTypes();
-						return questTypes;
-					},
-					{
-						detail: {
-							tags: ["quest"],
-							description: "Get all quest types",
-						},
-					},
-				)
-				.get(
-					"/quest/requiredFields/:id",
-					async ({ params }) => {
-						const quest =
-							await services.questService.getQuestTypeRequiredFields(params.id);
-						return quest;
-					},
-					{
-						params: t.Object({
-							id: t.String(),
-						}),
-						detail: {
-							tags: ["quest"],
-							description: "Get the required fields for a quest",
-						},
-					},
-				)
-				.get(
 					"/quest/completions/count/:id",
 					async ({ params }) => {
 						const questCompletions =
@@ -380,7 +379,7 @@ const app = new Elysia()
 					},
 				)
 				.get(
-					"/quest/list/:filter",
+					"/quest/list",
 					async ({ params, cookie }) => {
 						const quests =
 							await services.questService.getQuestsForOrganizationWithFilter(

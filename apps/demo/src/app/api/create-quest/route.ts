@@ -27,7 +27,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         validationCriteria: body.validationCriteria,
     }, {
         headers: {
-            'farquestapikey': Bun.env.FARQUEST_API_KEY,
+            farquestapikey: Bun.env.FARQUEST_API_KEY,
         },
     });
     // return NextResponse.json(quest);

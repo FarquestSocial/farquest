@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@upstash/redis": "^1.30.0",
+    "alchemy-sdk": "^3.3.0",
     "class-transformer": "^0.5.1",
     "database": "*",
     "image-comparison-vgg": "^1.0.2",
@@ -18,5 +19,5 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "trustedDependencies": ["core-js-pure", "es5-ext"]
+  "trustedDependencies": ["@prisma/client", "@prisma/engines", "bufferutil", "canvas", "core-js-pure", "es5-ext", "prisma", "sharp", "utf-8-validate"]
 }
