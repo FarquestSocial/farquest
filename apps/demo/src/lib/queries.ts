@@ -12,3 +12,4 @@ export const upsertUser = async (ethWalletAddress: string) => {
     },
   });
 };
+
