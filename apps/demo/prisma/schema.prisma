@@ -9,6 +9,7 @@ datasource db {
 
 model User {
   id               String  @id @default(cuid())
+  ethWalletAddress String  @unique
   isFarQuestLinked Boolean @default(false)
   userQuests       UserQuest[]
 }

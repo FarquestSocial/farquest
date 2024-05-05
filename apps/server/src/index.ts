@@ -34,7 +34,9 @@ const app = new Elysia()
 			documentation: {
 				info: {
 					title: "Farquest API",
-					version: "1.0",
+					version: "1.0.1",
+					description:
+						"Documentation for using the api.farquest.social questing API",
 				},
 				tags: [
 					{
@@ -265,18 +267,19 @@ const app = new Elysia()
 					},
 				)
 				.get(
-					"/quest/:id",
-					async ({ params }) => {
+					"/quest",
+					async ({ params, cookie }) => {
+						const userId = await services.userService.getUserIdFromOrganizationIdAndCorrelationId(cookie.session.value.orgId, params.correlatedId);
 						const quest = await services.questService.getQuestById(
 							params.id,
-							params.userId,
+							userId,
 						);
 						return quest;
 					},
 					{
 						params: t.Object({
 							id: t.String(),
-							userId: t.Optional(t.String()),
+							correlatedId: t.Optional(t.String()),
 						}),
 						detail: {
 							tags: ["quest"],
