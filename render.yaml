@@ -6,7 +6,7 @@ services:
     plan: starter
     previewPlan: starter
     #repo: <your-backend-repo-url> # Replace with your repository URL
-    buildCommand: bun i && bun run server:build
+    buildCommand: bun i && bun run build:serve
     startCommand: bun run start:server
     envVars:
       - fromGroup: farquest-env
