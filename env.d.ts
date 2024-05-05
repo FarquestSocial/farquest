@@ -4,11 +4,11 @@ declare module "bun" {
 	interface Env {
 		AIRSTACK_API_KEY: string;
 		DATABASE_URL: string;
-		PRIVY_APP_ID: string;
 		BASE_URL: string;
 		FARQUEST_API_KEY: string;
-		
+		AUTH_URL: string;
 
+		PRIVY_APP_ID: string;
 		// should be the same as PRIVY_APP_ID
 		VITE_PRIVY_APP_ID: string;
 		PRIVY_APP_SECRET: string;
