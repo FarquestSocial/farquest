@@ -125,6 +125,11 @@ exports.Prisma.UserScalarFieldEnum = {
   isFarQuestLinked: 'isFarQuestLinked'
 };
 
+exports.Prisma.RelationLoadStrategy = {
+  query: 'query',
+  join: 'join'
+};
+
 exports.Prisma.UserQuestScalarFieldEnum = {
   id: 'id',
   userId: 'userId',

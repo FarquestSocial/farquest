@@ -1,11 +1,13 @@
 generator client {
   provider = "prisma-client-js"
   output   = "./client"
+   previewFeatures = ["relationJoins"]
 }
 
 datasource db {
   provider = "mysql"
   url      = env("DEMO_DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -24,6 +26,7 @@ model UserQuest {
   isDone    Boolean @default(false)
   isCorrect Boolean @default(false)
 
+  @@index([questId])
   @@unique([userId, questId])
 }
 
@@ -43,5 +46,6 @@ model Option {
   quest     Quest   @relation(fields: [questId], references: [id])
   questId   String
 
+  @@index([questId])
   @@unique([isCorrect, questId])
 }
