@@ -39,3 +39,12 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# Prisma Client
+packages/database/prisma/client/libquery_engine-debian-openssl-1.1.x.so.node
+packages/database/prisma/client/index.js
+packages/database/prisma/client/index.js
+packages/database/prisma/client/edge.js
+apps/demo/prisma/client/libquery_engine-debian-openssl-1.1.x.so.node
+apps/demo/prisma/client/index.js
+apps/demo/prisma/client/edge.js

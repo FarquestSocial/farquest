@@ -34,7 +34,7 @@ const app = new Elysia()
 			documentation: {
 				info: {
 					title: "Farquest API",
-					version: "1.0.1",
+					version: "1.0.2",
 					description:
 						"Documentation for using the api.farquest.social questing API",
 				},
@@ -93,6 +93,53 @@ const app = new Elysia()
 			},
 		},
 	)
+	.get(
+		"/fidToFname/:fid",
+		async ({ params }) => {
+			const fname = await services.userService.getFnameByFid(params.fid);
+			if (!fname) {
+				return {
+					status: 404,
+				};
+			}
+			return {
+				username: fname,
+			};
+		},
+		{
+			params: t.Object({
+				fid: t.Number(),
+			}),
+			detail: {
+				tags: ["user"],
+				description: "Get a Farcaster username by their FID",
+			},
+		},
+	)
+	.get(
+		"/fnameToFid/:fname",
+		async ({ params }) => {
+			const fid = await services.userService.getFidByFname(params.username);
+			if (!fid) {
+				return {
+					status: 404,
+				};
+			}
+			return {
+				fid: fid,
+			};
+		},
+		{
+			params: t.Object({
+				username: t.String(),
+			}),
+			detail: {
+				tags: ["user"],
+				description: "Get a Farcaster FID by their username",
+			},
+		},
+	)
+
 	.guard(
 		{
 			beforeHandle({ set, headers, cookie }) {
@@ -227,6 +274,23 @@ const app = new Elysia()
 						detail: {
 							tags: ["quest"],
 							description: "Get all quest types",
+						},
+					},
+				)
+				.get(
+					"/quest/requiredFields/:id",
+					async ({ params }) => {
+						const quest =
+							await services.questService.getQuestTypeRequiredFields(params.id);
+						return quest;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get the required fields for a quest",
 						},
 					},
 				)
