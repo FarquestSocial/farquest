@@ -34,7 +34,7 @@ const app = new Elysia()
 			documentation: {
 				info: {
 					title: "Farquest API",
-					version: "1.0.1",
+					version: "1.0.2",
 					description:
 						"Documentation for using the api.farquest.social questing API",
 				},
@@ -93,6 +93,30 @@ const app = new Elysia()
 			},
 		},
 	)
+	.get(
+		"/fidToFuser/:fid",
+		async ({ params }) => {
+			const user = await services.userService.getUserByFid(params.fid);
+			if (!user) {
+				return {
+					status: 404,
+				};
+			}
+			return {
+				id: user.id,
+			};
+		},
+		{
+			params: t.Object({
+				fid: t.String(),
+			}),
+			detail: {
+				tags: ["user"],
+				description: "Get a user by their FID",
+			},
+		},
+	)
+
 	.guard(
 		{
 			beforeHandle({ set, headers, cookie }) {
@@ -227,6 +251,23 @@ const app = new Elysia()
 						detail: {
 							tags: ["quest"],
 							description: "Get all quest types",
+						},
+					},
+				)
+				.get(
+					"/quest/requiredFields/:id",
+					async ({ params }) => {
+						const quest =
+							await services.questService.getQuestTypeRequiredFields(params.id);
+						return quest;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get the required fields for a quest",
 						},
 					},
 				)

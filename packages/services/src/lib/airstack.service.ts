@@ -197,7 +197,7 @@ export class AirStackService {
 			console.log(error);
 			return error.toString();
 		}
-		for (const following of data.data.SocialFollowings.Following) {
+		for (const following of data.SocialFollowings.Following) {
 			if (
 				following.followingAddress.socials.some(
 					(i: { userId: string }) => i.userId === targetFid.toString(),
@@ -224,6 +224,41 @@ export class AirStackService {
 			console.log(error);
 			return error.toString();
 		}
-		return data.data.Socials.Social[0].profileBio;
+		return data.Socials.Social[0].profileBio;
+	}
+	async getFnameByFid(fid: number): Promise<string> {
+		const query = `query FnameByFid {
+			Socials(
+			  input: {filter: {userId: {_eq: "${fid.toString()}"}, dappName: {_eq: farcaster}}, blockchain: ethereum}
+			) {
+			  Social {
+				fnames
+			  }
+			}
+		  }`;
+		const { data, error } = await fetchQuery(query);
+		if (error) {
+			console.log(error);
+			return error.toString();
+		}
+		const fnames = data.Socials.Social[0].fnames;
+		return fnames[fnames.length - 1];
+	}
+	async getFidByFname(fname: string): Promise<number> {
+		const query = `query FidByFname {
+			Socials(
+			  input: {filter: {userId: {_eq: "${fname.toString().replace("@", "")}"}, dappName: {_eq: farcaster}}, blockchain: ethereum}
+			) {
+			  Social {
+				userId
+			  }
+			}
+		  }`;
+		const { data, error } = await fetchQuery(query);
+		if (error) {
+			console.log(error);
+			return error.toString();
+		}
+		return data.Socials.Social[0].userId;
 	}
 }
