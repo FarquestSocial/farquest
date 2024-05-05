@@ -15,8 +15,11 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
     if (!session.userId) {
       return NextResponse.json({ error: "User not found" });
     }
-    //@TODO set api key
-  const resp = await api.quest({ id: questId }).user({ userId: session.userId }).get();
+  const resp = await api.quest({ id: questId }).user({ userId: session.userId }).get({
+    headers: {
+      farquestapikey: Bun.env.FARQUEST_API_KEY,
+    },
+  });
 
 
   return NextResponse.json(resp.data);

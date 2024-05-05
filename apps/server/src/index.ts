@@ -379,13 +379,13 @@ const app = new Elysia()
 					},
 				)
 				.get(
-					"/quest/list",
+					"/quest/list/:page/:filter",
 					async ({ params, cookie }) => {
 						const quests =
 							await services.questService.getQuestsForOrganizationWithFilter(
 								cookie.session.value.orgId,
 								params.page,
-								params.take,
+								10,
 								params.filter ?? "ALL",
 							);
 						return quests;
@@ -393,7 +393,6 @@ const app = new Elysia()
 					{
 						params: t.Object({
 							page: t.Number(),
-							take: t.Number(),
 							filter: t.Optional(
 								t.Union([
 									t.Literal("ACTIVE"),
