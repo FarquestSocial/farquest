@@ -6,8 +6,8 @@ export class RedisService {
     if (!Bun.env.UPSTASH_REDIS_REST_URL) throw new Error("UPSTASH_REDIS_REST_URL not found in env");
     if (!Bun.env.UPSTASH_REDIS_REST_TOKEN) throw new Error("UPSTASH_REDIS_REST_TOKEN not found in env");
     this.client = new Redis({
-      url: Bun.env.REDIS_URL,
-      token: Bun.env.REDIS_TOKEN,
+      url: Bun.env.UPSTASH_REDIS_REST_URL,
+      token: Bun.env.UPSTASH_REDIS_REST_TOKEN,
     });
   }
 }

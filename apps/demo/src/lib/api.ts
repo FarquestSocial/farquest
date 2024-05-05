@@ -1,4 +1,5 @@
 import { treaty } from "@elysiajs/eden";
 import type { App } from "server";
-const api = treaty<App>(Bun.env.BASE_URL);
-export default api
+console.log("process.env.BASE_URL", process.env.NEXT_PUBLIC_BASE_URL);
+const api = treaty<App>(process.env.NEXT_PUBLIC_BASE_URL as string);
+export default api;

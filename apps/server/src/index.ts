@@ -10,27 +10,27 @@ import type { Session } from "services/src/common/types/session.type";
 const nanoId = customAlphabet(urlAlphabet, 20);
 
 export const privy = new PrivyClient(
-	Bun.env.PRIVY_APP_ID,
-	Bun.env.PRIVY_APP_SECRET,
+  Bun.env.PRIVY_APP_ID,
+  Bun.env.PRIVY_APP_SECRET
 );
 
 async function doAuth(headers: Record<string, string | undefined>) {
-	if (!headers.authorization?.startsWith("Bearer ")) {
-		return {
-			status: 400,
-		};
-	}
-	const verifiedClaims = await privy.verifyAuthToken(
-		headers.authorization.replace("Bearer ", ""),
-	);
-	if (!verifiedClaims.userId)
-		return {
-			status: 403,
-		};
-	return {
-		id: verifiedClaims.userId,
-		status: 200,
-	};
+  if (!headers.authorization?.startsWith("Bearer ")) {
+    return {
+      status: 400,
+    };
+  }
+  const verifiedClaims = await privy.verifyAuthToken(
+    headers.authorization.replace("Bearer ", "")
+  );
+  if (!verifiedClaims.userId)
+    return {
+      status: 403,
+    };
+  return {
+    id: verifiedClaims.userId,
+    status: 200,
+  };
 }
 
 const app = new Elysia()
@@ -504,7 +504,7 @@ const app = new Elysia()
 	.listen(3000);
 
 console.log(
-	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
+  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
 
 export type App = typeof app;

@@ -8,13 +8,23 @@ export const Navbar = () => {
   return (
     <nav className='flex justify-between items-center w-full  p-4'>
       <div className='text-white font-bold text-lg'>DemoQuester</div>
-      <div className='border-b-[3px] border-accent pb-1'>
-        <a
-          href='/quests'
-          className='text-white'
-        >
-          Quests
-        </a>
+      <div className='flex gap-x-3'>
+        <div className='border-b-[3px] border-accent pb-1'>
+          <a
+            href='/quests'
+            className='text-white'
+          >
+            Quests
+          </a>
+        </div>
+        <div className='border-b-[3px] border-accent pb-1'>
+          <a
+            href='/profile'
+            className='text-white'
+          >
+            Profile
+          </a>
+        </div>
       </div>
       <div className='flex space-x-4'>
         {/* <PrimaryButton onClick={() => setOpen(true)}>Log in</PrimaryButton> */}
