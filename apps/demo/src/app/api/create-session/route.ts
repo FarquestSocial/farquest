@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import api from "../../../../lib/api";
+import api from "../../../lib/api";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   //validate request body

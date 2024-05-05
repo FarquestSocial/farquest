@@ -1,6 +1,15 @@
 /* eslint-disable no-unused-vars */
 export type IWalletAddress = `0x${string}` | undefined | string;
 
+export type ISession = {
+	nonce?: string;
+	chainId?: number;
+	address?: string;
+	userId?: string;
+	jwtToken?: string;
+};
+
+
 export type IMe = {
 	userId: string;
 	twitterId: string;

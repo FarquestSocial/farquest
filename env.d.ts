@@ -9,6 +9,8 @@ declare module "bun" {
 		DATABASE_URL: string;
 		PRIVY_APP_ID: string;
 		BASE_URL: string;
+		NEXTAUTH_URL: string;
+		NEXTAUTH_SECRET: string;
 
 		// should be the same as PRIVY_APP_ID
 		VITE_PRIVY_APP_ID: string;

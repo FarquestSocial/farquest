@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import api from "../../../../lib/api";
+import api from "../../../lib/api";
 //zod schema
 const schema = z.object({
   questId: z.string(),
@@ -23,5 +23,5 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   if (!resp.data) {
     return NextResponse.json({ error: "Could not get redirectUrl" });
   }
-  return NextResponse.redirect(resp.data.redirectUrl);
+  return NextResponse.redirect("/");
 };
