@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import api from "../../../lib/api";
+import type { IQuest } from "@/utils/types";
 
 const schema = z.object({
     name: z.string(),
@@ -14,7 +15,6 @@ const schema = z.object({
     customCallbackMetadata: z.optional(z.any()),
 });
 export const POST = async (req: NextRequest, res: NextResponse) => {
-    //@TODO call api to create quest
     const body = schema.parse(req.body);
     
     const quest = await api.quest.create.post({
@@ -30,7 +30,10 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             farquestapikey: Bun.env.FARQUEST_API_KEY,
         },
     });
-    // return NextResponse.json(quest);
+    if (!quest.data) {
+        return NextResponse.json({ error: "Could not create quest" });
+    }
+    return NextResponse.json({status: quest.status});
 
     // return NextResponse.json({ message: "Quest created" });
 };
