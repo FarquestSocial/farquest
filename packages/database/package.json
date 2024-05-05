@@ -3,6 +3,9 @@
 	"module": "index.ts",
 	"types": "index.ts",
 	"type": "module",
+	"scripts": {
+		"db:generate": "prisma generate"
+	},
 	"devDependencies": {
 		"@types/bun": "latest",
 		"prisma": "^5.13.0"

@@ -1,0 +1,17 @@
+services:
+  # Backend For name change service
+  - type: web
+    name: farquest-server
+    runtime: bun
+    plan: starter
+    previewPlan: starter
+    #repo: <your-backend-repo-url> # Replace with your repository URL
+    buildCommand: bun i && pnpm run server:build
+    startCommand: bun run start:server
+    scaling:
+      minInstances: 1
+      maxInstances: 2
+      targetCPUPercent: 60
+      targetMemoryPercent: 60
+    envVars:
+      - fromGroup: farquest-env
