@@ -19,5 +19,15 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "trustedDependencies": ["@prisma/client", "@prisma/engines", "bufferutil", "canvas", "core-js-pure", "es5-ext", "prisma", "sharp", "utf-8-validate"]
+  "trustedDependencies": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bufferutil",
+    "canvas",
+    "core-js-pure",
+    "es5-ext",
+    "prisma",
+    "sharp",
+    "utf-8-validate"
+  ]
 }

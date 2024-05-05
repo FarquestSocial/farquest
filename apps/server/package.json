@@ -1,7 +1,7 @@
 {
 	"name": "server",
 	"version": "1.0.50",
-	"types":"src/index.ts",
+	"types": "src/index.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "bun run --watch src/index.ts",

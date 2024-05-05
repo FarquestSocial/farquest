@@ -177,24 +177,33 @@ const app = new Elysia()
 	)
 	.guard(
 		{
-			beforeHandle({ set, headers, cookie }) {
-				if (!cookie.session.value.orgId) {
+			async beforeHandle( { set, headers, cookie: { session } }) {
+				if (!session.value) {
 					const apiKey = headers.farquestapikey;
 					if (!apiKey) {
 						console.log("no api key");
 						return (set.status = "Unauthorized");
 					}
 					const userOrgId =
-						services.organizationService.getOrganizationIdByApiKey(apiKey);
+						await services.organizationService.getOrganizationIdByApiKey(apiKey);
 					if (!userOrgId) {
 						console.log("no org id");
 						return (set.status = "Unauthorized");
 					}
-					cookie.session.value.orgId = userOrgId;
+					session.value = {
+						orgId: userOrgId
+					}
 				}
 			},
 			headers: t.Object({
 				farquestapikey: t.String(),
+			}),
+			cookie: t.Cookie({
+				session: t.Optional(
+					t.Object({
+						orgId: t.String(),
+					}),
+				),
 			}),
 		},
 		(app) =>
@@ -203,6 +212,9 @@ const app = new Elysia()
 					"/session/:correlatedId",
 					async ({ body, cookie }) => {
 						const sessionToken = nanoId();
+						if (!cookie.session.value?.orgId) {
+							return error(401);
+						}
 						services.redisService.client.set(
 							sessionToken,
 							JSON.stringify({
@@ -382,9 +394,12 @@ const app = new Elysia()
 				.get(
 					"/quest/list/:page/:filter",
 					async ({ params, cookie }) => {
+						if (!cookie.session.value?.orgId) {
+							return error(401);
+						}
 						const quests =
 							await services.questService.getQuestsForOrganizationWithFilter(
-								cookie.session.value.orgId,
+								cookie.session.value?.orgId,
 								params.page,
 								10,
 								params.filter ?? "ALL",
@@ -401,6 +416,13 @@ const app = new Elysia()
 									t.Literal("ALL"),
 									t.Literal("NOT_STARTED"),
 								]),
+							),
+						}),
+						cookie: t.Cookie({
+							session: t.Optional(
+								t.Object({
+									orgId: t.String(),
+								}),
 							),
 						}),
 						detail: {

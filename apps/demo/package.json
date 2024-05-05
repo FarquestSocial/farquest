@@ -14,7 +14,7 @@
     "@headlessui/react": "^1.7.19",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
-    "@tanstack/react-query": "^5.32.1",
+    "@tanstack/react-query": "^5.34.1",
     "@vercel/blob": "^0.23.2",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",
@@ -32,7 +32,7 @@
     "siwe": "^2.3.2",
     "swr": "^2.2.5",
     "viem": "^2.9.31",
-    "wagmi": "^2.8.0",
+    "wagmi": "^2.8.1",
     "zod": "^3.23.6"
   },
   "devDependencies": {
