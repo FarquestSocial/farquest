@@ -1,10 +1,14 @@
 import Logger from "../common/logger";
+import type { AirStackService } from "../lib/airstack.service";
 import type { UserRepository } from "./user.repository";
 
 export class UserService {
 	private readonly logger = Logger(UserService.name);
 
-	constructor(private readonly userRepository: UserRepository) {}
+	constructor(
+		private readonly userRepository: UserRepository,
+		private readonly airstackService: AirStackService,
+	) {}
 
 	async getUsersForOrganizationWithFilter(
 		organizationId: string,
@@ -28,11 +32,20 @@ export class UserService {
 		}
 	}
 
-	async getUserFidFromUserID(userId: string) {
+	async getFidByFname(fname: string) {
 		try {
-			return await this.userRepository.getUserFidFromUserID(userId);
+			return await this.airstackService.getFidByFname(fname);
 		} catch (error) {
-			this.logger.error(`Failed to get FID for user: ${userId}`, error);
+			this.logger.error(`Failed to get user by fname: ${fname}`, error);
+			throw error;
+		}
+	}
+
+	async getFnameByFid(fid: number) {
+		try {
+			return await this.airstackService.getFnameByFid(fid);
+		} catch (error) {
+			this.logger.error(`Failed to get fname by fid: ${fid}`, error);
 			throw error;
 		}
 	}

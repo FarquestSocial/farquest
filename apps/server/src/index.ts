@@ -94,25 +94,48 @@ const app = new Elysia()
 		},
 	)
 	.get(
-		"/fidToFuser/:fid",
+		"/fidToFname/:fid",
 		async ({ params }) => {
-			const user = await services.userService.getUserByFid(params.fid);
-			if (!user) {
+			const fname = await services.userService.getFnameByFid(params.fid);
+			if (!fname) {
 				return {
 					status: 404,
 				};
 			}
 			return {
-				id: user.id,
+				username: fname,
 			};
 		},
 		{
 			params: t.Object({
-				fid: t.String(),
+				fid: t.Number(),
 			}),
 			detail: {
 				tags: ["user"],
-				description: "Get a user by their FID",
+				description: "Get a Farcaster username by their FID",
+			},
+		},
+	)
+	.get(
+		"/fnameToFid/:fname",
+		async ({ params }) => {
+			const fid = await services.userService.getFidByFname(params.username);
+			if (!fid) {
+				return {
+					status: 404,
+				};
+			}
+			return {
+				fid: fid,
+			};
+		},
+		{
+			params: t.Object({
+				username: t.String(),
+			}),
+			detail: {
+				tags: ["user"],
+				description: "Get a Farcaster FID by their username",
 			},
 		},
 	)
