@@ -1,0 +1,194 @@
+"filename", "language", "JSON", "Markdown", "TypeScript", "JSON with Comments", "YAML", "JavaScript", "XML", "Prisma", "TypeScript JSX", "CSS", "Handlebars", "HTML", "comment", "blank", "total"
+"/Users/admin/Desktop/farquest/.eslintrc.js", "JavaScript", 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 2, 1, 11
+"/Users/admin/Desktop/farquest/README.md", "Markdown", 0, 53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 82
+"/Users/admin/Desktop/farquest/apps/demo/.eslintrc.js", "JavaScript", 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1, 1, 10
+"/Users/admin/Desktop/farquest/apps/demo/README.md", "Markdown", 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 37
+"/Users/admin/Desktop/farquest/apps/demo/env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2
+"/Users/admin/Desktop/farquest/apps/demo/next.config.mjs", "JavaScript", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 2, 5
+"/Users/admin/Desktop/farquest/apps/demo/package.json", "JSON", 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 51
+"/Users/admin/Desktop/farquest/apps/demo/postcss.config.mjs", "JavaScript", 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 1, 2, 9
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/default.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/default.js", "JavaScript", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/edge.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/index-browser.js", "JavaScript", 0, 0, 0, 0, 0, 152, 0, 0, 0, 0, 0, 0, 19, 27, 198
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/index.d.ts", "TypeScript", 0, 0, 3117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2477, 592, 6186
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/package.json", "JSON", 84, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 84
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/edge-esm.js", "JavaScript", 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 1, 5, 29
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/edge.js", "JavaScript", 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 1, 5, 29
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/index-browser.d.ts", "TypeScript", 0, 0, 260, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 86, 366
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/index-browser.js", "JavaScript", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 12, 1, 14
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/library.d.ts", "TypeScript", 0, 0, 2067, 0, 0, 0, 0, 0, 0, 0, 0, 0, 744, 379, 3190
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/library.js", "JavaScript", 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 14, 27, 141
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/react-native.js", "JavaScript", 0, 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 0, 3, 13, 78
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/wasm.js", "JavaScript", 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 1, 5, 30
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 8, 52
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/wasm.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/prisma/client/wasm.js", "JavaScript", 0, 0, 0, 0, 0, 152, 0, 0, 0, 0, 0, 0, 19, 27, 198
+"/Users/admin/Desktop/farquest/apps/demo/prisma/schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 8, 52
+"/Users/admin/Desktop/farquest/apps/demo/public/images/farquest.svg", "XML", 0, 0, 0, 0, 0, 0, 127, 0, 0, 0, 0, 0, 0, 1, 128
+"/Users/admin/Desktop/farquest/apps/demo/public/next.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/public/vercel.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/src/app/admin/layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 3, 32
+"/Users/admin/Desktop/farquest/apps/demo/src/app/admin/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 8
+"/Users/admin/Desktop/farquest/apps/demo/src/app/admin/quests/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 97, 0, 0, 0, 0, 9, 106
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/complete-quest/route.ts", "TypeScript", 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 7, 53
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/create-quest/route.ts", "TypeScript", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 36
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/create-session/route.ts", "TypeScript", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 35
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-quest-types/route.ts", "TypeScript", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-quests/route.ts", "TypeScript", 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 20
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-required-fields/route.ts", "TypeScript", 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 17
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/get-quest-by-id/route.ts", "TypeScript", 0, 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4, 27
+"/Users/admin/Desktop/farquest/apps/demo/src/app/api/siwe/route.ts", "TypeScript", 0, 0, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13, 65
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/buttons/GeneralButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 2, 21
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/buttons/PrimaryButton.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 0, 3, 24
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/filters/FilterBar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 4, 23
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Input.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 68, 0, 0, 0, 0, 4, 72
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/MediaInput.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 169, 0, 0, 0, 1, 12, 182
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/MultiInput.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 152, 0, 0, 0, 0, 7, 159
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Select.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 85, 0, 0, 0, 0, 3, 88
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Toggle.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 34, 0, 0, 0, 0, 1, 35
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/menu/Menu.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 53, 0, 0, 0, 0, 4, 57
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/delete-modal.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 60, 0, 0, 0, 0, 3, 63
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/modal-wrapper.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 82, 0, 0, 0, 0, 9, 91
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/quests-modal.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 482, 0, 0, 0, 5, 27, 514
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/sidebar/Sidebar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 3, 51
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/sidebar/SidebarItem.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 2, 26
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/delete-button.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 2, 15
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/edit-button.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 2, 15
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/quests-table.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 5, 38
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/table.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 77, 0, 0, 0, 0, 11, 88
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/client/navbar/Navbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 2, 2, 30
+"/Users/admin/Desktop/farquest/apps/demo/src/app/components/shared/general/RenderIfReady.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 51, 0, 0, 0, 0, 8, 59
+"/Users/admin/Desktop/farquest/apps/demo/src/app/globals.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 5, 29
+"/Users/admin/Desktop/farquest/apps/demo/src/app/layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 4, 30
+"/Users/admin/Desktop/farquest/apps/demo/src/app/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 3, 12
+"/Users/admin/Desktop/farquest/apps/demo/src/app/providers.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 3, 38
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/admin-routes.ts", "TypeScript", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 18
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/base-url.ts", "TypeScript", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/country-codes.ts", "TypeScript", 0, 0, 1212, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1213
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/fetcher.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/is-testnet.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/max-age.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/Users/admin/Desktop/farquest/apps/demo/src/constants/routes.ts", "TypeScript", 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/admin/Desktop/farquest/apps/demo/src/contexts/AuthContext.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 3, 25
+"/Users/admin/Desktop/farquest/apps/demo/src/contexts/admin-context.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 37, 0, 0, 0, 0, 10, 47
+"/Users/admin/Desktop/farquest/apps/demo/src/contexts/app-context.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/admin/Desktop/farquest/apps/demo/src/contexts/wallet-context.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 6, 7, 53
+"/Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuestTypeById.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 4, 22
+"/Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuestTypes.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 4, 21
+"/Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuests.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 4, 21
+"/Users/admin/Desktop/farquest/apps/demo/src/hooks/client/useIsSSR.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 4, 12
+"/Users/admin/Desktop/farquest/apps/demo/src/lib/api.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/Users/admin/Desktop/farquest/apps/demo/src/lib/prisma.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 10
+"/Users/admin/Desktop/farquest/apps/demo/src/lib/queries.ts", "TypeScript", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 33
+"/Users/admin/Desktop/farquest/apps/demo/src/lib/session.ts", "TypeScript", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 62
+"/Users/admin/Desktop/farquest/apps/demo/src/schemas/quest-schema.ts", "TypeScript", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 30
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/formatter.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 1, 4, 26
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/siwe-config.ts", "TypeScript", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 37
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/tap.ts", "TypeScript", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/types.ts", "TypeScript", 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7, 55
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/upload-image.ts", "TypeScript", 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 19
+"/Users/admin/Desktop/farquest/apps/demo/src/utils/wagmi-config.ts", "TypeScript", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 22
+"/Users/admin/Desktop/farquest/apps/demo/tailwind.config.ts", "TypeScript", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 28
+"/Users/admin/Desktop/farquest/apps/demo/todo.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 7, 16
+"/Users/admin/Desktop/farquest/apps/demo/tsconfig.json", "JSON with Comments", 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 27
+"/Users/admin/Desktop/farquest/apps/react-auth/.eslintrc.cjs", "JavaScript", 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 1, 19
+"/Users/admin/Desktop/farquest/apps/react-auth/README.md", "Markdown", 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 31
+"/Users/admin/Desktop/farquest/apps/react-auth/index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 3, 16
+"/Users/admin/Desktop/farquest/apps/react-auth/package.json", "JSON", 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 30
+"/Users/admin/Desktop/farquest/apps/react-auth/public/vite.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/react-auth/src/App.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 5, 28
+"/Users/admin/Desktop/farquest/apps/react-auth/src/App.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 39, 0, 0, 0, 8, 6, 53
+"/Users/admin/Desktop/farquest/apps/react-auth/src/assets/react.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/apps/react-auth/src/index.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 65, 0, 0, 0, 12, 77
+"/Users/admin/Desktop/farquest/apps/react-auth/src/main.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 4, 2, 30
+"/Users/admin/Desktop/farquest/apps/react-auth/src/vite-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"/Users/admin/Desktop/farquest/apps/react-auth/tsconfig.json", "JSON with Comments", 0, 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 26
+"/Users/admin/Desktop/farquest/apps/react-auth/tsconfig.node.json", "JSON", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 12
+"/Users/admin/Desktop/farquest/apps/react-auth/vite.config.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 8
+"/Users/admin/Desktop/farquest/apps/server/README.md", "Markdown", 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 15
+"/Users/admin/Desktop/farquest/apps/server/env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 3
+"/Users/admin/Desktop/farquest/apps/server/package.json", "JSON", 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 25
+"/Users/admin/Desktop/farquest/apps/server/src/index.ts", "TypeScript", 0, 0, 463, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 7, 489
+"/Users/admin/Desktop/farquest/apps/server/tsconfig.json", "JSON with Comments", 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 83, 0, 97
+"/Users/admin/Desktop/farquest/biome.json", "JSON", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24
+"/Users/admin/Desktop/farquest/env.d.ts", "TypeScript", 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 26
+"/Users/admin/Desktop/farquest/lefthook.yml", "YAML", 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"/Users/admin/Desktop/farquest/package.json", "JSON", 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 43
+"/Users/admin/Desktop/farquest/packages/database/README.md", "Markdown", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 16
+"/Users/admin/Desktop/farquest/packages/database/index.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/Users/admin/Desktop/farquest/packages/database/package.json", "JSON", 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 20
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/default.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/default.js", "JavaScript", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/edge.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/index-browser.js", "JavaScript", 0, 0, 0, 0, 0, 179, 0, 0, 0, 0, 0, 0, 19, 30, 228
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/index.d.ts", "TypeScript", 0, 0, 4692, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3064, 771, 8527
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/package.json", "JSON", 84, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 84
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/edge-esm.js", "JavaScript", 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 1, 5, 29
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/edge.js", "JavaScript", 0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 1, 5, 29
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/index-browser.d.ts", "TypeScript", 0, 0, 260, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 86, 366
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/index-browser.js", "JavaScript", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 12, 1, 14
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/library.d.ts", "TypeScript", 0, 0, 2067, 0, 0, 0, 0, 0, 0, 0, 0, 0, 744, 379, 3190
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/library.js", "JavaScript", 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 14, 27, 141
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/react-native.js", "JavaScript", 0, 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 0, 3, 13, 78
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/wasm.js", "JavaScript", 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 1, 5, 30
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 2, 10, 82
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/wasm.d.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/admin/Desktop/farquest/packages/database/prisma/client/wasm.js", "JavaScript", 0, 0, 0, 0, 0, 179, 0, 0, 0, 0, 0, 0, 19, 30, 228
+"/Users/admin/Desktop/farquest/packages/database/prisma/schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 0, 70, 0, 0, 0, 0, 2, 10, 82
+"/Users/admin/Desktop/farquest/packages/database/tsconfig.json", "JSON with Comments", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 28
+"/Users/admin/Desktop/farquest/packages/eslint-config/README.md", "Markdown", 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4
+"/Users/admin/Desktop/farquest/packages/eslint-config/library.js", "JavaScript", 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 2, 3, 35
+"/Users/admin/Desktop/farquest/packages/eslint-config/next.js", "JavaScript", 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 0, 2, 3, 36
+"/Users/admin/Desktop/farquest/packages/eslint-config/package.json", "JSON", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 16
+"/Users/admin/Desktop/farquest/packages/eslint-config/react-internal.js", "JavaScript", 0, 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 8, 4, 40
+"/Users/admin/Desktop/farquest/packages/services/README.md", "Markdown", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 16
+"/Users/admin/Desktop/farquest/packages/services/env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 3
+"/Users/admin/Desktop/farquest/packages/services/index.ts", "TypeScript", 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 40
+"/Users/admin/Desktop/farquest/packages/services/package.json", "JSON", 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 24
+"/Users/admin/Desktop/farquest/packages/services/src/common/logger.ts", "TypeScript", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 28
+"/Users/admin/Desktop/farquest/packages/services/src/common/types/quest.type.ts", "TypeScript", 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 9, 51
+"/Users/admin/Desktop/farquest/packages/services/src/common/types/session.type.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/Users/admin/Desktop/farquest/packages/services/src/common/webhooks/auth.webhook.ts", "TypeScript", 0, 0, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 17
+"/Users/admin/Desktop/farquest/packages/services/src/common/webhooks/quest.webhook.ts", "TypeScript", 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 30
+"/Users/admin/Desktop/farquest/packages/services/src/completion/completion.repository.ts", "TypeScript", 0, 0, 147, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 6, 155
+"/Users/admin/Desktop/farquest/packages/services/src/completion/completion.service.ts", "TypeScript", 0, 0, 137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 145
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/biokeyword.handler.ts", "TypeScript", 0, 0, 57, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9, 69
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/comment.handler.ts", "TypeScript", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 59
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/follow.handler.ts", "TypeScript", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 59
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/like.handler.ts", "TypeScript", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 9, 61
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/ownserc20.handler.ts", "TypeScript", 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 60
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/ownsnft.handler.ts", "TypeScript", 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 7, 59
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/profilepicture.handler.ts", "TypeScript", 0, 0, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 64
+"/Users/admin/Desktop/farquest/packages/services/src/completion/handler/recast.handler.ts", "TypeScript", 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 59
+"/Users/admin/Desktop/farquest/packages/services/src/lib/airstack.service.ts", "TypeScript", 0, 0, 195, 0, 0, 0, 0, 0, 0, 0, 0, 0, 66, 4, 265
+"/Users/admin/Desktop/farquest/packages/services/src/lib/alchemy.service.ts", "TypeScript", 0, 0, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 66
+"/Users/admin/Desktop/farquest/packages/services/src/lib/image.service.ts", "TypeScript", 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10, 82
+"/Users/admin/Desktop/farquest/packages/services/src/lib/redis.service.ts", "TypeScript", 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 14
+"/Users/admin/Desktop/farquest/packages/services/src/lib/test/image.service.spec.ts", "TypeScript", 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 48
+"/Users/admin/Desktop/farquest/packages/services/src/organization/organization.repository.ts", "TypeScript", 0, 0, 106, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 113
+"/Users/admin/Desktop/farquest/packages/services/src/organization/organization.service.ts", "TypeScript", 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 12, 79
+"/Users/admin/Desktop/farquest/packages/services/src/quest/quest.repository.ts", "TypeScript", 0, 0, 136, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 147
+"/Users/admin/Desktop/farquest/packages/services/src/quest/quest.service.ts", "TypeScript", 0, 0, 180, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 11, 192
+"/Users/admin/Desktop/farquest/packages/services/src/user/user.repository.ts", "TypeScript", 0, 0, 207, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 220
+"/Users/admin/Desktop/farquest/packages/services/src/user/user.service.ts", "TypeScript", 0, 0, 122, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 133
+"/Users/admin/Desktop/farquest/packages/services/src/webhook/webhook.service.ts", "TypeScript", 0, 0, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 52
+"/Users/admin/Desktop/farquest/packages/services/tsconfig.json", "JSON with Comments", 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 28
+"/Users/admin/Desktop/farquest/packages/typescript-config/base.json", "JSON", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 21
+"/Users/admin/Desktop/farquest/packages/typescript-config/nextjs.json", "JSON", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 14
+"/Users/admin/Desktop/farquest/packages/typescript-config/package.json", "JSON", 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/admin/Desktop/farquest/packages/typescript-config/react-library.json", "JSON", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/admin/Desktop/farquest/packages/ui/.eslintrc.js", "JavaScript", 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1, 1, 11
+"/Users/admin/Desktop/farquest/packages/ui/package.json", "JSON", 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 27
+"/Users/admin/Desktop/farquest/packages/ui/src/button.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 4, 22
+"/Users/admin/Desktop/farquest/packages/ui/src/card.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 1, 26
+"/Users/admin/Desktop/farquest/packages/ui/src/code.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 1, 10
+"/Users/admin/Desktop/farquest/packages/ui/tsconfig.json", "JSON with Comments", 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/admin/Desktop/farquest/packages/ui/tsconfig.lint.json", "JSON", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/admin/Desktop/farquest/packages/ui/turbo/generators/config.ts", "TypeScript", 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 31
+"/Users/admin/Desktop/farquest/packages/ui/turbo/generators/templates/component.hbs", "Handlebars", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 1, 9
+"/Users/admin/Desktop/farquest/render.yaml", "YAML", 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 2, 0, 12
+"/Users/admin/Desktop/farquest/schema.prisma", "Prisma", 0, 0, 0, 0, 0, 0, 0, 49, 0, 0, 0, 0, 4, 8, 61
+"/Users/admin/Desktop/farquest/tsconfig.json", "JSON with Comments", 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"/Users/admin/Desktop/farquest/turbo.json", "JSON", 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 28
+"Total", "-", 515, 132, 16752, 112, 15, 1270, 131, 277, 2005, 112, 8, 13, 7553, 3221, 32116

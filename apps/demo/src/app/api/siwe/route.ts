@@ -40,6 +40,7 @@ export const POST = async (req: NextRequest) => {
     session.chainId = fields.chainId;
     session.userId = userId.id;
   } catch (error) {
+    console.error("Failed to verify message:", error);
     switch (error) {
       case SiweErrorType.INVALID_NONCE:
       case SiweErrorType.INVALID_SIGNATURE:
