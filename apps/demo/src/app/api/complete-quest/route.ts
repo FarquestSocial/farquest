@@ -11,6 +11,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   const correlationId = "REPLACEME";
   const farquestApiKey = "REPLACEME";
   const authheader = "REPLACEME";
+  // TODO: do the graphql silly stuff
   const resp = await api.quest.complete.post({
     questId: questId,
     correlationId: correlationId,
@@ -23,5 +24,5 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   if (!resp.data) {
     return NextResponse.json({ error: "Could not get redirectUrl" });
   }
-  return NextResponse.redirect("/");
+  return NextResponse.json({ status: resp.data.status });
 };
