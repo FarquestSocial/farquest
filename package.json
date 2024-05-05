@@ -3,6 +3,8 @@
 	"private": true,
 	"scripts": {
 		"build": "turbo build",
+		"build:server": "turbo build:server",
+		"start:server": "turbo start:server",
 		"dev": "turbo dev",
 		"check": "bunx biome check apps/**/src --apply && bunx biome check packages/**/src --apply",
 		"lint": "turbo lint",
