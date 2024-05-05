@@ -34,7 +34,9 @@ const app = new Elysia()
 			documentation: {
 				info: {
 					title: "Farquest API",
-					version: "1.0",
+					version: "1.0.1",
+					description:
+						"Documentation for using the api.farquest.social questing API",
 				},
 				tags: [
 					{
