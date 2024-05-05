@@ -1,0 +1,20 @@
+{
+	"name": "database",
+	"module": "index.ts",
+	"types": "index.ts",
+	"type": "module",
+	"author": "Logan Chaplin(@rmrfsudo)",
+	"scripts": {
+		"db:generate": "prisma generate"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"prisma": "^5.13.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"@prisma/client": "5.13.0"
+	}
+}

@@ -1,0 +1,99 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "./client"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Organization {
+  id              String   @id @default(cuid())
+  name            String
+  authRedirectUrl String
+  callbackUrl     String
+  apiKeyPrefix    String   @unique // usermame
+  apikey          String   @unique //hashed key
+  users           User[]
+  Quests          Quests[]
+}
+
+model User {
+  id             String                @id @default(cuid())
+  fid            Int
+  correlationId  String //id passed from client
+  organizationId String
+  ethAddress     String
+  organization   Organization          @relation(fields: [organizationId], references: [id])
+  quests         UserQuestCompletion[]
+
+  @@unique([fid, organizationId])
+  @@unique([correlationId, organizationId])
+  @@index([organizationId])
+}
+
+model UserQuestCompletion {
+  id          String   @id @default(cuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  quest       Quests   @relation(fields: [questId], references: [id])
+  questId     String
+  completedAt DateTime @default(now())
+
+  @@unique([userId, questId])
+  @@index([userId])
+  @@index([questId])
+}
+
+//
+model QuestType {
+  id          String   @id @default(cuid())
+  name        String
+  description String //short description
+  type        String // type of quest determin the handler
+  //relation to quests
+  Quests      Quests[]
+}
+
+model Quests {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  image       String
+
+  customMetadata         Json // for display
+  customCallbackMetadata Json // for callback
+  validationCriteria     Json // specific to the quest type
+  organization           Organization          @relation(fields: [organizationId], references: [id])
+  organizationId         String
+  questType              QuestType             @relation(fields: [questTypeId], references: [id])
+  questTypeId            String
+  startsAt               DateTime
+  endsAt                 DateTime
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  userCompletions        UserQuestCompletion[]
+
+  @@index([organizationId])
+  @@index([questTypeId])
+}
+
+model test {
+  id            String  @id @default(cuid())
+  referredById  String? // Nullable to allow the first user in the chain who won't have a referrer
+  referralCode1 String  @unique @default(cuid())
+  referralCode2 String  @unique @default(cuid())
+  referredUser1 test?   @relation("ReferredByCode1", fields: [referralCode1], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  referredUser2 test?   @relation("ReferredByCode2", fields: [referralCode2], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  referrer      test?   @relation("Referrer", fields: [referredById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  // Inverse relations
+  referredByCode1 test?  @relation("ReferredByCode1")
+  referredByCode2 test?  @relation("ReferredByCode2")
+  referrees       test[] @relation("Referrer")
+
+  @@index([referredById], name: "idx_referredById")
+}

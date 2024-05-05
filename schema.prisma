@@ -1,0 +1,60 @@
+generator client {
+  provider        = "prisma-client-js"
+  // output          = "../../node_modules/.prisma/client"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = "mysql://pulmcproeu3truhd26mb:pscale_pw_QnQTNCbua9c7Jge60MrQWsIcMtPTB17I47Q7Kjwt20A@aws.connect.psdb.cloud/farquest?sslaccept=strict"
+  relationMode = "prisma"
+}
+
+// 
+model Organization {
+  id              String   @id @default(cuid())
+  name            String
+  authRedirectUrl String
+  callbackUrl     String
+  apiKeyPrefix    String   @unique // usermame
+  apikey          String   @unique //hashed key
+  users           User[]
+  Quests          Quests[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  fid            Int
+  corilatedId    String //id passed from client
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@unique([fid, organizationId])
+}
+
+//
+model QuestType {
+  id          String   @id @default(cuid())
+  name        String
+  description String //short description
+  type        String // type of quest determin the handler
+  //relation to quests
+  Quests      Quests[]
+}
+
+model Quests {
+  id          String @id @default(cuid())
+  name        String
+  description String
+  image       String
+
+  customMetadata         Json // for display
+  customCallbackMetadata Json // for callback
+  validationCriteria Json // specific to the quest type
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  questType      QuestType    @relation(fields: [questTypeId], references: [id])
+  questTypeId    String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}

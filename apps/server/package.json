@@ -1,0 +1,26 @@
+{
+	"name": "server",
+	"version": "1.0.50",
+	"types": "src/index.ts",
+	"author": "Kainoa Kanter",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "bun run --watch src/index.ts",
+		"build:server": "bun build --target=bun src/index.ts --outdir=dist",
+		"start:server": "bun dist/index.js"
+	},
+	"dependencies": {
+		"@airstack/node": "^0.0.7",
+		"@bogeychan/elysia-logger": "^0.0.21",
+		"@elysiajs/cors": "^1.0.2",
+		"@elysiajs/swagger": "^1.0.5",
+		"@privy-io/server-auth": "^1.7.3",
+		"elysia": "latest",
+		"nanoid": "^5.0.7",
+		"services": "*"
+	},
+	"devDependencies": {
+		"bun-types": "latest"
+	},
+	"module": "src/index.js"
+}

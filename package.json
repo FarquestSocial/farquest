@@ -1,0 +1,46 @@
+{
+  "name": "farquest",
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/bun": "^1.1.1",
+    "biome": "^0.3.3",
+    "lefthook": "^1.6.10"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.23.2",
+    "turbo": "^1.13.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.7",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "start:server": "turbo start:server",
+    "build:server": "turbo build:server",
+    "db:generate-dev": "turbo db:generate",
+    "check": "bunx biome check apps/**/src --apply && bunx biome check packages/**/src --apply",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "trustedDependencies": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bufferutil",
+    "canvas",
+    "core-js",
+    "esbuild",
+    "keccak",
+    "lefthook",
+    "prisma",
+    "secp256k1",
+    "sharp",
+    "utf-8-validate"
+  ],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
