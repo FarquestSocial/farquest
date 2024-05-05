@@ -2,13 +2,13 @@ import { ISession } from "@/utils/types";
 import { sealData, unsealData } from "iron-session";
 import { NextRequest, NextResponse } from "next/server";
 
-if (!process.env.SESSION_SECRET) {
-	throw new Error("SESSION_SECRET cannot be empty.");
-}
+// if (!process.env.SESSION_SECRET) {
+//   throw new Error("SESSION_SECRET cannot be empty.");
+// }
 
 const SESSION_OPTIONS = {
-	ttl: 60 * 60 * 24, // 1 day
-	password: process.env.SESSION_SECRET,
+  ttl: 60 * 60 * 24, // 1 day
+  password: "1I+yp0Wkfc2nlxOifCNA2Eagt70x/rPg2SgsbOFCAAs=",
 };
 
 const COOKIE_NAME = "demo-app-connectkit-next-siwe";

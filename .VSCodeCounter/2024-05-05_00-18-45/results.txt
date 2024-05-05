@@ -1,0 +1,318 @@
+Date : 2024-05-05 00:18:45
+Directory : /Users/admin/Desktop/farquest
+Total : 192 files,  21342 codes, 7553 comments, 3221 blanks, all 32116 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| TypeScript         |         76 |     16,752 |      7,243 |      2,614 |     26,609 |
+| TypeScript JSX     |         40 |      2,005 |         49 |        192 |      2,246 |
+| JavaScript         |         27 |      1,270 |        158 |        244 |      1,672 |
+| JSON               |         18 |        515 |          0 |         16 |        531 |
+| Prisma             |          5 |        277 |          8 |         44 |        329 |
+| Markdown           |          7 |        132 |          0 |         69 |        201 |
+| XML                |          5 |        131 |          0 |          1 |        132 |
+| JSON with Comments |          7 |        112 |         93 |         14 |        219 |
+| CSS                |          3 |        112 |          0 |         22 |        134 |
+| YAML               |          2 |         15 |          2 |          1 |         18 |
+| HTML               |          1 |         13 |          0 |          3 |         16 |
+| Handlebars         |          1 |          8 |          0 |          1 |          9 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                             | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                |        192 |     21,342 |      7,553 |      3,221 |     32,116 |
+| . (Files)                                                                                        |         10 |        239 |         11 |         47 |        297 |
+| apps                                                                                             |        110 |     10,819 |      3,498 |      1,542 |     15,859 |
+| apps/demo                                                                                        |         91 |     10,034 |      3,378 |      1,484 |     14,896 |
+| apps/demo (Files)                                                                                |          9 |        141 |         14 |         30 |        185 |
+| apps/demo/prisma                                                                                 |         18 |      6,157 |      3,311 |      1,183 |     10,651 |
+| apps/demo/prisma (Files)                                                                         |          1 |         44 |          0 |          8 |         52 |
+| apps/demo/prisma/client                                                                          |         17 |      6,113 |      3,311 |      1,175 |     10,599 |
+| apps/demo/prisma/client (Files)                                                                  |          9 |      3,553 |      2,515 |        654 |      6,722 |
+| apps/demo/prisma/client/runtime                                                                  |          8 |      2,560 |        796 |        521 |      3,877 |
+| apps/demo/public                                                                                 |          3 |        129 |          0 |          1 |        130 |
+| apps/demo/public (Files)                                                                         |          2 |          2 |          0 |          0 |          2 |
+| apps/demo/public/images                                                                          |          1 |        127 |          0 |          1 |        128 |
+| apps/demo/src                                                                                    |         61 |      3,607 |         53 |        270 |      3,930 |
+| apps/demo/src/app                                                                                |         35 |      1,972 |         17 |        180 |      2,169 |
+| apps/demo/src/app (Files)                                                                        |          4 |         94 |          0 |         15 |        109 |
+| apps/demo/src/app/admin                                                                          |          3 |        133 |          0 |         13 |        146 |
+| apps/demo/src/app/admin (Files)                                                                  |          2 |         36 |          0 |          4 |         40 |
+| apps/demo/src/app/admin/quests                                                                   |          1 |         97 |          0 |          9 |        106 |
+| apps/demo/src/app/api                                                                            |          8 |        216 |          9 |         38 |        263 |
+| apps/demo/src/app/api/complete-quest                                                             |          1 |         40 |          6 |          7 |         53 |
+| apps/demo/src/app/api/create-quest                                                               |          1 |         34 |          0 |          2 |         36 |
+| apps/demo/src/app/api/create-session                                                             |          1 |         30 |          1 |          4 |         35 |
+| apps/demo/src/app/api/get-all-quest-types                                                        |          1 |          8 |          0 |          2 |         10 |
+| apps/demo/src/app/api/get-all-quests                                                             |          1 |         18 |          0 |          2 |         20 |
+| apps/demo/src/app/api/get-all-required-fields                                                    |          1 |         13 |          0 |          4 |         17 |
+| apps/demo/src/app/api/get-quest-by-id                                                            |          1 |         22 |          1 |          4 |         27 |
+| apps/demo/src/app/api/siwe                                                                       |          1 |         51 |          1 |         13 |         65 |
+| apps/demo/src/app/components                                                                     |         20 |      1,529 |          8 |        114 |      1,651 |
+| apps/demo/src/app/components/admin                                                               |         18 |      1,452 |          6 |        104 |      1,562 |
+| apps/demo/src/app/components/admin/buttons                                                       |          2 |         40 |          0 |          5 |         45 |
+| apps/demo/src/app/components/admin/filters                                                       |          1 |         19 |          0 |          4 |         23 |
+| apps/demo/src/app/components/admin/input                                                         |          5 |        508 |          1 |         27 |        536 |
+| apps/demo/src/app/components/admin/menu                                                          |          1 |         53 |          0 |          4 |         57 |
+| apps/demo/src/app/components/admin/modal                                                         |          3 |        624 |          5 |         39 |        668 |
+| apps/demo/src/app/components/admin/sidebar                                                       |          2 |         72 |          0 |          5 |         77 |
+| apps/demo/src/app/components/admin/tables                                                        |          4 |        136 |          0 |         20 |        156 |
+| apps/demo/src/app/components/client                                                              |          1 |         26 |          2 |          2 |         30 |
+| apps/demo/src/app/components/client/navbar                                                       |          1 |         26 |          2 |          2 |         30 |
+| apps/demo/src/app/components/shared                                                              |          1 |         51 |          0 |          8 |         59 |
+| apps/demo/src/app/components/shared/general                                                      |          1 |         51 |          0 |          8 |         59 |
+| apps/demo/src/constants                                                                          |          7 |      1,245 |          0 |          8 |      1,253 |
+| apps/demo/src/contexts                                                                           |          4 |         77 |         28 |         21 |        126 |
+| apps/demo/src/hooks                                                                              |          4 |         60 |          0 |         16 |         76 |
+| apps/demo/src/hooks/admin                                                                        |          3 |         52 |          0 |         12 |         64 |
+| apps/demo/src/hooks/client                                                                       |          1 |          8 |          0 |          4 |         12 |
+| apps/demo/src/lib                                                                                |          4 |         86 |          2 |         22 |        110 |
+| apps/demo/src/schemas                                                                            |          1 |         27 |          0 |          3 |         30 |
+| apps/demo/src/utils                                                                              |          6 |        140 |          6 |         20 |        166 |
+| apps/react-auth                                                                                  |         14 |        272 |         16 |         46 |        334 |
+| apps/react-auth (Files)                                                                          |          7 |        119 |          3 |         20 |        142 |
+| apps/react-auth/public                                                                           |          1 |          1 |          0 |          0 |          1 |
+| apps/react-auth/src                                                                              |          6 |        152 |         13 |         26 |        191 |
+| apps/react-auth/src (Files)                                                                      |          5 |        151 |         13 |         26 |        190 |
+| apps/react-auth/src/assets                                                                       |          1 |          1 |          0 |          0 |          1 |
+| apps/server                                                                                      |          5 |        513 |        104 |         12 |        629 |
+| apps/server (Files)                                                                              |          4 |         50 |         85 |          5 |        140 |
+| apps/server/src                                                                                  |          1 |        463 |         19 |          7 |        489 |
+| packages                                                                                         |         72 |     10,284 |      4,044 |      1,632 |     15,960 |
+| packages/database                                                                                |         22 |      7,888 |      3,906 |      1,384 |     13,178 |
+| packages/database (Files)                                                                        |          4 |         50 |          4 |         12 |         66 |
+| packages/database/prisma                                                                         |         18 |      7,838 |      3,902 |      1,372 |     13,112 |
+| packages/database/prisma (Files)                                                                 |          1 |         70 |          2 |         10 |         82 |
+| packages/database/prisma/client                                                                  |         17 |      7,768 |      3,900 |      1,362 |     13,030 |
+| packages/database/prisma/client (Files)                                                          |          9 |      5,208 |      3,104 |        841 |      9,153 |
+| packages/database/prisma/client/runtime                                                          |          8 |      2,560 |        796 |        521 |      3,877 |
+| packages/eslint-config                                                                           |          5 |        106 |         12 |         13 |        131 |
+| packages/services                                                                                |         32 |      2,103 |        123 |        217 |      2,443 |
+| packages/services (Files)                                                                        |          5 |         88 |          8 |         15 |        111 |
+| packages/services/src                                                                            |         27 |      2,015 |        115 |        202 |      2,332 |
+| packages/services/src/common                                                                     |          5 |        100 |         11 |         20 |        131 |
+| packages/services/src/common (Files)                                                             |          1 |         21 |          1 |          6 |         28 |
+| packages/services/src/common/types                                                               |          2 |         38 |          8 |         10 |         56 |
+| packages/services/src/common/webhooks                                                            |          2 |         41 |          2 |          4 |         47 |
+| packages/services/src/completion                                                                 |         10 |        691 |         20 |         79 |        790 |
+| packages/services/src/completion (Files)                                                         |          2 |        284 |          2 |         14 |        300 |
+| packages/services/src/completion/handler                                                         |          8 |        407 |         18 |         65 |        490 |
+| packages/services/src/lib                                                                        |          5 |        368 |         77 |         30 |        475 |
+| packages/services/src/lib (Files)                                                                |          4 |        338 |         68 |         21 |        427 |
+| packages/services/src/lib/test                                                                   |          1 |         30 |          9 |          9 |         48 |
+| packages/services/src/organization                                                               |          2 |        169 |          4 |         19 |        192 |
+| packages/services/src/quest                                                                      |          2 |        316 |          1 |         22 |        339 |
+| packages/services/src/user                                                                       |          2 |        329 |          0 |         24 |        353 |
+| packages/services/src/webhook                                                                    |          1 |         42 |          2 |          8 |         52 |
+| packages/typescript-config                                                                       |          4 |         50 |          0 |          4 |         54 |
+| packages/ui                                                                                      |          9 |        137 |          3 |         14 |        154 |
+| packages/ui (Files)                                                                              |          4 |         51 |          1 |          4 |         56 |
+| packages/ui/src                                                                                  |          3 |         52 |          0 |          6 |         58 |
+| packages/ui/turbo                                                                                |          2 |         34 |          2 |          4 |         40 |
+| packages/ui/turbo/generators                                                                     |          2 |         34 |          2 |          4 |         40 |
+| packages/ui/turbo/generators (Files)                                                             |          1 |         26 |          2 |          3 |         31 |
+| packages/ui/turbo/generators/templates                                                           |          1 |          8 |          0 |          1 |          9 |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                         | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/admin/Desktop/farquest/.eslintrc.js                                                       | JavaScript         |          8 |          2 |          1 |         11 |
+| /Users/admin/Desktop/farquest/README.md                                                          | Markdown           |         53 |          0 |         29 |         82 |
+| /Users/admin/Desktop/farquest/apps/demo/.eslintrc.js                                             | JavaScript         |          8 |          1 |          1 |         10 |
+| /Users/admin/Desktop/farquest/apps/demo/README.md                                                | Markdown           |         23 |          0 |         14 |         37 |
+| /Users/admin/Desktop/farquest/apps/demo/env.d.ts                                                 | TypeScript         |          0 |          2 |          0 |          2 |
+| /Users/admin/Desktop/farquest/apps/demo/next.config.mjs                                          | JavaScript         |          2 |          1 |          2 |          5 |
+| /Users/admin/Desktop/farquest/apps/demo/package.json                                             | JSON               |         50 |          0 |          1 |         51 |
+| /Users/admin/Desktop/farquest/apps/demo/postcss.config.mjs                                       | JavaScript         |          6 |          1 |          2 |          9 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/default.d.ts                               | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/default.js                                 | JavaScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/edge.d.ts                                  | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/index-browser.js                           | JavaScript         |        152 |         19 |         27 |        198 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/index.d.ts                                 | TypeScript         |      3,117 |      2,477 |        592 |      6,186 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/package.json                               | JSON               |         84 |          0 |          0 |         84 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/edge-esm.js                        | JavaScript         |         23 |          1 |          5 |         29 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/edge.js                            | JavaScript         |         23 |          1 |          5 |         29 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/index-browser.d.ts                 | TypeScript         |        260 |         20 |         86 |        366 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/index-browser.js                   | JavaScript         |          1 |         12 |          1 |         14 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/library.d.ts                       | TypeScript         |      2,067 |        744 |        379 |      3,190 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/library.js                         | JavaScript         |        100 |         14 |         27 |        141 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/react-native.js                    | JavaScript         |         62 |          3 |         13 |         78 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/runtime/wasm.js                            | JavaScript         |         24 |          1 |          5 |         30 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/schema.prisma                              | Prisma             |         44 |          0 |          8 |         52 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/wasm.d.ts                                  | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/client/wasm.js                                    | JavaScript         |        152 |         19 |         27 |        198 |
+| /Users/admin/Desktop/farquest/apps/demo/prisma/schema.prisma                                     | Prisma             |         44 |          0 |          8 |         52 |
+| /Users/admin/Desktop/farquest/apps/demo/public/images/farquest.svg                               | XML                |        127 |          0 |          1 |        128 |
+| /Users/admin/Desktop/farquest/apps/demo/public/next.svg                                          | XML                |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/public/vercel.svg                                        | XML                |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/admin/layout.tsx                                 | TypeScript JSX     |         29 |          0 |          3 |         32 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/admin/page.tsx                                   | TypeScript JSX     |          7 |          0 |          1 |          8 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/admin/quests/page.tsx                            | TypeScript JSX     |         97 |          0 |          9 |        106 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/complete-quest/route.ts                      | TypeScript         |         40 |          6 |          7 |         53 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/create-quest/route.ts                        | TypeScript         |         34 |          0 |          2 |         36 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/create-session/route.ts                      | TypeScript         |         30 |          1 |          4 |         35 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-quest-types/route.ts                 | TypeScript         |          8 |          0 |          2 |         10 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-quests/route.ts                      | TypeScript         |         18 |          0 |          2 |         20 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/get-all-required-fields/route.ts             | TypeScript         |         13 |          0 |          4 |         17 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/get-quest-by-id/route.ts                     | TypeScript         |         22 |          1 |          4 |         27 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/api/siwe/route.ts                                | TypeScript         |         51 |          1 |         13 |         65 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/buttons/GeneralButton.tsx       | TypeScript JSX     |         19 |          0 |          2 |         21 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/buttons/PrimaryButton.tsx       | TypeScript JSX     |         21 |          0 |          3 |         24 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/filters/FilterBar.tsx           | TypeScript JSX     |         19 |          0 |          4 |         23 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Input.tsx                 | TypeScript JSX     |         68 |          0 |          4 |         72 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/MediaInput.tsx            | TypeScript JSX     |        169 |          1 |         12 |        182 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/MultiInput.tsx            | TypeScript JSX     |        152 |          0 |          7 |        159 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Select.tsx                | TypeScript JSX     |         85 |          0 |          3 |         88 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/input/Toggle.tsx                | TypeScript JSX     |         34 |          0 |          1 |         35 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/menu/Menu.tsx                   | TypeScript JSX     |         53 |          0 |          4 |         57 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/delete-modal.tsx          | TypeScript JSX     |         60 |          0 |          3 |         63 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/modal-wrapper.tsx         | TypeScript JSX     |         82 |          0 |          9 |         91 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/modal/quests-modal.tsx          | TypeScript JSX     |        482 |          5 |         27 |        514 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/sidebar/Sidebar.tsx             | TypeScript JSX     |         48 |          0 |          3 |         51 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/sidebar/SidebarItem.tsx         | TypeScript JSX     |         24 |          0 |          2 |         26 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/delete-button.tsx        | TypeScript JSX     |         13 |          0 |          2 |         15 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/edit-button.tsx          | TypeScript JSX     |         13 |          0 |          2 |         15 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/quests-table.tsx         | TypeScript JSX     |         33 |          0 |          5 |         38 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/admin/tables/table.tsx                | TypeScript JSX     |         77 |          0 |         11 |         88 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/client/navbar/Navbar.tsx              | TypeScript JSX     |         26 |          2 |          2 |         30 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/components/shared/general/RenderIfReady.tsx      | TypeScript JSX     |         51 |          0 |          8 |         59 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/globals.css                                      | CSS                |         24 |          0 |          5 |         29 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/layout.tsx                                       | TypeScript JSX     |         26 |          0 |          4 |         30 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/page.tsx                                         | TypeScript JSX     |          9 |          0 |          3 |         12 |
+| /Users/admin/Desktop/farquest/apps/demo/src/app/providers.tsx                                    | TypeScript JSX     |         35 |          0 |          3 |         38 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/admin-routes.ts                            | TypeScript         |         16 |          0 |          2 |         18 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/base-url.ts                                | TypeScript         |          2 |          0 |          1 |          3 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/country-codes.ts                           | TypeScript         |      1,212 |          0 |          1 |      1,213 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/fetcher.ts                                 | TypeScript         |          4 |          0 |          2 |          6 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/is-testnet.ts                              | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/max-age.ts                                 | TypeScript         |          1 |          0 |          1 |          2 |
+| /Users/admin/Desktop/farquest/apps/demo/src/constants/routes.ts                                  | TypeScript         |          9 |          0 |          1 |         10 |
+| /Users/admin/Desktop/farquest/apps/demo/src/contexts/AuthContext.tsx                             | TypeScript JSX     |          0 |         22 |          3 |         25 |
+| /Users/admin/Desktop/farquest/apps/demo/src/contexts/admin-context.tsx                           | TypeScript JSX     |         37 |          0 |         10 |         47 |
+| /Users/admin/Desktop/farquest/apps/demo/src/contexts/app-context.tsx                             | TypeScript JSX     |          0 |          0 |          1 |          1 |
+| /Users/admin/Desktop/farquest/apps/demo/src/contexts/wallet-context.tsx                          | TypeScript JSX     |         40 |          6 |          7 |         53 |
+| /Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuestTypeById.tsx                     | TypeScript JSX     |         18 |          0 |          4 |         22 |
+| /Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuestTypes.tsx                        | TypeScript JSX     |         17 |          0 |          4 |         21 |
+| /Users/admin/Desktop/farquest/apps/demo/src/hooks/admin/useQuests.tsx                            | TypeScript JSX     |         17 |          0 |          4 |         21 |
+| /Users/admin/Desktop/farquest/apps/demo/src/hooks/client/useIsSSR.tsx                            | TypeScript JSX     |          8 |          0 |          4 |         12 |
+| /Users/admin/Desktop/farquest/apps/demo/src/lib/api.ts                                           | TypeScript         |          4 |          0 |          1 |          5 |
+| /Users/admin/Desktop/farquest/apps/demo/src/lib/prisma.ts                                        | TypeScript         |          5 |          0 |          5 |         10 |
+| /Users/admin/Desktop/farquest/apps/demo/src/lib/queries.ts                                       | TypeScript         |         28 |          2 |          3 |         33 |
+| /Users/admin/Desktop/farquest/apps/demo/src/lib/session.ts                                       | TypeScript         |         49 |          0 |         13 |         62 |
+| /Users/admin/Desktop/farquest/apps/demo/src/schemas/quest-schema.ts                              | TypeScript         |         27 |          0 |          3 |         30 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/formatter.tsx                                  | TypeScript JSX     |         21 |          1 |          4 |         26 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/siwe-config.ts                                 | TypeScript         |         34 |          0 |          3 |         37 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/tap.ts                                         | TypeScript         |          7 |          0 |          0 |          7 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/types.ts                                       | TypeScript         |         47 |          1 |          7 |         55 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/upload-image.ts                                | TypeScript         |         15 |          0 |          4 |         19 |
+| /Users/admin/Desktop/farquest/apps/demo/src/utils/wagmi-config.ts                                | TypeScript         |         16 |          4 |          2 |         22 |
+| /Users/admin/Desktop/farquest/apps/demo/tailwind.config.ts                                       | TypeScript         |         26 |          0 |          2 |         28 |
+| /Users/admin/Desktop/farquest/apps/demo/todo.ts                                                  | TypeScript         |          0 |          9 |          7 |         16 |
+| /Users/admin/Desktop/farquest/apps/demo/tsconfig.json                                            | JSON with Comments |         26 |          0 |          1 |         27 |
+| /Users/admin/Desktop/farquest/apps/react-auth/.eslintrc.cjs                                      | JavaScript         |         18 |          0 |          1 |         19 |
+| /Users/admin/Desktop/farquest/apps/react-auth/README.md                                          | Markdown           |         22 |          0 |          9 |         31 |
+| /Users/admin/Desktop/farquest/apps/react-auth/index.html                                         | HTML               |         13 |          0 |          3 |         16 |
+| /Users/admin/Desktop/farquest/apps/react-auth/package.json                                       | JSON               |         29 |          0 |          1 |         30 |
+| /Users/admin/Desktop/farquest/apps/react-auth/public/vite.svg                                    | XML                |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/App.css                                        | CSS                |         23 |          0 |          5 |         28 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/App.tsx                                        | TypeScript JSX     |         39 |          8 |          6 |         53 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/assets/react.svg                               | XML                |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/index.css                                      | CSS                |         65 |          0 |         12 |         77 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/main.tsx                                       | TypeScript JSX     |         24 |          4 |          2 |         30 |
+| /Users/admin/Desktop/farquest/apps/react-auth/src/vite-env.d.ts                                  | TypeScript         |          0 |          1 |          1 |          2 |
+| /Users/admin/Desktop/farquest/apps/react-auth/tsconfig.json                                      | JSON with Comments |         21 |          2 |          3 |         26 |
+| /Users/admin/Desktop/farquest/apps/react-auth/tsconfig.node.json                                 | JSON               |         11 |          0 |          1 |         12 |
+| /Users/admin/Desktop/farquest/apps/react-auth/vite.config.ts                                     | TypeScript         |          5 |          1 |          2 |          8 |
+| /Users/admin/Desktop/farquest/apps/server/README.md                                              | Markdown           |         12 |          0 |          3 |         15 |
+| /Users/admin/Desktop/farquest/apps/server/env.d.ts                                               | TypeScript         |          0 |          2 |          1 |          3 |
+| /Users/admin/Desktop/farquest/apps/server/package.json                                           | JSON               |         24 |          0 |          1 |         25 |
+| /Users/admin/Desktop/farquest/apps/server/src/index.ts                                           | TypeScript         |        463 |         19 |          7 |        489 |
+| /Users/admin/Desktop/farquest/apps/server/tsconfig.json                                          | JSON with Comments |         14 |         83 |          0 |         97 |
+| /Users/admin/Desktop/farquest/biome.json                                                         | JSON               |         23 |          0 |          1 |         24 |
+| /Users/admin/Desktop/farquest/env.d.ts                                                           | TypeScript         |         19 |          3 |          4 |         26 |
+| /Users/admin/Desktop/farquest/lefthook.yml                                                       | YAML               |          5 |          0 |          1 |          6 |
+| /Users/admin/Desktop/farquest/package.json                                                       | JSON               |         42 |          0 |          1 |         43 |
+| /Users/admin/Desktop/farquest/packages/database/README.md                                        | Markdown           |         10 |          0 |          6 |         16 |
+| /Users/admin/Desktop/farquest/packages/database/index.ts                                         | TypeScript         |          1 |          0 |          1 |          2 |
+| /Users/admin/Desktop/farquest/packages/database/package.json                                     | JSON               |         19 |          0 |          1 |         20 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/default.d.ts                       | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/default.js                         | JavaScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/edge.d.ts                          | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/index-browser.js                   | JavaScript         |        179 |         19 |         30 |        228 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/index.d.ts                         | TypeScript         |      4,692 |      3,064 |        771 |      8,527 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/package.json                       | JSON               |         84 |          0 |          0 |         84 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/edge-esm.js                | JavaScript         |         23 |          1 |          5 |         29 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/edge.js                    | JavaScript         |         23 |          1 |          5 |         29 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/index-browser.d.ts         | TypeScript         |        260 |         20 |         86 |        366 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/index-browser.js           | JavaScript         |          1 |         12 |          1 |         14 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/library.d.ts               | TypeScript         |      2,067 |        744 |        379 |      3,190 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/library.js                 | JavaScript         |        100 |         14 |         27 |        141 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/react-native.js            | JavaScript         |         62 |          3 |         13 |         78 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/runtime/wasm.js                    | JavaScript         |         24 |          1 |          5 |         30 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/schema.prisma                      | Prisma             |         70 |          2 |         10 |         82 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/wasm.d.ts                          | TypeScript         |          1 |          0 |          0 |          1 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/client/wasm.js                            | JavaScript         |        179 |         19 |         30 |        228 |
+| /Users/admin/Desktop/farquest/packages/database/prisma/schema.prisma                             | Prisma             |         70 |          2 |         10 |         82 |
+| /Users/admin/Desktop/farquest/packages/database/tsconfig.json                                    | JSON with Comments |         20 |          4 |          4 |         28 |
+| /Users/admin/Desktop/farquest/packages/eslint-config/README.md                                   | Markdown           |          2 |          0 |          2 |          4 |
+| /Users/admin/Desktop/farquest/packages/eslint-config/library.js                                  | JavaScript         |         30 |          2 |          3 |         35 |
+| /Users/admin/Desktop/farquest/packages/eslint-config/next.js                                     | JavaScript         |         31 |          2 |          3 |         36 |
+| /Users/admin/Desktop/farquest/packages/eslint-config/package.json                                | JSON               |         15 |          0 |          1 |         16 |
+| /Users/admin/Desktop/farquest/packages/eslint-config/react-internal.js                           | JavaScript         |         28 |          8 |          4 |         40 |
+| /Users/admin/Desktop/farquest/packages/services/README.md                                        | Markdown           |         10 |          0 |          6 |         16 |
+| /Users/admin/Desktop/farquest/packages/services/env.d.ts                                         | TypeScript         |          0 |          2 |          1 |          3 |
+| /Users/admin/Desktop/farquest/packages/services/index.ts                                         | TypeScript         |         35 |          2 |          3 |         40 |
+| /Users/admin/Desktop/farquest/packages/services/package.json                                     | JSON               |         23 |          0 |          1 |         24 |
+| /Users/admin/Desktop/farquest/packages/services/src/common/logger.ts                             | TypeScript         |         21 |          1 |          6 |         28 |
+| /Users/admin/Desktop/farquest/packages/services/src/common/types/quest.type.ts                   | TypeScript         |         34 |          8 |          9 |         51 |
+| /Users/admin/Desktop/farquest/packages/services/src/common/types/session.type.ts                 | TypeScript         |          4 |          0 |          1 |          5 |
+| /Users/admin/Desktop/farquest/packages/services/src/common/webhooks/auth.webhook.ts              | TypeScript         |         14 |          1 |          2 |         17 |
+| /Users/admin/Desktop/farquest/packages/services/src/common/webhooks/quest.webhook.ts             | TypeScript         |         27 |          1 |          2 |         30 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/completion.repository.ts          | TypeScript         |        147 |          2 |          6 |        155 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/completion.service.ts             | TypeScript         |        137 |          0 |          8 |        145 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/biokeyword.handler.ts     | TypeScript         |         57 |          3 |          9 |         69 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/comment.handler.ts        | TypeScript         |         49 |          2 |          8 |         59 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/follow.handler.ts         | TypeScript         |         49 |          2 |          8 |         59 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/like.handler.ts           | TypeScript         |         49 |          3 |          9 |         61 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/ownserc20.handler.ts      | TypeScript         |         50 |          2 |          8 |         60 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/ownsnft.handler.ts        | TypeScript         |         50 |          2 |          7 |         59 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/profilepicture.handler.ts | TypeScript         |         54 |          2 |          8 |         64 |
+| /Users/admin/Desktop/farquest/packages/services/src/completion/handler/recast.handler.ts         | TypeScript         |         49 |          2 |          8 |         59 |
+| /Users/admin/Desktop/farquest/packages/services/src/lib/airstack.service.ts                      | TypeScript         |        195 |         66 |          4 |        265 |
+| /Users/admin/Desktop/farquest/packages/services/src/lib/alchemy.service.ts                       | TypeScript         |         61 |          0 |          5 |         66 |
+| /Users/admin/Desktop/farquest/packages/services/src/lib/image.service.ts                         | TypeScript         |         70 |          2 |         10 |         82 |
+| /Users/admin/Desktop/farquest/packages/services/src/lib/redis.service.ts                         | TypeScript         |         12 |          0 |          2 |         14 |
+| /Users/admin/Desktop/farquest/packages/services/src/lib/test/image.service.spec.ts               | TypeScript         |         30 |          9 |          9 |         48 |
+| /Users/admin/Desktop/farquest/packages/services/src/organization/organization.repository.ts      | TypeScript         |        106 |          0 |          7 |        113 |
+| /Users/admin/Desktop/farquest/packages/services/src/organization/organization.service.ts         | TypeScript         |         63 |          4 |         12 |         79 |
+| /Users/admin/Desktop/farquest/packages/services/src/quest/quest.repository.ts                    | TypeScript         |        136 |          0 |         11 |        147 |
+| /Users/admin/Desktop/farquest/packages/services/src/quest/quest.service.ts                       | TypeScript         |        180 |          1 |         11 |        192 |
+| /Users/admin/Desktop/farquest/packages/services/src/user/user.repository.ts                      | TypeScript         |        207 |          0 |         13 |        220 |
+| /Users/admin/Desktop/farquest/packages/services/src/user/user.service.ts                         | TypeScript         |        122 |          0 |         11 |        133 |
+| /Users/admin/Desktop/farquest/packages/services/src/webhook/webhook.service.ts                   | TypeScript         |         42 |          2 |          8 |         52 |
+| /Users/admin/Desktop/farquest/packages/services/tsconfig.json                                    | JSON with Comments |         20 |          4 |          4 |         28 |
+| /Users/admin/Desktop/farquest/packages/typescript-config/base.json                               | JSON               |         20 |          0 |          1 |         21 |
+| /Users/admin/Desktop/farquest/packages/typescript-config/nextjs.json                             | JSON               |         13 |          0 |          1 |         14 |
+| /Users/admin/Desktop/farquest/packages/typescript-config/package.json                            | JSON               |          9 |          0 |          1 |         10 |
+| /Users/admin/Desktop/farquest/packages/typescript-config/react-library.json                      | JSON               |          8 |          0 |          1 |          9 |
+| /Users/admin/Desktop/farquest/packages/ui/.eslintrc.js                                           | JavaScript         |          9 |          1 |          1 |         11 |
+| /Users/admin/Desktop/farquest/packages/ui/package.json                                           | JSON               |         26 |          0 |          1 |         27 |
+| /Users/admin/Desktop/farquest/packages/ui/src/button.tsx                                         | TypeScript JSX     |         18 |          0 |          4 |         22 |
+| /Users/admin/Desktop/farquest/packages/ui/src/card.tsx                                           | TypeScript JSX     |         25 |          0 |          1 |         26 |
+| /Users/admin/Desktop/farquest/packages/ui/src/code.tsx                                           | TypeScript JSX     |          9 |          0 |          1 |         10 |
+| /Users/admin/Desktop/farquest/packages/ui/tsconfig.json                                          | JSON with Comments |          8 |          0 |          1 |          9 |
+| /Users/admin/Desktop/farquest/packages/ui/tsconfig.lint.json                                     | JSON               |          8 |          0 |          1 |          9 |
+| /Users/admin/Desktop/farquest/packages/ui/turbo/generators/config.ts                             | TypeScript         |         26 |          2 |          3 |         31 |
+| /Users/admin/Desktop/farquest/packages/ui/turbo/generators/templates/component.hbs               | Handlebars         |          8 |          0 |          1 |          9 |
+| /Users/admin/Desktop/farquest/render.yaml                                                        | YAML               |         10 |          2 |          0 |         12 |
+| /Users/admin/Desktop/farquest/schema.prisma                                                      | Prisma             |         49 |          4 |          8 |         61 |
+| /Users/admin/Desktop/farquest/tsconfig.json                                                      | JSON with Comments |          3 |          0 |          1 |          4 |
+| /Users/admin/Desktop/farquest/turbo.json                                                         | JSON               |         27 |          0 |          1 |         28 |
+| Total                                                                                            |                    |     21,342 |      7,553 |      3,221 |     32,116 |
++--------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
