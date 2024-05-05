@@ -1,13 +1,18 @@
 import { logger } from "@bogeychan/elysia-logger";
 import { swagger } from "@elysiajs/swagger";
 import type { AuthTokenClaims } from "@privy-io/server-auth";
+import { PrivyClient } from "@privy-io/server-auth";
 import { Elysia, error, redirect, t } from "elysia";
 import { customAlphabet, urlAlphabet } from "nanoid";
 import { services } from "services";
 import type { Session } from "services/src/common/types/session.type";
-import { privy } from "./privy";
 
 const nanoId = customAlphabet(urlAlphabet, 20);
+
+export const privy = new PrivyClient(
+	Bun.env.PRIVY_APP_ID,
+	Bun.env.PRIVY_APP_SECRET,
+);
 
 async function doAuth(headers: Record<string, string | undefined>) {
 	if (!headers.authorization?.startsWith("Bearer ")) {
@@ -158,6 +163,9 @@ const app = new Elysia()
 					cookie.session.value.orgId = userOrgId;
 				}
 			},
+			headers: t.Object({
+				farquestapikey: t.String(),
+			}),
 		},
 		(app) =>
 			app
@@ -177,10 +185,6 @@ const app = new Elysia()
 						};
 					},
 					{
-						headers: t.Object({
-							authorization: t.String(),
-							farquestapikey: t.String(),
-						}),
 						body: t.Object({
 							correlatedId: t.String(),
 						}),
