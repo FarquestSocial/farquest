@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DEMO_DATABASE_URL")
+}
+
+model User {
+  id               String  @id @default(cuid())
+  ethWalletAddress String  @unique
+  isFarQuestLinked Boolean @default(false)
+  userQuests       UserQuest[]
+}
+
+model UserQuest {
+  id        String @id @default(cuid())
+  user      User   @relation(fields: [userId], references: [id])
+  userId    String
+  quest     Quest  @relation(fields: [questId], references: [id])
+  questId   String
+  isDone    Boolean @default(false)
+  isCorrect Boolean @default(false)
+
+  @@unique([userId, questId])
+}
+
+model Quest {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  image       String
+  options     Option[]
+  userQuests  UserQuest[]
+}
+
+model Option {
+  id        String  @id @default(cuid())
+  text      String
+  isCorrect Boolean
+  quest     Quest   @relation(fields: [questId], references: [id])
+  questId   String
+
+  @@unique([isCorrect, questId])
+}

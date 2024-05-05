@@ -18,5 +18,5 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
   const resp = await api.quest({ id: questId }).user({ userId: session.userId }).get();
 
 
-  return NextResponse.json(session.toJSON());
+  return NextResponse.json(resp.data);
 };

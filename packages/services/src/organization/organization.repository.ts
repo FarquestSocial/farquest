@@ -1,4 +1,4 @@
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "database";
 import type { PrismaClient } from "database";
 import Logger from "../common/logger";
 export class OrganizationRepository {

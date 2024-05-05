@@ -5,6 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
+*/prisma/client/
+*.db
+
 # Local env files
 .env
 .env.local

@@ -1,4 +1,4 @@
-import { upsertUser } from "@/lib/querys";
+import { upsertUser } from "@/lib/queries";
 import Session from "@/lib/session";
 import { tap } from "@/utils/tap";
 import { NextRequest, NextResponse } from "next/server";
