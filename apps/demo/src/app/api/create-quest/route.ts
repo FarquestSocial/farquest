@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import api from "../../../lib/api";
-import type { IQuest } from "@/utils/types";
 
 const schema = z.object({
     name: z.string(),
@@ -34,6 +33,4 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         return NextResponse.json({ error: "Could not create quest" });
     }
     return NextResponse.json({status: quest.status});
-
-    // return NextResponse.json({ message: "Quest created" });
 };

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import api from "../../../lib/api";
+import type { IQuest } from "@/utils/types";
 
 const schema = z.object({
     page: z.number(),
@@ -14,5 +15,6 @@ const GET = async (req: Request) => {
             farquestapikey: Bun.env.FARQUEST_API_KEY,
         },
     });
-    return NextResponse.json(quests.data);
+    const data = quests.data as IQuest[];
+    return NextResponse.json(data);
 };

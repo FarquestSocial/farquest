@@ -17,6 +17,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         status: 404,
       });
     }
+    
 
     // Validate request body using Zod
     const { questId } = schema.parse(req.body);

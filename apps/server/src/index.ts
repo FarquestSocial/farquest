@@ -144,7 +144,37 @@ const app = new Elysia()
       },
     }
   )
-
+  .get(
+    "/quest/types",
+    async ({ params }) => {
+      const questTypes = await services.questService.getAllQuestTypes();
+      return questTypes;
+    },
+    {
+      detail: {
+        tags: ["quest"],
+        description: "Get all quest types",
+      },
+    }
+  )
+  .get(
+    "/quest/requiredFields/:id",
+    async ({ params }) => {
+      const quest = await services.questService.getQuestTypeRequiredFields(
+        params.id
+      );
+      return quest;
+    },
+    {
+      params: t.Object({
+        id: t.String(),
+      }),
+      detail: {
+        tags: ["quest"],
+        description: "Get the required fields for a quest",
+      },
+    }
+  )
   .guard(
     {
       beforeHandle({ set, headers, cookie }) {
@@ -163,6 +193,9 @@ const app = new Elysia()
           cookie.session.value.orgId = userOrgId;
         }
       },
+      headers: t.Object({
+        farquestapikey: t.String(),
+      }),
     },
     (app) =>
       app
@@ -178,14 +211,10 @@ const app = new Elysia()
               } as Session)
             );
             return {
-              redirectUrl: `https://localhost:5173/?state=${sessionToken}`,
+              redirectUrl: `${Bun.env.AUTH_URL}/?state=${sessionToken}`,
             };
           },
           {
-            headers: t.Object({
-              authorization: t.String(),
-              farquestapikey: t.String(),
-            }),
             body: t.Object({
               correlatedId: t.String(),
             }),
@@ -267,36 +296,10 @@ const app = new Elysia()
               description:
                 "Callback to session with Privy Auth, returns URL to redirect back to your app",
             },
-          }
-        )
-        .get(
-          "/quest/types",
-          async ({ params }) => {
-            const questTypes = await services.questService.getAllQuestTypes();
-            return questTypes;
-          },
-          {
-            detail: {
-              tags: ["quest"],
-              description: "Get all quest types",
-            },
-          }
-        )
-        .get(
-          "/quest/requiredFields/:id",
-          async ({ params }) => {
-            const quest =
-              await services.questService.getQuestTypeRequiredFields(params.id);
-            return quest;
-          },
-          {
-            params: t.Object({
-              id: t.String(),
+            headers: t.Object({
+              authorization: t.String(),
+              farquestapikey: t.String(),
             }),
-            detail: {
-              tags: ["quest"],
-              description: "Get the required fields for a quest",
-            },
           }
         )
         .get(
@@ -377,13 +380,13 @@ const app = new Elysia()
           }
         )
         .get(
-          "/quest/list/:filter",
+          "/quest/list/:page/:filter",
           async ({ params, cookie }) => {
             const quests =
               await services.questService.getQuestsForOrganizationWithFilter(
                 cookie.session.value.orgId,
                 params.page,
-                params.take,
+                10,
                 params.filter ?? "ALL"
               );
             return quests;
@@ -391,7 +394,6 @@ const app = new Elysia()
           {
             params: t.Object({
               page: t.Number(),
-              take: t.Number(),
               filter: t.Optional(
                 t.Union([
                   t.Literal("ACTIVE"),
@@ -426,7 +428,6 @@ const app = new Elysia()
           },
           {
             body: t.Object({
-              organizationId: t.String(),
               name: t.String(),
               description: t.String(),
               image: t.String(),
