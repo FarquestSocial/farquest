@@ -160,8 +160,9 @@ const app = new Elysia()
 	.get(
 		"/quest/requiredFields/:id",
 		async ({ params }) => {
-			const quest =
-				await services.questService.getQuestTypeRequiredFields(params.id);
+			const quest = await services.questService.getQuestTypeRequiredFields(
+				params.id,
+			);
 			return quest;
 		},
 		{
@@ -210,7 +211,7 @@ const app = new Elysia()
 							} as Session),
 						);
 						return {
-							redirectUrl: `https://localhost:5173/?state=${sessionToken}`,
+							redirectUrl: `${Bun.env.AUTH_URL}/?state=${sessionToken}`,
 						};
 					},
 					{
