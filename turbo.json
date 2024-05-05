@@ -10,7 +10,7 @@
       "cache": false
     },
     "build:server": {
-      "dependsOn": ["db:generate"],
+      "dependsOn": ["^db:generate"],
       "cache": false
     },
     "start:server": {

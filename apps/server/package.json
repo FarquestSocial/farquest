@@ -5,9 +5,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "bun run --watch src/index.ts",
-		"db:generate": "turbo db:generate",
 		"build:server": "bun build --target=bun src/index.ts --outdir=dist",
-		"server:start": "NODE_ENV=production bun dist/index.js"
+		"start:server": "NODE_ENV=production bun dist/index.js"
 	},
 	"dependencies": {
 		"@airstack/node": "^0.0.7",
