@@ -11,27 +11,27 @@ import "react-toastify/dist/ReactToastify.css";
 const queryClient = new QueryClient();
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-	return (
-		<WagmiProvider config={wagmiConfig}>
-			<QueryClientProvider client={queryClient}>
-				<SIWEProvider {...siweConfig}>
-					<ConnectKitProvider theme="midnight">
-							{children}
-							<ToastContainer
-								position="top-right"
-								autoClose={5000}
-								hideProgressBar={false}
-								newestOnTop
-								closeOnClick
-								rtl={false}
-								pauseOnFocusLoss
-								draggable
-								pauseOnHover
-								theme="dark"
-							/>
-					</ConnectKitProvider>
-				</SIWEProvider>
-			</QueryClientProvider>
-		</WagmiProvider>
-	);
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+        <SIWEProvider {...siweConfig}>
+          <ConnectKitProvider theme='midnight'>
+            {children}
+            <ToastContainer
+              position='top-right'
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='dark'
+            />
+          </ConnectKitProvider>
+        </SIWEProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
 };
