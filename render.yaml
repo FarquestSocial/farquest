@@ -6,7 +6,7 @@ services:
     plan: starter
     previewPlan: starter
     #repo: <your-backend-repo-url> # Replace with your repository URL
-    buildCommand: bun i && pnpm run server:build
+    buildCommand: bun i && bun run server:build
     startCommand: bun run start:server
     scaling:
       minInstances: 1
