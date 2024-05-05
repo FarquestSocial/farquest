@@ -1,11 +1,15 @@
 
-import { NextRequest, NextResponse } from "next/server";
+import {  NextResponse } from "next/server";
+import { z } from "zod";
 import api from "@/lib/api";
 
-//unprotected route
-export const GET = async (req: Request) => {
+const schema = z.object({
+    id: z.string(),
+});
 
-    //const resp = await api.quest.
+export const GET = async (req: Request) => {
+    const body = schema.parse(req.body);
+    const resp = await api.quest.requiredFields({ id: body.id }).get();
     
     return NextResponse.json(resp.data);
 
