@@ -93,6 +93,11 @@ exports.Prisma.UserScalarFieldEnum = {
   isFarQuestLinked: 'isFarQuestLinked'
 };
 
+exports.Prisma.RelationLoadStrategy = {
+  query: 'query',
+  join: 'join'
+};
+
 exports.Prisma.UserQuestScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -151,11 +156,13 @@ const config = {
         "native": true
       }
     ],
-    "previewFeatures": [],
+    "previewFeatures": [
+      "relationJoins"
+    ],
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "..",
@@ -165,7 +172,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -174,8 +180,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DEMO_DATABASE_URL\")\n}\n\nmodel User {\n  id               String  @id @default(cuid())\n  ethWalletAddress String  @unique\n  isFarQuestLinked Boolean @default(false)\n  userQuests       UserQuest[]\n}\n\nmodel UserQuest {\n  id        String @id @default(cuid())\n  user      User   @relation(fields: [userId], references: [id])\n  userId    String\n  quest     Quest  @relation(fields: [questId], references: [id])\n  questId   String\n  isDone    Boolean @default(false)\n  isCorrect Boolean @default(false)\n\n  @@unique([userId, questId])\n}\n\nmodel Quest {\n  id          String   @id @default(cuid())\n  title       String\n  description String\n  image       String\n  options     Option[]\n  userQuests  UserQuest[]\n}\n\nmodel Option {\n  id        String  @id @default(cuid())\n  text      String\n  isCorrect Boolean\n  quest     Quest   @relation(fields: [questId], references: [id])\n  questId   String\n\n  @@unique([isCorrect, questId])\n}\n",
-  "inlineSchemaHash": "6fbae573a485a86fd85cd8188006ec4bacab239b3cab80f3ef8c34c698c6690d",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./client\"\n   previewFeatures = [\"relationJoins\"]\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DEMO_DATABASE_URL\")\n  relationMode = \"prisma\"\n}\n\nmodel User {\n  id               String  @id @default(cuid())\n  ethWalletAddress String  @unique\n  isFarQuestLinked Boolean @default(false)\n  userQuests       UserQuest[]\n}\n\nmodel UserQuest {\n  id        String @id @default(cuid())\n  user      User   @relation(fields: [userId], references: [id])\n  userId    String\n  quest     Quest  @relation(fields: [questId], references: [id])\n  questId   String\n  isDone    Boolean @default(false)\n  isCorrect Boolean @default(false)\n\n  @@index([questId])\n  @@unique([userId, questId])\n}\n\nmodel Quest {\n  id          String   @id @default(cuid())\n  title       String\n  description String\n  image       String\n  options     Option[]\n  userQuests  UserQuest[]\n}\n\nmodel Option {\n  id        String  @id @default(cuid())\n  text      String\n  isCorrect Boolean\n  quest     Quest   @relation(fields: [questId], references: [id])\n  questId   String\n\n  @@index([questId])\n  @@unique([isCorrect, questId])\n}\n",
+  "inlineSchemaHash": "29e3aba73ade7c32dc04f22f8ca119e47020dac9658242b70368f58dd45a6dfe",
   "copyEngine": true
 }
 config.dirname = '/'
