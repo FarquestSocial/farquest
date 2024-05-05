@@ -1,19 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import Session from "@/lib/session";
 import { z } from "zod";
 import api from "../../../lib/api";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
+  const session = await Session.fromRequest(req);
+  if (!session.userId) {
+    return NextResponse.json({ error: "User not found" });
+  }
   //validate request body
-  const correlationId = "REPLACEME";
-  const farquestApiKey = "REPLACEME";
+
+  //@TODO we should not need the auth header here
   const authheader = "REPLACEME";
   const resp = await api.session({
-    correlatedId: correlationId
+    correlatedId: session.userId
   }).post({
-    correlatedId: correlationId,
+    correlatedId: session.userId,
   }, {
     headers: {
-      farquestapikey: farquestApiKey,
+      farquestapikey: Bun.env.FARQUEST_API_KEY,
       authorization: `Bearer ${authheader}`,
     },
   });
