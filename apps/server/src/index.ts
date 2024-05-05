@@ -267,9 +267,29 @@ const app = new Elysia()
 					},
 				)
 				.get(
-					"/quest",
+					"/quest/:id",
 					async ({ params, cookie }) => {
-						const userId = await services.userService.getUserIdFromOrganizationIdAndCorrelationId(cookie.session.value.orgId, params.correlatedId);
+						const quest = await services.questService.getQuestById(params.id);
+						return quest;
+					},
+					{
+						params: t.Object({
+							id: t.String(),
+						}),
+						detail: {
+							tags: ["quest"],
+							description: "Get a quest by ID",
+						},
+					},
+				)
+				.get(
+					"/quest/:id/user/:userId",
+					async ({ params, cookie }) => {
+						const userId =
+							await services.userService.getUserIdFromOrganizationIdAndCorrelationId(
+								cookie.session.value.orgId,
+								params.correlatedId,
+							);
 						const quest = await services.questService.getQuestById(
 							params.id,
 							userId,
@@ -279,12 +299,11 @@ const app = new Elysia()
 					{
 						params: t.Object({
 							id: t.String(),
-							correlatedId: t.Optional(t.String()),
+							correlatedId: t.String(),
 						}),
 						detail: {
 							tags: ["quest"],
-							description:
-								"Get a quest by ID, optionally for a specific user by their ID",
+							description: "Get a quest by ID for a specific user by their ID",
 						},
 					},
 				)
