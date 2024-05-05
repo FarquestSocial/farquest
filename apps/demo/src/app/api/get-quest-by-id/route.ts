@@ -2,6 +2,7 @@ import Session from "@/lib/session";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import api from "@/lib/api";
+import type { IQuestResponse } from "@/utils/types";
 
 // Zod schema for input validation
 const schema = z.object({
@@ -20,7 +21,6 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
       farquestapikey: Bun.env.FARQUEST_API_KEY,
     },
   });
-
-
-  return NextResponse.json(resp.data);
+  const data = resp.data as IQuestResponse;
+  return NextResponse.json(data);
 };
