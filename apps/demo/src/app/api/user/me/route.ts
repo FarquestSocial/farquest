@@ -5,10 +5,8 @@ export const GET = async (req: NextRequest) => {
   try {
     // Initialize session from request
     const session = await Session.fromRequest(req);
-    console.log("sesh userid", session);
     if (session && session.userId) {
       // Assuming `userId` determines a valid session
-      console.log("User session:", session);
       return new NextResponse(JSON.stringify({ user: session }), {
         status: 200,
         headers: {

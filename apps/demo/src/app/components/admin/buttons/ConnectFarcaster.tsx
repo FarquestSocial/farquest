@@ -1,7 +1,8 @@
 "use client";
 
+import { routes } from "@/constants/routes";
 import { useMe } from "@/hooks/client/useMe";
-import api from "@/lib/api";
+import axios from "axios";
 
 export const ConnectFarcaster = () => {
   const { me } = useMe();
@@ -11,23 +12,17 @@ export const ConnectFarcaster = () => {
     <button
       className='px-3 py-2 border border-accent rounded-xl'
       onClick={async () => {
-        console.log("connect farcaster clicked");
-        const res = await api
-          .session({
-            correlatedId: me?.correlatedId,
-          })
-          .post(
-            {
-              correlatedId: me?.correlatedId,
-            },
-            {
-              headers: {
-                authorization: `Bearer ${"1fe5ce.afbccea670f467da160c672be0813fc0"}`,
-              },
-            }
-          );
+        try {
+          console.log("connect farcaster clicked");
+          const url = routes.createSession;
+          const res = await axios.post(url, {
+            correlatedId: me.userId,
+          });
 
-        console.log("res", res);
+          console.log("res", res);
+        } catch (error) {
+          console.error("error", error);
+        }
       }}
     >
       Connect Farcaster
