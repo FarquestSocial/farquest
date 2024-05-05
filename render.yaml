@@ -2,7 +2,7 @@ services:
   # Backend For name change service
   - type: web
     name: farquest-server
-    runtime: bun
+    runtime: Bun
     plan: starter
     previewPlan: starter
     #repo: <your-backend-repo-url> # Replace with your repository URL
