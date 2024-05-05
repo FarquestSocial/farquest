@@ -3,15 +3,21 @@ import Session from "@/lib/session";
 import { z } from "zod";
 import api from "../../../lib/api";
 
+const schema = z.object({
+  correlatedId: z.string(),
+});
+
 export const POST = async (req: NextRequest, res: NextResponse) => {
+  const body = schema.parse(req.body);
+  if (!body.correlatedId) {
+    return NextResponse.json({ error: "Correlated ID is required" });
+  }
   const session = await Session.fromRequest(req);
   if (!session.userId) {
     return NextResponse.json({ error: "User not found" });
   }
   //validate request body
 
-  //@TODO we should not need the auth header here
-  const authheader = "REPLACEME";
   const resp = await api.session({
     correlatedId: session.userId
   }).post({
@@ -19,7 +25,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   }, {
     headers: {
       farquestapikey: Bun.env.FARQUEST_API_KEY,
-      authorization: `Bearer ${authheader}`,
     },
   });
   if (!resp.data) {

@@ -194,25 +194,25 @@ const app = new Elysia()
 						},
 					},
 				)
-				.get(
-					"/auth/:state",
-					async ({ params }) => {
-						const sessionRaw = (await services.redisService.client.get(
-							params.state,
-						)) as string;
-						const session = JSON.parse(sessionRaw);
-						if (!session) {
-							return error(401);
-						}
-						return redirect(`https://localhost:5173/?state=${params.state}`);
-					},
-					{
-						detail: {
-							tags: ["auth"],
-							description: "Get the redirect URL to start a session",
-						},
-					},
-				)
+				// .get(
+				// 	"/auth/:state",
+				// 	async ({ params }) => {
+				// 		const sessionRaw = (await services.redisService.client.get(
+				// 			params.state,
+				// 		)) as string;
+				// 		const session = JSON.parse(sessionRaw);
+				// 		if (!session) {
+				// 			return error(401);
+				// 		}
+				// 		return redirect(`https://localhost:5173/?state=${params.state}`);
+				// 	},
+				// 	{
+				// 		detail: {
+				// 			tags: ["auth"],
+				// 			description: "Get the redirect URL to start a session",
+				// 		},
+				// 	},
+				// )
 				.post(
 					"/auth/callback",
 					async ({ body, headers }) => {
@@ -266,6 +266,10 @@ const app = new Elysia()
 							description:
 								"Callback to session with Privy Auth, returns URL to redirect back to your app",
 						},
+						headers: t.Object({
+							authorization: t.String(),
+							farquestapikey: t.String(),
+						}),
 					},
 				)
 				.get(
@@ -425,7 +429,6 @@ const app = new Elysia()
 					},
 					{
 						body: t.Object({
-							organizationId: t.String(),
 							name: t.String(),
 							description: t.String(),
 							image: t.String(),
