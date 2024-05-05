@@ -3,6 +3,7 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@types/bun": "^1.1.1",
     "biome": "^0.3.3",
     "lefthook": "^1.6.10"
   },
